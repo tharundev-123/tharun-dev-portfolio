@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THARUN DEV M C | AI & ML Engineer | Python Developer | Azure Certified</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Personal futuristic digital portfolio of THARUN DEV M C - Computer Science & Engineering (AI & ML) student, Python Developer, Azure Certified, and Future Software Engineer.">
+  <meta name="keywords" content="THARUN DEV M C, AI Engineer, Machine Learning, Python Developer, Azure Certified, Chandigarh University, Portfolio, Three.js, Next.js">
+  <meta name="author" content="THARUN DEV M C">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="THARUN DEV M C | Futuristic AI Portfolio">
+  <meta property="og:description" content="Explore the interactive 3D AI portfolio of THARUN DEV M C. Featuring neural boot sequences, AI avatar guide, projects, and certifications.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/tharundev-123">
+  <meta property="og:image" content="./public/avatar.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CDNs: Three.js, Lucide Icons, GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Glowing Cursor Follower -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Ambient Ambient Background Lines & 3D Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="cyber-grid"></div>
+
+  <!-- 1. AI NEURAL BOOT SEQUENCE LOADING SCREEN -->
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-box glass-card">
+      <div class="boot-header">
+        <span class="status-indicator"></span>
+        <span class="boot-title">NEURAL INTERFACE SYSTEM v4.9</span>
+      </div>
+
+      <div class="boot-terminal" id="boot-terminal">
+        <!-- Injected line by line via JS -->
+      </div>
+
+      <div class="boot-progress-wrapper">
+        <div class="boot-progress-bar" id="boot-progress-bar"></div>
+      </div>
+      <div class="boot-footer">
+        <span>AUTHOR: THARUN DEV M C</span>
+        <span id="boot-percent">0%</span>
+      </div>
+      <div style="text-align: center; margin-top: 0.75rem;">
+        <button id="btn-skip-boot" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyber-cyan); text-decoration: underline; background: none; border: none; cursor: pointer;">
+          Skip Boot Loader & Enter Portfolio ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CINEMATIC HOLOGRAPHIC AI AVATAR INTRO EXPERIENCE -->
+  <div class="hologram-intro-overlay" id="hologram-intro">
+    <div class="hologram-stage">
+      <!-- Background Cyber Particle Aura Canvas -->
+      <canvas id="hologram-particles-canvas"></canvas>
+      
+      <!-- Hologram Scan Lines -->
+      <div class="scanlines"></div>
+
+      <!-- Video & Avatar Stage Wrapper -->
+      <div class="video-stage-wrapper">
+
+        <!-- HTML5 Video Player for AI Talking Avatar Video (MP4 / WebM) -->
+        <video id="avatar-video" class="avatar-video-player" playsinline preload="auto" poster="./public/avatar.jpg">
+          <source src="./public/intro_avatar.mp4" type="video/mp4">
+          <source src="./public/intro_avatar.webm" type="video/webm">
+        </video>
+
+        <!-- Digital Avatar Fallback Stage (Shown if Video is replacing / loading) -->
+        <div id="avatar-fallback-stage" class="hologram-avatar-card glass-card">
+          <div class="hologram-avatar-frame">
+            <img src="./public/avatar.jpg" alt="Tharun Dev Digital Avatar" class="hologram-avatar-img" id="hologram-img">
+            <div class="hologram-beam"></div>
+            <div class="hologram-ring"></div>
+            
+            <!-- Audio Equalizer Visualizer Bars -->
+            <div class="audio-equalizer" id="equalizer">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="hologram-identity">
+            <div class="avatar-title-badge">
+              <i data-lucide="bot"></i>
+              <span>THARUN.AI // DIGITAL HOLOGRAM</span>
+            </div>
+            <h2>THARUN DEV M C</h2>
+            <p class="hologram-sub">AI & ML Specialist • Python Developer</p>
+          </div>
+        </div>
+
+        <!-- Video Vignette & Gradients -->
+        <div class="video-overlay-top"></div>
+        <div class="video-overlay-bottom"></div>
+      </div>
+
+      <!-- Subtitles & Caption Box -->
+      <div class="subtitles-container glass-card" id="subtitles-container">
+        <div class="subtitle-badge"><i data-lucide="sparkles"></i> AI AVATAR INTRO</div>
+        <p class="subtitle-text" id="subtitle-text">"Hello! I'm Tharun Dev."</p>
+        <div class="subtitle-progress-track">
+          <div id="subtitle-progress-bar" class="subtitle-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Intro Controls Dock -->
+      <div class="intro-controls-dock">
+        <button class="intro-btn" id="btn-start-audio" title="Play Intro Video">
+          <i data-lucide="play"></i> <span>Play Video</span>
+        </button>
+        <button class="intro-btn" id="btn-mute" title="Mute / Unmute">
+          <i data-lucide="volume-2" id="mute-icon"></i> <span>Mute</span>
+        </button>
+        <button class="intro-btn" id="btn-replay-intro" title="Replay Full Intro">
+          <i data-lucide="rotate-ccw"></i> <span>Replay</span>
+        </button>
+        <button class="intro-btn primary-glow" id="btn-skip-intro" title="Enter Portfolio">
+          <span>Enter Portfolio</span> <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FLOATING GLASS HEADER / NAVIGATION DOCK -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-code">&lt;TD&gt;</span>
+        <span class="brand-text">THARUN DEV</span>
+        <span class="status-pulse"></span>
+      </a>
+
+      <!-- Desktop Navigation Bar -->
+      <nav class="floating-dock-nav">
+        <a href="#hero" class="dock-item active" data-section="hero" title="Home"><i data-lucide="home"></i> <span>Home</span></a>
+        <a href="#about" class="dock-item" data-section="about" title="About"><i data-lucide="user"></i> <span>About</span></a>
+        <a href="#education" class="dock-item" data-section="education" title="Education"><i data-lucide="graduation-cap"></i> <span>Education</span></a>
+        <a href="#skills" class="dock-item" data-section="skills" title="Skills"><i data-lucide="cpu"></i> <span>Skills</span></a>
+        <a href="#projects" class="dock-item" data-section="projects" title="Projects"><i data-lucide="folder-git-2"></i> <span>Projects</span></a>
+        <a href="#certifications" class="dock-item" data-section="certifications" title="Certifications"><i data-lucide="award"></i> <span>Certs</span></a>
+        <a href="#github" class="dock-item" data-section="github" title="GitHub"><i data-lucide="github"></i> <span>GitHub</span></a>
+        <a href="#contact" class="dock-item" data-section="contact" title="Contact"><i data-lucide="mail"></i> <span>Contact</span></a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="header-right">
+        <button class="btn-icon-glass" id="cmd-palette-trigger" title="Command Palette (Cmd+K or /)">
+          <i data-lucide="command"></i>
+        </button>
+        <a href="#contact" class="btn btn-cyber-sm">
+          <span>Hire Me</span>
+          <i data-lucide="sparkles"></i>
+        </a>
+        <button class="mobile-toggle-btn" id="mobile-toggle">
+          <i data-lucide="menu" class="icon-open"></i>
+          <i data-lucide="x" class="icon-close"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PORTFOLIO CONTENT -->
+  <main>
+    
+    <!-- 3. HERO COMMAND CENTER SECTION (DESK POSTURE LAYOUT) -->
+    <section class="hero-section" id="hero">
+      <div class="hero-posture-container">
+        <!-- Seated Desk Workstation Background Image Layer -->
+        <div class="hero-desk-bg-layer">
+          <img src="./public/hero_posture.jpg" alt="THARUN DEV M C Seated at Workstation" class="hero-posture-img" id="hero-posture-img">
+          <div class="hero-desk-overlay"></div>
+        </div>
+
+        <div class="container hero-posture-content">
+          <div class="hero-text-block">
+            <div class="cyber-badge">
+              <span class="badge-dot"></span>
+              <span>OPEN FOR INTERNSHIPS & AI COLLABORATIONS</span>
+            </div>
+
+            <h1 class="hero-name">
+              Hi, I'm <span class="text-gradient">THARUN DEV M C</span>
+            </h1>
+
+            <div class="typing-container">
+              <span class="typing-label">SPECIALIZING IN:</span>
+              <span class="typing-text" id="typing-text"></span><span class="typing-cursor">|</span>
+            </div>
+
+            <p class="hero-bio">
+              B.Tech Computer Science (AI & ML) Student at Chandigarh University. Passionate Python developer, Microsoft Azure Certified practitioner, and cloud engineering enthusiast building intelligent software.
+            </p>
+
+            <div class="hero-button-group">
+              <a href="#projects" class="btn btn-cyber btn-lg">
+                <i data-lucide="layers"></i>
+                <span>View My Work</span>
+              </a>
+              <a href="#contact" class="btn btn-outline-cyber btn-lg">
+                <i data-lucide="send"></i>
+                <span>Contact Me</span>
+              </a>
+              <button class="btn btn-glass-secondary btn-lg" id="resume-download-btn">
+                <i data-lucide="file-down"></i>
+                <span>Download CV</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Human Voice Caption Box -->
+            <div class="hero-speech-caption-box glass-card" id="hero-caption-box">
+              <div class="caption-header">
+                <span class="status-pulse-sm"></span>
+                <span>LIVE VOICE SPEECH CAPTIONS</span>
+              </div>
+              <p class="caption-words" id="hero-caption-words">Press "Play Reel" or Intro to hear Tharun speak!</p>
+            </div>
+          </div>
+
+          <!-- Right Floating "Play Reel / Voice Intro" Button -->
+          <div class="hero-reel-wrapper">
+            <button class="reel-play-btn" id="btn-play-reel" title="Play Tharun's Voice Reel & Intro">
+              <div class="reel-icon-circle">
+                <i data-lucide="play" class="play-icon"></i>
+              </div>
+              <span class="reel-label">PLAY REEL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ABOUT ME SECTION -->
+    <section class="section-padding about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">WHO I AM</span>
+          <h2 class="section-heading">About <span class="text-gradient">Tharun Dev</span></h2>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- Summary Bio -->
+          <div class="about-summary-card glass-card">
+            <h3 class="card-subtitle"><i data-lucide="sparkles"></i> Driven by Intelligence & Innovation</h3>
+            <p>
+              I am a dedicated Computer Science & Engineering student at <strong>Chandigarh University</strong> specializing in <strong>Artificial Intelligence & Machine Learning</strong>. Native to Kozhikode, Kerala, India, I combine strong analytical problem-solving skills with hands-on software development experience.
+            </p>
+            <p>
+              My technical expertise spans Python development, machine learning fundamentals, Microsoft Azure cloud architecture, and modern web interfaces. I hold multiple professional certifications from Microsoft and Nutanix, reflecting my commitment to continuous learning and cloud technology standards.
+            </p>
+            
+            <div class="career-goal-box">
+              <div class="goal-icon"><i data-lucide="target"></i></div>
+              <div>
+                <h4>CAREER VISION</h4>
+                <p>To become a high-impact AI Engineer & Software Developer building scalable, intelligent products that solve complex real-world challenges.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Facts & Meta Details -->
+          <div class="about-meta-card glass-card">
+            <h3 class="card-subtitle"><i data-lucide="user-check"></i> Key Details</h3>
+            <ul class="meta-list">
+              <li>
+                <span class="meta-label"><i data-lucide="user"></i> Full Name:</span>
+                <span class="meta-val">THARUN DEV M C</span>
+              </li>
+              <li>
+                <span class="meta-label"><i data-lucide="graduation-cap"></i> Degree:</span>
+                <span class="meta-val">B.Tech Computer Science (AI & ML)</span>
+              </li>
+              <li>
+                <span class="meta-label"><i data-lucide="building"></i> Institution:</span>
+                <span class="meta-val">Chandigarh University</span>
+              </li>
+              <li>
+                <span class="meta-label"><i data-lucide="map-pin"></i> Location:</span>
+                <span class="meta-val">Kozhikode, Kerala, India</span>
+              </li>
+              <li>
+                <span class="meta-label"><i data-lucide="mail"></i> Email:</span>
+                <span class="meta-val">tharundevmc@gmail.com</span>
+              </li>
+              <li>
+                <span class="meta-label"><i data-lucide="clock"></i> Timezone:</span>
+                <span class="meta-val">Indian Standard Time (IST / UTC+5:30)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. EDUCATION TIMELINE SECTION -->
+    <section class="section-padding education-section" id="education">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">ACADEMIC JOURNEY</span>
+          <h2 class="section-heading">Education & <span class="text-gradient">Timeline</span></h2>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-tree">
+            
+            <!-- Timeline Item 1 -->
+            <div class="timeline-node">
+              <div class="timeline-connector">
+                <div class="connector-dot"></div>
+              </div>
+              <div class="timeline-card glass-card">
+                <div class="node-header">
+                  <div>
+                    <h3 class="node-title">Bachelor of Engineering (B.E. / B.Tech)</h3>
+                    <span class="node-sub">Computer Science Engineering with Specialization in AI & ML</span>
+                  </div>
+                  <span class="node-badge">2025 - Present</span>
+                </div>
+                <div class="node-institution"><i data-lucide="building-2"></i> Chandigarh University</div>
+                <p class="node-desc">
+                  Focused on Data Structures, Algorithms, Machine Learning Algorithms, Python Software Architecture, Artificial Intelligence Systems, and Cloud Architectures.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="timeline-node">
+              <div class="timeline-connector">
+                <div class="connector-dot"></div>
+              </div>
+              <div class="timeline-card glass-card">
+                <div class="node-header">
+                  <div>
+                    <h3 class="node-title">Higher Secondary Education (12th Grade)</h3>
+                    <span class="node-sub">Science Stream (Physics, Chemistry, Mathematics & CS)</span>
+                  </div>
+                  <span class="node-badge score-highlight">90% Score</span>
+                </div>
+                <div class="node-institution"><i data-lucide="award"></i> Kerala Board of Higher Secondary Education</div>
+                <p class="node-desc">
+                  Achieved 90% distinction score with top performance in Mathematics and Computer Science fundamentals.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="timeline-node">
+              <div class="timeline-connector">
+                <div class="connector-dot"></div>
+              </div>
+              <div class="timeline-card glass-card">
+                <div class="node-header">
+                  <div>
+                    <h3 class="node-title">Secondary Education (10th Grade)</h3>
+                    <span class="node-sub">General Technical Studies</span>
+                  </div>
+                  <span class="node-badge score-highlight">Above 90% Score</span>
+                </div>
+                <div class="node-institution"><i data-lucide="landmark"></i> Technical Education Department, Kerala</div>
+                <p class="node-desc">
+                  Graduated with top honor distinction (Above 90%) demonstrating early technical aptitude and mathematical proficiency.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SKILLS MATRIX SECTION -->
+    <section class="section-padding skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">TECHNICAL CAPABILITIES</span>
+          <h2 class="section-heading">Skills & <span class="text-gradient">Competencies</span></h2>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Category 1: Programming Languages -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon"><i data-lucide="code"></i></div>
+              <h3>Programming</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Python</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>C++</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>C Language</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>HTML / Web Basics</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Category 2: Developer Tools -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon"><i data-lucide="wrench"></i></div>
+              <h3>Developer Tools</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Git / Version Control</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>GitHub Workflows</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>VS Code IDE</span> <span>Expert</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Jupyter Notebook</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Category 3: Core Competencies -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon"><i data-lucide="brain"></i></div>
+              <h3>Core Engineering</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Problem Solving & Data Structures</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Machine Learning Fundamentals</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Azure Cloud Computing</span> <span>Certified</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 86%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Software Development Lifecycle</span> <span>Advanced</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Currently Learning Badges -->
+        <div class="currently-learning-box glass-card text-center">
+          <h4 class="learning-heading"><i data-lucide="flame"></i> CURRENTLY EXPANDING KNOWLEDGE IN</h4>
+          <div class="learning-badges">
+            <span class="learn-badge"><i data-lucide="sparkles"></i> Artificial Intelligence & LLMs</span>
+            <span class="learn-badge"><i data-lucide="cpu"></i> Deep Machine Learning</span>
+            <span class="learn-badge"><i data-lucide="cloud"></i> Azure & Nutanix Cloud Solutions</span>
+            <span class="learn-badge"><i data-lucide="globe"></i> Full-Stack Web Development</span>
+            <span class="learn-badge"><i data-lucide="git-pull-request"></i> Open Source Contributions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PROJECTS SHOWCASE SECTION -->
+    <section class="section-padding projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">FEATURED WORK</span>
+          <h2 class="section-heading">Projects & <span class="text-gradient">Innovations</span></h2>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <div class="project-card glass-card">
+            <div class="project-img-frame">
+              <img src="./public/project1.jpg" alt="Digital Healthcare BMI & Diet Planner" class="project-img">
+              <div class="project-tag-overlay">Healthcare AI</div>
+            </div>
+            <div class="project-details">
+              <h3 class="project-title">Digital Healthcare BMI & Diet Planner</h3>
+              <p class="project-desc">
+                An intelligent healthcare application calculating Body Mass Index (BMI) metrics and dynamically prescribing tailored nutritional diet plans based on personal health goals and biometric data.
+              </p>
+              <div class="project-tech-pills">
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>HTML/CSS</span>
+                <span>Data Analytics</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn btn-sm btn-outline-cyber">
+                  <i data-lucide="github"></i> Source Code
+                </a>
+                <button class="btn btn-sm btn-cyber view-project-modal-btn" data-project="1">
+                  <i data-lucide="external-link"></i> Live Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card glass-card">
+            <div class="project-img-frame">
+              <img src="./public/project2.jpg" alt="Azure Document Intelligence UI" class="project-image">
+              <div class="project-tag-overlay">Azure Cloud AI</div>
+            </div>
+            <div class="project-details">
+              <h3 class="project-title">Azure Document Intelligence UI</h3>
+              <p class="project-desc">
+                A modern cloud interface integrating Microsoft Azure Cognitive Services to extract text, tables, and key-value metadata from un-structured documents automatically using AI models.
+              </p>
+              <div class="project-tech-pills">
+                <span>Microsoft Azure</span>
+                <span>Python API</span>
+                <span>Document AI</span>
+                <span>REST Endpoints</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn btn-sm btn-outline-cyber">
+                  <i data-lucide="github"></i> Source Code
+                </a>
+                <button class="btn btn-sm btn-cyber view-project-modal-btn" data-project="2">
+                  <i data-lucide="external-link"></i> Live Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Placeholder 3 -->
+          <div class="project-card glass-card placeholder-card">
+            <div class="placeholder-icon">
+              <i data-lucide="brain-circuit"></i>
+            </div>
+            <div class="project-details">
+              <h3 class="project-title">Neural Vision & LLM RAG System</h3>
+              <p class="project-desc">
+                Upcoming AI project focusing on Retrieval-Augmented Generation (RAG) with local vector embeddings and automated document synthesis.
+              </p>
+              <div class="project-tech-pills">
+                <span>PyTorch</span>
+                <span>LangChain</span>
+                <span>Vector DB</span>
+              </div>
+              <div class="project-actions">
+                <span class="status-badge"><i data-lucide="clock"></i> In Active Development</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CERTIFICATIONS GALLERY SECTION -->
+    <section class="section-padding certs-section" id="certifications">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">VERIFIED CREDENTIALS</span>
+          <h2 class="section-heading">Professional <span class="text-gradient">Certifications</span></h2>
+          <p class="section-subtext">Recognized certifications in Microsoft Azure Cloud, Nutanix Multicloud Infrastructure, and Python Programming.</p>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="certs-grid">
+               <!-- Cert 1 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon ms-azure"><i data-lucide="cloud"></i></div>
+            <div class="cert-content">
+              <h4>Microsoft Azure Fundamentals</h4>
+              <span class="cert-issuer">Microsoft • AZ-900 Certified</span>
+              <p>Foundational knowledge of cloud concepts, Azure services, security, privacy, compliance, and trust.</p>
+              <a href="https://www.credly.com/badges/fa072f2b-6cb1-410d-867f-b103b02a89f9/public_url" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="AZ-900 Microsoft Azure Fundamentals">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon ms-ai"><i data-lucide="brain"></i></div>
+            <div class="cert-content">
+              <h4>Microsoft Azure AI Fundamentals</h4>
+              <span class="cert-issuer">Microsoft • AI-900 Certified</span>
+              <p>Demonstrated capability in Artificial Intelligence concepts, machine learning workloads, computer vision, and NLP in Azure.</p>
+              <a href="https://www.credly.com/badges/28fee6de-582e-48ac-8ad6-ca57f009ef39/public_url" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="AI-900 Microsoft Azure AI Fundamentals">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon ms-fabric"><i data-lucide="database"></i></div>
+            <div class="cert-content">
+              <h4>Microsoft Fabric Data Engineer Associate</h4>
+              <span class="cert-issuer">Microsoft • DP-700 Certified</span>
+              <p>Architecting enterprise data pipelines, lakehouse solutions, and real-time analytics using Microsoft Fabric.</p>
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/TharundevMC-1660/C260B7AABE3F829E?sharingId=9A9A67C29593A58D" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="DP-600 Microsoft Fabric Data Engineer">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon nutanix"><i data-lucide="server"></i></div>
+            <div class="cert-content">
+              <h4>Nutanix Multicloud Infrastructure 6</h4>
+              <span class="cert-issuer">Nutanix • NCP-MCI 6 Certified</span>
+              <p>Managing and configuring Nutanix Enterprise Cloud clusters, hyperconverged infrastructure, and virtualization.</p>
+              <a href="https://www.credly.com/badges/8c8c4eee-e4f5-4688-9663-e5dc3cf10b7b/public_url" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="Nutanix Multicloud Infrastructure">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon nutanix"><i data-lucide="monitor"></i></div>
+            <div class="cert-content">
+              <h4>Nutanix-End User Computing 6</h4>
+              <span class="cert-issuer">Nutanix • NCP-EUC 6 Certified</span>
+              <p>Virtual desktop infrastructure (VDI) management, application streaming, and end-user environment deployment.</p>
+              <a href="https://www.credly.com/badges/cd68b23d-4513-4149-8208-b95ae4269376/public_url" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="Nutanix End User Computing">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 6 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon nutanix"><i data-lucide="cpu"></i></div>
+            <div class="cert-content">
+              <h4>Nutanix-Multicloud Automation 6</h4>
+              <span class="cert-issuer">Nutanix • NCP-MCA 6 Certified</span>
+              <p>Automating infrastructure deployment, self-service portals, and cloud governance workflows.</p>
+              <a href="https://www.credly.com/badges/a2039131-1ed7-493b-aa1c-e0c35acf8ea6/public_url" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="Nutanix Multicloud Automation">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 7 -->
+          <div class="cert-card glass-card">
+            <div class="cert-badge-icon python"><i data-lucide="code-2"></i></div>
+            <div class="cert-content">
+              <h4>Introduction to Python Programming</h4>
+              <span class="cert-issuer">University of Pennsylvania</span>
+              <p>Mastery of core Python syntax, data structures, object-oriented programming, and file handling algorithms.</p>
+              <a href="https://www.coursera.org/account/accomplishments/verify/YC9OSTN0A2IZ" target="_blank" rel="noopener" class="btn-verify-cert" data-cert="Introduction to Python Programming">
+                <i data-lucide="shield-check"></i> Verify Credential <i data-lucide="external-link" style="width:14px;"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. LIVE GITHUB STATISTICS SECTION -->
+    <section class="section-padding github-section" id="github">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">OPEN SOURCE SYNC</span>
+          <h2 class="section-heading">GitHub <span class="text-gradient">Live Activity</span></h2>
+          <p class="section-subtext">Real-time statistics dynamically fetched from <strong>github.com/tharundev-123</strong></p>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="github-stats-card glass-card">
+          <div class="gh-profile-header">
+            <img src="./public/avatar.jpg" alt="GitHub Avatar" class="gh-avatar">
+            <div>
+              <h3 class="gh-username">tharundev-123</h3>
+              <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="gh-link">
+                <i data-lucide="external-link"></i> github.com/tharundev-123
+              </a>
+            </div>
+          </div>
+
+          <div class="gh-metrics-grid">
+            <div class="gh-metric-box">
+              <i data-lucide="folder-git-2"></i>
+              <span class="gh-val" id="gh-repos-count">12</span>
+              <span class="gh-lbl">Public Repositories</span>
+            </div>
+            <div class="gh-metric-box">
+              <i data-lucide="star"></i>
+              <span class="gh-val" id="gh-stars-count">24</span>
+              <span class="gh-lbl">Total Stars</span>
+            </div>
+            <div class="gh-metric-box">
+              <i data-lucide="users"></i>
+              <span class="gh-val" id="gh-followers-count">18</span>
+              <span class="gh-lbl">Followers</span>
+            </div>
+            <div class="gh-metric-box">
+              <i data-lucide="code-2"></i>
+              <span class="gh-val">Python</span>
+              <span class="gh-lbl">Primary Language</span>
+            </div>
+          </div>
+
+          <!-- Pinned Repositories Grid Container -->
+          <div class="pinned-repos-wrapper">
+            <h4 class="pinned-title"><i data-lucide="pin"></i> Featured Repositories</h4>
+            <div class="pinned-grid" id="github-pinned-repos">
+              <!-- Dynamically populated or rendered -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CONTACT PAGE SECTION -->
+    <section class="section-padding contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">INITIATE CONTACT</span>
+          <h2 class="section-heading">Get In <span class="text-gradient">Touch</span></h2>
+          <p class="section-subtext">Have an opportunity, internship, or project query? Let's build something futuristic together.</p>
+          <div class="header-glow-line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info-column">
+            
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon"><i data-lucide="mail"></i></div>
+              <div class="contact-text">
+                <span class="c-label">Direct Email</span>
+                <span class="c-val">tharundevmc@gmail.com</span>
+              </div>
+              <button class="btn-copy-email" id="btn-copy-email" data-email="tharundevmc@gmail.com" title="Copy Email">
+                <i data-lucide="copy"></i>
+              </button>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+              <div class="contact-text">
+                <span class="c-label">Base Location</span>
+                <span class="c-val">Kozhikode, Kerala, India (IST)</span>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon"><i data-lucide="clock"></i></div>
+              <div class="contact-text">
+                <span class="c-label">Response Time</span>
+                <span class="c-val">Usually within 24 Hours</span>
+              </div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="social-direct-box glass-card">
+              <h4>Social Profiles</h4>
+              <div class="social-grid-btns">
+                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="social-btn">
+                  <i data-lucide="code-2"></i> GitHub Profile
+                </a>
+                <a href="https://www.linkedin.com/in/tharundevmc" target="_blank" rel="noopener" class="social-btn">
+                  <i data-lucide="share-2"></i> LinkedIn Network
+                </a>
+              </div>
+            </div>
+
+          <!-- Contact Form Direct Delivery -->
+          <div class="contact-form-card glass-card">
+            <h3 class="form-title"><i data-lucide="message-square"></i> Send Message Directly to Tharun</h3>
+            
+            <!-- In-Page Success Confirmation Card -->
+            <div id="contact-success-msg" class="contact-success-card" style="display: none;">
+              <div class="success-icon-wrap"><i data-lucide="check-circle-2"></i></div>
+              <h4>Message Sent Successfully!</h4>
+              <p>Thank you for getting in touch. Tharun Dev has received your message at <strong>tharundevmc@gmail.com</strong> and will respond within 24 hours.</p>
+            </div>
+
+            <form id="contact-form" class="cyber-form" onsubmit="event.preventDefault(); return false;">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="c-name">Full Name <span class="req">*</span></label>
+                  <input type="text" id="c-name" name="name" class="cyber-input" placeholder="e.g. Elon Musk" required>
+                </div>
+                <div class="form-field">
+                  <label for="c-email">Your Email <span class="req">*</span></label>
+                  <input type="email" id="c-email" name="email" class="cyber-input" placeholder="e.g. elon@tesla.com" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="c-subject">Subject</label>
+                <input type="text" id="c-subject" name="subject" class="cyber-input" placeholder="Internship Opportunity / AI Project Inquiry">
+              </div>
+
+              <div class="form-field">
+                <label for="c-message">Message <span class="req">*</span></label>
+                <textarea id="c-message" name="message" class="cyber-input" rows="4" placeholder="Hi Tharun, we would love to connect..." required></textarea>
+              </div>
+
+              <button type="button" class="btn btn-cyber btn-block" id="form-submit-btn">
+                <span>Send Direct Email</span>
+                <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 11. PERSISTENT FLOATING AI ASSISTANT WIDGET -->
+  <div class="ai-assistant-widget" id="ai-widget">
+    
+    <!-- Expanded Chat Dialog -->
+    <div class="ai-widget-dialog glass-card" id="ai-dialog">
+      <div class="dialog-header">
+        <div class="dialog-title">
+          <span class="status-pulse-sm"></span>
+          <span>THARUN.AI ASSISTANT</span>
+        </div>
+        <button class="dialog-close" id="ai-dialog-close" aria-label="Close Assistant"><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="dialog-messages" id="ai-messages">
+        <div class="ai-msg">
+          <p>Greetings! I am Tharun's digital AI Assistant. Ask me anything about Tharun's skills, projects, certifications, or journey!</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Prompts -->
+      <div class="dialog-prompts">
+        <button class="prompt-chip" data-query="about">Tell me about yourself</button>
+        <button class="prompt-chip" data-query="projects">Show projects</button>
+        <button class="prompt-chip" data-query="certs">Show certifications</button>
+        <button class="prompt-chip" data-query="resume">Download resume</button>
+        <button class="prompt-chip" data-query="github">Open GitHub</button>
+        <button class="prompt-chip" data-query="contact">Contact Tharun</button>
+      </div>
+    </div>
+
+    <!-- Floating Trigger Avatar Button -->
+    <button class="ai-widget-trigger" id="ai-trigger" title="Ask Tharun.AI Assistant">
+      <img src="./public/avatar.jpg" alt="Tharun.AI Avatar" class="ai-trigger-img">
+      <span class="ai-trigger-pulse"></span>
+    </button>
+  </div>
+
+  <!-- COMMAND PALETTE OVERLAY (Cmd+K or /) -->
+  <div class="cmd-palette-overlay" id="cmd-palette">
+    <div class="cmd-palette-card glass-card">
+      <div class="cmd-input-wrapper">
+        <i data-lucide="search"></i>
+        <input type="text" id="cmd-input" placeholder="Type a command or section name..." autocomplete="off">
+        <span class="cmd-esc-badge">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmd-results">
+        <div class="cmd-item" data-action="goto-hero"><i data-lucide="home"></i> Jump to Home</div>
+        <div class="cmd-item" data-action="goto-about"><i data-lucide="user"></i> View About Me</div>
+        <div class="cmd-item" data-action="goto-education"><i data-lucide="graduation-cap"></i> View Academic Timeline</div>
+        <div class="cmd-item" data-action="goto-skills"><i data-lucide="cpu"></i> View Technical Skills</div>
+        <div class="cmd-item" data-action="goto-projects"><i data-lucide="folder-git-2"></i> View Projects</div>
+        <div class="cmd-item" data-action="goto-certifications"><i data-lucide="award"></i> View Azure & Nutanix Certifications</div>
+        <div class="cmd-item" data-action="goto-contact"><i data-lucide="mail"></i> Contact Tharun</div>
+        <div class="cmd-item" data-action="resume"><i data-lucide="file-down"></i> Download Resume</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERIC CERTIFICATE VERIFICATION MODAL -->
+  <div class="modal-overlay" id="cert-modal">
+    <div class="modal-card glass-card">
+      <button class="modal-close-btn" id="cert-modal-close"><i data-lucide="x"></i></button>
+      <div class="modal-content text-center">
+        <div class="cert-modal-icon"><i data-lucide="shield-check"></i></div>
+        <h3 id="modal-cert-name">Microsoft Azure Fundamentals</h3>
+        <p class="modal-cert-issuer">Verified Credential Issuer: Microsoft / Nutanix</p>
+        <div class="cert-hash-box">
+          <span>CREDENTIAL ID:</span>
+          <code id="modal-cert-id">MS-AZ900-THARUN-2025-VERIFIED</code>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">This certification verifies mastery in cloud architecture and artificial intelligence fundamentals.</p>
+        <button class="btn btn-cyber" id="modal-cert-confirm-btn">
+          <i data-lucide="external-link"></i> Confirm Verification Status
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-code">&lt;TD&gt;</span> THARUN DEV M C
+      </div>
+      <p class="footer-desc">AI & ML Specialist • Python Developer • Azure Certified</p>
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="f-year">2026</span> THARUN DEV M C. Designed & Built with futuristic AI engineering.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- User Voice Audio Elements -->
+  <audio id="user-voice-audio" src="./public/voice.mp3" preload="auto"></audio>
+
+  <!-- Application Main JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
