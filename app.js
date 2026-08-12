@@ -41,70 +41,107 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCursor();
 
   /* ==========================================================================
-     2. Three.js Background Particle Canvas
+     2. ELEGANT MODERN BACKGROUND CONSTELLATION SYSTEM (STANDARD & SLEEK)
      ========================================================================== */
   const bgCanvas = document.getElementById('bg-canvas');
   if (bgCanvas && window.THREE) {
+    bgCanvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); }, false);
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
+    scene.fog = new THREE.FogExp2(0x02040a, 0.015);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 500);
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas: bgCanvas, 
+      alpha: true, 
+      antialias: true,
+      powerPreference: 'high-performance' 
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const particlesCount = 700;
-    const posArray = new Float32Array(particlesCount * 3);
-    const colorArray = new Float32Array(particlesCount * 3);
+    /* ------------------------------------------------------------------------
+       A. ELEGANT DRIFTING PARTICLE CONSTELLATION MESH
+       ------------------------------------------------------------------------ */
+    const particleCount = 250;
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleVelocities = [];
 
-    const cyanColor = new THREE.Color('#00f2fe');
-    const violetColor = new THREE.Color('#a855f7');
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      particlePositions[i] = (Math.random() - 0.5) * 45;
+      particlePositions[i + 1] = (Math.random() - 0.5) * 70 - 15;
+      particlePositions[i + 2] = (Math.random() - 0.5) * 45;
 
-    for (let i = 0; i < particlesCount * 3; i += 3) {
-      posArray[i] = (Math.random() - 0.5) * 12;
-      posArray[i + 1] = (Math.random() - 0.5) * 12;
-      posArray[i + 2] = (Math.random() - 0.5) * 12;
-
-      const mixedColor = cyanColor.clone().lerp(violetColor, Math.random());
-      colorArray[i] = mixedColor.r;
-      colorArray[i + 1] = mixedColor.g;
-      colorArray[i + 2] = mixedColor.b;
+      particleVelocities.push({
+        x: (Math.random() - 0.5) * 0.015,
+        y: (Math.random() - 0.5) * 0.015,
+        z: (Math.random() - 0.5) * 0.015
+      });
     }
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
-    const material = new THREE.PointsMaterial({
-      size: 0.035,
-      vertexColors: true,
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.08,
+      color: 0x00f2fe,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.7,
       blending: THREE.AdditiveBlending
     });
+    const particleMesh = new THREE.Points(particleGeo, particleMat);
+    scene.add(particleMesh);
 
-    const particlesMesh = new THREE.Points(geometry, material);
-    scene.add(particlesMesh);
+    /* ------------------------------------------------------------------------
+       B. SMOOTH CAMERA SCROLL CONTROLLER
+       ------------------------------------------------------------------------ */
+    let scrollProgress = 0;
+    let targetScrollProgress = 0;
 
-    camera.position.z = 5;
+    function updateScrollProgress() {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        targetScrollProgress = Math.max(0, Math.min(1, window.scrollY / totalScroll));
+      }
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
-    let targetX = 0;
-    let targetY = 0;
+    /* ------------------------------------------------------------------------
+       C. 60 FPS RENDER LOOP
+       ------------------------------------------------------------------------ */
+    let clock = new THREE.Clock();
 
-    document.addEventListener('mousemove', (e) => {
-      targetX = (e.clientX / window.innerWidth - 0.5) * 0.5;
-      targetY = (e.clientY / window.innerHeight - 0.5) * 0.5;
-    });
+    function animateStandardBackground() {
+      requestAnimationFrame(animateStandardBackground);
+      const elapsedTime = clock.getElapsedTime();
 
-    function animateThree() {
-      particlesMesh.rotation.y += 0.0015;
-      particlesMesh.rotation.x += 0.001;
+      // Smooth camera scroll progression
+      scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
 
-      particlesMesh.rotation.y += (targetX - particlesMesh.rotation.y) * 0.05;
-      particlesMesh.rotation.x += (-targetY - particlesMesh.rotation.x) * 0.05;
+      camera.position.y = -scrollProgress * 55;
+      camera.position.z = 12 - Math.sin(scrollProgress * Math.PI) * 3;
+      camera.lookAt(0, camera.position.y - 1, 0);
+
+      // Particle Drift Motion
+      const positions = particleGeo.attributes.position.array;
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        positions[i3] += particleVelocities[i].x;
+        positions[i3 + 1] += particleVelocities[i].y;
+        positions[i3 + 2] += particleVelocities[i].z;
+
+        if (Math.abs(positions[i3]) > 25) particleVelocities[i].x *= -1;
+        if (Math.abs(positions[i3 + 1] - (-15)) > 35) particleVelocities[i].y *= -1;
+        if (Math.abs(positions[i3 + 2]) > 25) particleVelocities[i].z *= -1;
+      }
+      particleGeo.attributes.position.needsUpdate = true;
+
+      particleMesh.rotation.y = elapsedTime * 0.02;
 
       renderer.render(scene, camera);
-      requestAnimationFrame(animateThree);
     }
-    animateThree();
+
+    animateStandardBackground();
 
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -114,8 +151,154 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
+     3. CLEAN STANDARD SCROLL REVEAL (GSAP SECTION STAGGER)
+     ========================================================================== */
+  function initStandardScrollReveals() {
+    const cards = document.querySelectorAll('.glass-card, .project-card, .cert-card, .about-summary-card, .currently-learning-box');
+    cards.forEach((card) => {
+      card.style.transform = 'none';
+      card.style.opacity = '1';
+    });
+  }
+  setTimeout(initStandardScrollReveals, 300);
+
+  /* ==========================================================================
      3. AI Neural Boot Sequence Loader
      ========================================================================== */
+  /* ==========================================================================
+     High-End 3D Cinematic Video Intro Controller & Transition Engine
+     ========================================================================== */
+  const videoIntroOverlay = document.getElementById('video-intro-overlay');
+  const siteIntroVideo = document.getElementById('site-intro-video');
+  const btnSkipVideoIntro = document.getElementById('btn-skip-video-intro');
+  const btnUnmuteIntroVideo = document.getElementById('btn-unmute-intro-video');
+  const introVideoMuteLabel = document.getElementById('intro-video-mute-label');
+
+  function trigger3DCinematicTransition() {
+    if (!videoIntroOverlay) return;
+
+    const container = document.querySelector('.video-intro-container');
+    if (container) container.classList.add('warp-out-3d');
+
+    if (window.gsap) {
+      const ring = document.createElement('div');
+      ring.className = 'cyber-3d-portal-ring';
+      document.body.appendChild(ring);
+      
+      gsap.to(ring, {
+        scale: 30,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.inOut',
+        onComplete: () => ring.remove()
+      });
+
+      gsap.to(videoIntroOverlay, {
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          videoIntroOverlay.classList.remove('active');
+          videoIntroOverlay.style.visibility = 'hidden';
+          videoIntroOverlay.style.display = 'none';
+          videoIntroOverlay.style.pointerEvents = 'none';
+          document.body.style.overflow = 'auto';
+          if (container) container.classList.remove('warp-out-3d');
+        }
+      });
+
+      gsap.fromTo(
+        ['.site-header', '.cyber-badge', '.hero-name', '.typing-container', '.hero-bio', '.hero-button-group .btn'],
+        {
+          opacity: 0,
+          y: 60,
+          rotateX: -25,
+          scale: 0.9,
+          transformPerspective: 1000
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          scale: 1,
+          duration: 1.1,
+          stagger: 0.1,
+          ease: 'power4.out',
+          clearProps: 'all'
+        }
+      );
+    } else {
+      videoIntroOverlay.classList.remove('active');
+    }
+
+    showToast('⚡ Neural Interface Synced. Welcome, Tharun Dev.');
+  }
+
+  if (siteIntroVideo && videoIntroOverlay) {
+    siteIntroVideo.controls = false;
+
+    let introSafetyTimer = null;
+
+    function updateMuteButtonUI() {
+      if (!btnUnmuteIntroVideo) return;
+      btnUnmuteIntroVideo.style.display = 'inline-flex';
+      if (siteIntroVideo.muted) {
+        if (introVideoMuteLabel) introVideoMuteLabel.textContent = 'Unmute Sound 🔊';
+      } else {
+        if (introVideoMuteLabel) introVideoMuteLabel.textContent = 'Mute Sound 🔇';
+      }
+    }
+
+    function playIntroVideoSeamlessly() {
+      if (videoIntroOverlay) videoIntroOverlay.classList.add('active');
+      
+      siteIntroVideo.muted = false;
+      updateMuteButtonUI();
+
+      siteIntroVideo.play().then(() => {
+        updateMuteButtonUI();
+      }).catch(() => {
+        // Fallback for strict browser muted-autoplay policies
+        siteIntroVideo.muted = true;
+        updateMuteButtonUI();
+        siteIntroVideo.play().catch(err => {
+          console.log('Intro video autoplay note:', err);
+        });
+      });
+    }
+
+    playIntroVideoSeamlessly();
+
+    if (siteIntroVideo.readyState < 2) {
+      siteIntroVideo.addEventListener('loadeddata', playIntroVideoSeamlessly, { once: true });
+    }
+
+    siteIntroVideo.addEventListener('error', () => {
+      if (introSafetyTimer) clearTimeout(introSafetyTimer);
+      trigger3DCinematicTransition();
+    });
+
+    if (btnUnmuteIntroVideo) {
+      btnUnmuteIntroVideo.addEventListener('click', () => {
+        siteIntroVideo.muted = !siteIntroVideo.muted;
+        updateMuteButtonUI();
+      });
+    }
+
+    siteIntroVideo.addEventListener('ended', () => {
+      clearTimeout(introSafetyTimer);
+      trigger3DCinematicTransition();
+    });
+
+    if (btnSkipVideoIntro) {
+      btnSkipVideoIntro.addEventListener('click', () => {
+        clearTimeout(introSafetyTimer);
+        if (siteIntroVideo) siteIntroVideo.pause();
+        trigger3DCinematicTransition();
+      });
+    }
+  }
+
   /* ==========================================================================
      DOM Elements & Audio/Video State
      ========================================================================== */
@@ -202,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 120);
   }
-  runBootSequence();
+  if (bootScreen) runBootSequence();
 
   /* 3D Eye & Head Mouse Tracking */
   document.addEventListener('mousemove', (e) => {
@@ -322,7 +505,97 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Fallback Holographic Stage + Audio Mode */
+  const bgAvatarVideo = document.getElementById('bg-avatar-video');
+  const lipSyncOverlay = document.getElementById('lip-sync-overlay');
+  const hologramAvatarFrame = document.getElementById('hologram-avatar-frame');
+
+  let audioCtx = null;
+  let analyserNode = null;
+  let audioSourceNode = null;
+  let lipSyncAnimFrame = null;
+
+  function initWebAudioLipSync() {
+    if (!domMp3) return;
+    try {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        analyserNode = audioCtx.createAnalyser();
+        analyserNode.fftSize = 64;
+        audioSourceNode = audioCtx.createMediaElementSource(domMp3);
+        audioSourceNode.connect(analyserNode);
+        analyserNode.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      startLipSyncLoop();
+    } catch (e) {
+      console.log('Web Audio Lip Sync Init:', e);
+    }
+  }
+
+  function startLipSyncLoop() {
+    if (!analyserNode) return;
+    const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
+    
+    if (hologramAvatarFrame) hologramAvatarFrame.classList.add('lip-syncing');
+
+    function animateLipSync() {
+      analyserNode.getByteFrequencyData(dataArray);
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        sum += dataArray[i];
+      }
+      const averageVolume = sum / dataArray.length;
+      const normalizedVol = Math.min(1, averageVolume / 140);
+
+      if (lipSyncOverlay) {
+        const scaleY = 0.8 + normalizedVol * 1.8;
+        const scaleX = 1.0 + normalizedVol * 0.5;
+        const translateY = normalizedVol * 3;
+        lipSyncOverlay.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY}) translateY(${translateY}px)`;
+        lipSyncOverlay.style.opacity = normalizedVol > 0.12 ? '1' : '0.2';
+      }
+
+      if (hologramImg) {
+        const imgScale = 1 + normalizedVol * 0.04;
+        hologramImg.style.transform = `scale(${imgScale})`;
+      }
+
+      const eqSpans = document.querySelectorAll('#equalizer span');
+      eqSpans.forEach((span, idx) => {
+        const val = dataArray[idx % dataArray.length] || 0;
+        const h = Math.max(4, (val / 255) * 24);
+        span.style.height = `${h}px`;
+      });
+
+      lipSyncAnimFrame = requestAnimationFrame(animateLipSync);
+    }
+
+    if (lipSyncAnimFrame) cancelAnimationFrame(lipSyncAnimFrame);
+    animateLipSync();
+  }
+
+  function stopLipSyncLoop() {
+    if (lipSyncAnimFrame) cancelAnimationFrame(lipSyncAnimFrame);
+    if (hologramAvatarFrame) hologramAvatarFrame.classList.remove('lip-syncing');
+    if (lipSyncOverlay) lipSyncOverlay.style.opacity = '0';
+    if (hologramImg) hologramImg.style.transform = 'scale(1)';
+  }
+
+  if (avatarVideo) {
+    avatarVideo.addEventListener('play', () => {
+      if (avatarFallbackStage) avatarFallbackStage.style.display = 'none';
+      if (avatarVideo) avatarVideo.style.display = 'block';
+    });
+
+    avatarVideo.addEventListener('error', () => {
+      runFallbackAudioMode();
+    });
+  }
+
+  /* Fallback Holographic Stage + Audio & Video Mode */
   function runFallbackAudioMode() {
     if (avatarVideo) avatarVideo.style.display = 'none';
     if (avatarFallbackStage) avatarFallbackStage.style.display = 'flex';
@@ -331,6 +604,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroPostureImg) heroPostureImg.classList.add('speaking');
     if (equalizer) equalizer.classList.add('playing');
     
+    // Attempt playing background video if available
+    if (bgAvatarVideo) {
+      bgAvatarVideo.play().catch(() => {});
+    }
+
     // Display Click to Play button to satisfy browser gesture policy
     if (btnStartAudio) {
       btnStartAudio.style.display = 'inline-flex';
@@ -343,9 +621,13 @@ document.addEventListener('DOMContentLoaded', () => {
       domMp3.currentTime = 0;
       domMp3.play().then(() => {
         showToast('🔊 Playing Tharun Dev Voice (voice.mp3)...');
+        initWebAudioLipSync();
         startSubtitleTimeline();
         if (btnStartAudio) btnStartAudio.style.display = 'none';
-        domMp3.onended = () => stopVoiceAudio();
+        domMp3.onended = () => {
+          stopVoiceAudio();
+          stopLipSyncLoop();
+        };
       }).catch((err) => {
         console.log('Autoplay blocked by browser policy, waiting for user click:', err);
         showToast('👉 Click "Play Voice Intro" to start voice audio!');
@@ -353,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       speakWithWebSpeech();
     }
-  }
+  };
 
   function startSubtitleTimeline() {
     if (subtitleTimer) clearInterval(subtitleTimer);

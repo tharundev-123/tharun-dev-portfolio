@@ -428,8 +428,166 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
+.boot-screen,
+.hologram-intro-overlay,
+.bg-video-container,
+.hero-desk-bg-layer,
+.hero-reel-wrapper,
+#btn-play-reel,
+.hero-speech-caption-box {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.bg-video-container {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-video-layer {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: saturate(1.25) contrast(1.15) brightness(0.85);
+  transition: opacity 0.8s ease;
+}
+
+.hologram-avatar-frame {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 1.25rem auto;
+  perspective: 600px;
+}
+
+.lip-sync-overlay {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 38px;
+  height: 16px;
+  background: radial-gradient(ellipse at center, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0.7) 65%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.05s ease-out, opacity 0.1s ease-out;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.7);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+  z-index: 2;
+}
+
+.hologram-avatar-frame.lip-syncing .lip-sync-overlay {
+  opacity: 1;
+}
+
 /* ==========================================================================
-   Hologram Intro Video Stage & Overlay Styles
+   Cinematic Video Intro Overlay Styles
+   ========================================================================== */
+.video-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(3, 7, 18, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+}
+
+.video-intro-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-intro-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border-radius: 0;
+  overflow: hidden;
+  border: none;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1), filter 0.8s ease, opacity 0.8s ease;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.video-intro-container.warp-out-3d {
+  transform: scale(1.18) rotateX(12deg) rotateY(-8deg) translateZ(100px);
+  filter: brightness(1.8) contrast(1.4) blur(6px);
+  opacity: 0;
+}
+
+.cyber-3d-portal-ring {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
+  border-radius: 50%;
+  border: 3px solid var(--cyber-cyan);
+  box-shadow: 0 0 60px var(--cyber-cyan), inset 0 0 40px var(--neon-violet);
+  z-index: 10001;
+  pointer-events: none;
+  transform: scale(0.1);
+}
+
+.site-intro-video {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.video-intro-dock {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(2, 4, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glass-bright);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--primary-glow);
+}
+
+.hero-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+/* ==========================================================================
+   Hidden Legacy Overlay Rules
    ========================================================================== */
 .hologram-intro-overlay {
   position: fixed;
@@ -835,11 +993,91 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
   align-items: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+/* Hero Right Side Professional Portrait Frame */
+.hero-portrait-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-portrait-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass-bright);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--primary-glow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.hero-portrait-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 242, 254, 0.25), 0 0 45px var(--primary-glow);
+  border-color: var(--cyber-cyan);
+}
+
+.portrait-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  filter: contrast(1.05) brightness(1.02);
+  transition: transform var(--transition-normal);
+}
+
+.hero-portrait-card:hover .hero-portrait-img {
+  transform: scale(1.05);
+}
+
+.portrait-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(6, 9, 17, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass-bright);
+  color: var(--cyber-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.badge-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 8px var(--cyber-cyan);
+  animation: pulseGlow 2s infinite;
 }
 
 .hero-speech-caption-box {
@@ -1239,23 +1477,31 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-full);
 }
 
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
 .project-details {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1 1 auto;
 }
 
 .project-title {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
 }
 
 .project-desc {
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 1.25rem;
   flex-grow: 1;
@@ -1266,6 +1512,7 @@ img { max-width: 100%; height: auto; display: block; }
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-bottom: 1.5rem;
+  margin-top: auto;
 }
 
 .project-tech-pills span {
@@ -1280,7 +1527,29 @@ img { max-width: 100%; height: auto; display: block; }
 
 .project-actions {
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.project-actions .btn {
+  flex: 1;
+  padding: 0.65rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+}
+
+.project-actions .btn i {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .placeholder-card {
@@ -1486,8 +1755,15 @@ img { max-width: 100%; height: auto; display: block; }
    -------------------------------------------------------------------------- */
 .contact-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-info-column { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -1883,10 +2159,12 @@ img { max-width: 100%; height: auto; display: block; }
 .footer-links a:hover { color: var(--cyber-cyan); }
 .footer-bottom { border-top: 1px solid var(--border-glass); padding-top: 1.5rem; width: 100%; color: var(--text-subtle); font-size: 0.82rem; }
 
-/* Responsive Rules */
+/* ==========================================================================
+   Ultra-Compact Mobile Responsive Design System
+   ========================================================================== */
 @media (max-width: 1024px) {
   .hero-layout, .about-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
-  .hero-bio { margin-left: auto; margin-right: auto; }
+  .hero-bio { margin-left: auto; margin-right: auto; max-width: 90%; }
   .hero-button-group { justify-content: center; }
   .hero-metrics-bar { justify-content: center; gap: 1.5rem; }
 }
@@ -1894,8 +2172,399 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 768px) {
   .floating-dock-nav { display: none; }
   .mobile-toggle-btn { display: flex; }
-  .hero-name { font-size: 2.8rem; }
-  .section-heading { font-size: 2.2rem; }
-  .form-row { grid-template-columns: 1fr; }
-  .ai-widget-dialog { width: 310px; right: -10px; }
+  
+  .site-header { padding: 0.5rem 1rem; }
+  .header-inner { gap: 0.5rem; }
+  .brand-text { font-size: 1rem; }
+  
+  .hero-section { padding: 5.5rem 1rem 2.5rem 1rem; text-align: center; }
+  .hero-name { font-size: clamp(2rem, 7.5vw, 2.8rem); line-height: 1.2; }
+  .typing-container { justify-content: center; font-size: 0.88rem; flex-wrap: wrap; }
+  .hero-bio { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  
+  .hero-button-group { flex-direction: column; width: 100%; gap: 0.75rem; }
+  .hero-button-group .btn { width: 100%; justify-content: center; min-height: 48px; font-size: 0.95rem; }
+  
+  .section-padding { padding: 3rem 1rem; }
+  .section-heading { font-size: 1.9rem; }
+  
+  .projects-grid, 
+  .certifications-grid, 
+  .skills-grid,
+  .education-timeline { 
+    grid-template-columns: 1fr !important; 
+    gap: 1.25rem; 
+  }
+  
+  .glass-card { padding: 1.25rem; border-radius: 16px; }
+  .form-row { grid-template-columns: 1fr; gap: 1rem; }
+  
+  /* Touch Input Optimization (Prevents iOS Safari auto-zoom) */
+  .cyber-input, textarea.cyber-input { 
+    font-size: 16px !important; 
+    padding: 0.85rem 1rem; 
+  }
+  
+  /* Compact AI Assistant Widget Dialog */
+  .ai-widget-dialog { 
+    width: 92vw; 
+    right: 4vw; 
+    left: 4vw; 
+    bottom: 80px; 
+    margin: 0 auto; 
+  }
+  
+  .toast-container { 
+    left: 5%; 
+    right: 5%; 
+    width: 90%; 
+    bottom: 1.25rem; 
+  }
+  .toast { width: 100%; font-size: 0.85rem; padding: 0.75rem 1rem; }
+}
+
+@media (max-width: 480px) {
+  .cyber-badge { font-size: 0.68rem; padding: 0.35rem 0.65rem; }
+  .hero-name { font-size: 1.85rem; }
+  .typing-label { font-size: 0.75rem; }
+  .typing-text { font-size: 0.85rem; }
+  .section-heading { font-size: 1.65rem; }
+  .site-footer { padding: 2rem 1rem 1.5rem 1rem; }
+  .footer-links { gap: 0.85rem; font-size: 0.85rem; }
+}
+
+/* ==========================================================================
+   3D Digital World HUD & Interactive Project Portal Styles
+   ========================================================================== */
+.zone-hud-badge {
+  position: fixed;
+  top: 90px;
+  left: 2rem;
+  z-index: 7000;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(3, 7, 18, 0.7);
+  border: 1px solid var(--border-glass-bright);
+  backdrop-filter: blur(12px);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.hud-core-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 10px var(--cyber-cyan);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+.hud-zone-text {
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.hud-coord-text {
+  font-size: 0.7rem;
+  color: var(--text-subtle);
+  border-left: 1px solid var(--border-glass);
+  padding-left: 0.65rem;
+}
+
+/* 3D Project Modal Portal */
+.project-3d-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  background: rgba(2, 4, 10, 0.92);
+  backdrop-filter: blur(25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-3d-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-3d-card {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  box-shadow: 0 0 80px rgba(0, 242, 254, 0.25), 0 20px 60px rgba(0, 0, 0, 0.9);
+  background: rgba(6, 10, 22, 0.95);
+  border-radius: 24px;
+}
+
+.btn-exit-project {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--cyber-cyan);
+  background: rgba(0, 242, 254, 0.1);
+  border: 1px solid var(--border-glass-bright);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-exit-project:hover {
+  background: var(--cyber-cyan);
+  color: #000;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.project-3d-header {
+  margin-bottom: 2rem;
+}
+
+.project-3d-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  letter-spacing: 1px;
+}
+
+.project-3d-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.project-3d-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.project-3d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.project-3d-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-3d-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+}
+
+.project-3d-hud-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.hud-spec-item {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-glass);
+  padding: 0.6rem 0.5rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.spec-lbl {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-subtle);
+}
+
+.spec-val {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  font-weight: 600;
+}
+
+.project-3d-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-3d-section h4 {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-3d-section p {
+  color: var(--text-main);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.project-3d-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-3d-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Device Independent Responsive Breakpoints (Mobile, Tablet, Laptop, 4K) */
+@media (max-width: 1200px) {
+  .hero-posture-content {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-posture-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-button-group {
+    justify-content: center;
+  }
+
+  .hero-portrait-card {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .zone-hud-badge { top: 75px; left: 1rem; font-size: 0.68rem; }
+  .hud-coord-text { display: none; }
+  .project-3d-grid { grid-template-columns: 1fr; }
+  .project-3d-card { padding: 1.5rem; }
+  .project-3d-title { font-size: 1.7rem; }
+
+  .hero-name {
+    font-size: 2.3rem;
+  }
+
+  .hero-button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-button-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .video-intro-dock {
+    bottom: 24px;
+    width: 92%;
+    padding: 0.6rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .video-intro-dock .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floating-dock-nav span {
+    display: none;
+  }
+
+  .floating-dock-nav {
+    padding: 0.4rem 0.75rem;
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 1.95rem;
+  }
+
+  .section-heading {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-portrait-card {
+    max-width: 290px;
+  }
+
+  .portrait-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+/* Standard Modern Card Reset */
+.glass-card,
+.project-card,
+.cert-card,
+.about-summary-card,
+.currently-learning-box {
+  transform: none;
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ==========================================================================
+   Dual-View 3D Scroll Portrait Background Stage Styles
+   ========================================================================== */
+/* Clean background canvas setup */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: #02040a;
 }

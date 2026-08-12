@@ -39,110 +39,90 @@
   <div class="cursor-glow" id="cursor-glow"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
 
-  <!-- Ambient Ambient Background Lines & 3D Canvas -->
+  <!-- Ambient Background Lines & 3D Canvas -->
   <canvas id="bg-canvas"></canvas>
-  <div class="cyber-grid"></div>
+  <!-- CINEMATIC VIDEO INTRO OVERLAY -->
+  <div class="video-intro-overlay" id="video-intro-overlay">
+    <div class="video-intro-container">
+      <video id="site-intro-video" class="site-intro-video" autoplay playsinline preload="auto">
+        <source src="./public/intro_video.mp4" type="video/mp4">
+        <source src="./public/intro_video.webm" type="video/webm">
+        <source src="./public/intro_avatar.mp4" type="video/mp4">
+      </video>
 
-  <!-- 1. AI NEURAL BOOT SEQUENCE LOADING SCREEN -->
-  <div class="boot-screen" id="boot-screen">
-    <div class="boot-box glass-card">
-      <div class="boot-header">
-        <span class="status-indicator"></span>
-        <span class="boot-title">NEURAL INTERFACE SYSTEM v4.9</span>
-      </div>
-
-      <div class="boot-terminal" id="boot-terminal">
-        <!-- Injected line by line via JS -->
-      </div>
-
-      <div class="boot-progress-wrapper">
-        <div class="boot-progress-bar" id="boot-progress-bar"></div>
-      </div>
-      <div class="boot-footer">
-        <span>AUTHOR: THARUN DEV M C</span>
-        <span id="boot-percent">0%</span>
-      </div>
-      <div style="text-align: center; margin-top: 0.75rem;">
-        <button id="btn-skip-boot" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyber-cyan); text-decoration: underline; background: none; border: none; cursor: pointer;">
-          Skip Boot Loader & Enter Portfolio ➔
+      <div class="video-intro-dock">
+        <button class="btn btn-glass-secondary btn-sm" id="btn-unmute-intro-video" title="Toggle Intro Sound">
+          <i data-lucide="volume-2" id="intro-video-mute-icon"></i> <span id="intro-video-mute-label">Mute Sound 🔇</span>
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. CINEMATIC HOLOGRAPHIC AI AVATAR INTRO EXPERIENCE -->
-  <div class="hologram-intro-overlay" id="hologram-intro">
-    <div class="hologram-stage">
-      <!-- Background Cyber Particle Aura Canvas -->
-      <canvas id="hologram-particles-canvas"></canvas>
-      
-      <!-- Hologram Scan Lines -->
-      <div class="scanlines"></div>
-
-      <!-- Video & Avatar Stage Wrapper -->
-      <div class="video-stage-wrapper">
-
-        <!-- HTML5 Video Player for AI Talking Avatar Video (MP4 / WebM) -->
-        <video id="avatar-video" class="avatar-video-player" playsinline preload="auto" poster="./public/avatar.jpg">
-          <source src="./public/intro_avatar.mp4" type="video/mp4">
-          <source src="./public/intro_avatar.webm" type="video/webm">
-        </video>
-
-        <!-- Digital Avatar Fallback Stage (Shown if Video is replacing / loading) -->
-        <div id="avatar-fallback-stage" class="hologram-avatar-card glass-card">
-          <div class="hologram-avatar-frame">
-            <img src="./public/avatar.jpg" alt="Tharun Dev Digital Avatar" class="hologram-avatar-img" id="hologram-img">
-            <div class="hologram-beam"></div>
-            <div class="hologram-ring"></div>
-            
-            <!-- Audio Equalizer Visualizer Bars -->
-            <div class="audio-equalizer" id="equalizer">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-
-          <div class="hologram-identity">
-            <div class="avatar-title-badge">
-              <i data-lucide="bot"></i>
-              <span>THARUN.AI // DIGITAL HOLOGRAM</span>
-            </div>
-            <h2>THARUN DEV M C</h2>
-            <p class="hologram-sub">AI & ML Specialist • Python Developer</p>
-          </div>
-        </div>
-
-        <!-- Video Vignette & Gradients -->
-        <div class="video-overlay-top"></div>
-        <div class="video-overlay-bottom"></div>
-      </div>
-
-      <!-- Subtitles & Caption Box -->
-      <div class="subtitles-container glass-card" id="subtitles-container">
-        <div class="subtitle-badge"><i data-lucide="sparkles"></i> AI AVATAR INTRO</div>
-        <p class="subtitle-text" id="subtitle-text">"Hello! I'm Tharun Dev."</p>
-        <div class="subtitle-progress-track">
-          <div id="subtitle-progress-bar" class="subtitle-progress-fill"></div>
-        </div>
-      </div>
-
-      <!-- Intro Controls Dock -->
-      <div class="intro-controls-dock">
-        <button class="intro-btn" id="btn-start-audio" title="Play Intro Video">
-          <i data-lucide="play"></i> <span>Play Video</span>
-        </button>
-        <button class="intro-btn" id="btn-mute" title="Mute / Unmute">
-          <i data-lucide="volume-2" id="mute-icon"></i> <span>Mute</span>
-        </button>
-        <button class="intro-btn" id="btn-replay-intro" title="Replay Full Intro">
-          <i data-lucide="rotate-ccw"></i> <span>Replay</span>
-        </button>
-        <button class="intro-btn primary-glow" id="btn-skip-intro" title="Enter Portfolio">
+        <button class="btn btn-cyber-sm" id="btn-skip-video-intro">
           <span>Enter Portfolio</span> <i data-lucide="arrow-right"></i>
         </button>
       </div>
-
     </div>
   </div>
+  <div class="cyber-grid"></div>
+
+  <!-- FLOATING 3D DIGITAL CORE HUD & ZONE INDICATOR -->
+  <div class="zone-hud-badge" id="zone-hud-badge">
+    <div class="hud-core-dot"></div>
+    <span class="hud-zone-text" id="hud-zone-text">CORE ZONE: DIGITAL IDENTITY</span>
+    <span class="hud-coord-text" id="hud-coord-text">POS [ 0.0, 0.0, 5.0 ]</span>
+  </div>
+
+  <!-- 3D INTERACTIVE PROJECT PORTAL MODAL -->
+  <div class="project-3d-modal" id="project-3d-modal">
+    <div class="project-3d-card glass-card">
+      <button class="btn-exit-project" id="btn-exit-project">
+        <i data-lucide="arrow-left"></i> <span>EXIT PROJECT WORLD</span>
+      </button>
+
+      <div class="project-3d-header">
+        <span class="project-3d-tag" id="p3d-tag">AI / MACHINE LEARNING</span>
+        <h2 class="project-3d-title" id="p3d-title">Neural Analytics Engine</h2>
+        <p class="project-3d-sub" id="p3d-sub">Real-Time Predictive Analytics & Model Monitoring</p>
+      </div>
+
+      <div class="project-3d-grid">
+        <div class="project-3d-preview">
+          <img src="./public/project1.jpg" id="p3d-img" alt="Project Preview" class="project-3d-img">
+          <div class="project-3d-hud-specs">
+            <div class="hud-spec-item"><span class="spec-lbl">STATUS</span><span class="spec-val" id="p3d-status">ACTIVE DEPLOYMENT</span></div>
+            <div class="hud-spec-item"><span class="spec-lbl">LATENCY</span><span class="spec-val" id="p3d-latency">12ms</span></div>
+            <div class="hud-spec-item"><span class="spec-lbl">ARCHITECTURE</span><span class="spec-val" id="p3d-arch">MICROSERVICES</span></div>
+          </div>
+        </div>
+
+        <div class="project-3d-details">
+          <div class="project-3d-section">
+            <h4><i data-lucide="cpu"></i> CORE HIGHLIGHTS & ARCHITECTURE</h4>
+            <p id="p3d-desc">Advanced Machine Learning dashboard providing continuous model evaluation, automated feature store pipelines, and low-latency API inferencing.</p>
+          </div>
+
+          <div class="project-3d-section">
+            <h4><i data-lucide="layers"></i> TECH STACK</h4>
+            <div class="project-3d-tags" id="p3d-tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">FastAPI</span>
+            </div>
+          </div>
+
+          <div class="project-3d-actions">
+            <a href="https://github.com/tharundev-123" target="_blank" class="btn btn-cyber" id="p3d-github-btn">
+              <i data-lucide="github"></i> <span>View Code Base</span>
+            </a>
+            <a href="#contact" class="btn btn-outline-cyber" id="p3d-demo-btn">
+              <i data-lucide="external-link"></i> <span>Live Architecture</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
   <!-- FLOATING GLASS HEADER / NAVIGATION DOCK -->
   <header class="site-header" id="site-header">
@@ -167,6 +147,12 @@
 
       <!-- Right Action Controls -->
       <div class="header-right">
+        <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn-icon-glass" title="GitHub Profile">
+          <i data-lucide="github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="btn-icon-glass" title="LinkedIn Profile">
+          <i data-lucide="linkedin"></i>
+        </a>
         <button class="btn-icon-glass" id="cmd-palette-trigger" title="Command Palette (Cmd+K or /)">
           <i data-lucide="command"></i>
         </button>
@@ -188,11 +174,6 @@
     <!-- 3. HERO COMMAND CENTER SECTION (DESK POSTURE LAYOUT) -->
     <section class="hero-section" id="hero">
       <div class="hero-posture-container">
-        <!-- Seated Desk Workstation Background Image Layer -->
-        <div class="hero-desk-bg-layer">
-          <img src="./public/hero_posture.jpg" alt="THARUN DEV M C Seated at Workstation" class="hero-posture-img" id="hero-posture-img">
-          <div class="hero-desk-overlay"></div>
-        </div>
 
         <div class="container hero-posture-content">
           <div class="hero-text-block">
@@ -223,31 +204,23 @@
                 <i data-lucide="send"></i>
                 <span>Contact Me</span>
               </a>
-              <button class="btn btn-glass-secondary btn-lg" id="resume-download-btn">
-                <i data-lucide="file-down"></i>
-                <span>Download CV</span>
-              </button>
-            </div>
-
-            <!-- Dynamic Human Voice Caption Box -->
-            <div class="hero-speech-caption-box glass-card" id="hero-caption-box">
-              <div class="caption-header">
-                <span class="status-pulse-sm"></span>
-                <span>LIVE VOICE SPEECH CAPTIONS</span>
-              </div>
-              <p class="caption-words" id="hero-caption-words">Press "Play Reel" or Intro to hear Tharun speak!</p>
             </div>
           </div>
 
-          <!-- Right Floating "Play Reel / Voice Intro" Button -->
-          <div class="hero-reel-wrapper">
-            <button class="reel-play-btn" id="btn-play-reel" title="Play Tharun's Voice Reel & Intro">
-              <div class="reel-icon-circle">
-                <i data-lucide="play" class="play-icon"></i>
+          <!-- Right Column: Professional Portrait Frame filling the blank side -->
+          <div class="hero-portrait-block">
+            <div class="hero-portrait-card glass-card">
+              <div class="portrait-image-wrapper">
+                <img src="./public/tharun_hero_portrait.jpg" alt="THARUN DEV M C - Professional Portrait" class="hero-portrait-img">
               </div>
-              <span class="reel-label">PLAY REEL</span>
-            </button>
+              <div class="portrait-badge">
+                <span class="badge-pulse"></span>
+                <span>AI & ML Specialist • Azure Certified</span>
+              </div>
+            </div>
           </div>
+
+        </div>
         </div>
       </div>
     </section>
@@ -295,7 +268,7 @@
               </li>
               <li>
                 <span class="meta-label"><i data-lucide="building"></i> Institution:</span>
-                <span class="meta-val">Chandigarh University</span>
+                <span class="meta-val">Chandigarh University, Uttar Pradesh</span>
               </li>
               <li>
                 <span class="meta-label"><i data-lucide="map-pin"></i> Location:</span>
@@ -410,8 +383,8 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <div class="skill-info"><span>Python</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%;"></div></div>
+                <div class="skill-info"><span>Python</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%;"></div></div>
               </div>
               <div class="skill-item">
                 <div class="skill-info"><span>C++</span> <span>Intermediate</span></div>
@@ -422,8 +395,8 @@
                 <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
               </div>
               <div class="skill-item">
-                <div class="skill-info"><span>HTML / Web Basics</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+                <div class="skill-info"><span>HTML / Web Basics</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
               </div>
             </div>
           </div>
@@ -436,20 +409,20 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <div class="skill-info"><span>Git / Version Control</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+                <div class="skill-info"><span>Git / Version Control</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
               </div>
               <div class="skill-item">
-                <div class="skill-info"><span>GitHub Workflows</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                <div class="skill-info"><span>GitHub Workflows</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
               </div>
               <div class="skill-item">
-                <div class="skill-info"><span>VS Code IDE</span> <span>Expert</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                <div class="skill-info"><span>VS Code IDE</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%;"></div></div>
               </div>
               <div class="skill-item">
-                <div class="skill-info"><span>Jupyter Notebook</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                <div class="skill-info"><span>Jupyter Notebook</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
               </div>
             </div>
           </div>
@@ -462,8 +435,8 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <div class="skill-info"><span>Problem Solving & Data Structures</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+                <div class="skill-info"><span>Problem Solving & Data Structures</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
               </div>
               <div class="skill-item">
                 <div class="skill-info"><span>Machine Learning Fundamentals</span> <span>Intermediate</span></div>
@@ -474,8 +447,8 @@
                 <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 86%;"></div></div>
               </div>
               <div class="skill-item">
-                <div class="skill-info"><span>Software Development Lifecycle</span> <span>Advanced</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                <div class="skill-info"><span>Software Development Lifecycle</span> <span>Intermediate</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
               </div>
             </div>
           </div>
@@ -524,12 +497,9 @@
                 <span>Data Analytics</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn btn-sm btn-outline-cyber">
-                  <i data-lucide="github"></i> Source Code
+                <a href="https://github.com/tharundev-123/Nimbus_Project_THARUNDEVMC_76" target="_blank" rel="noopener" class="btn btn-sm btn-cyber">
+                  <i data-lucide="github"></i> View Source Code
                 </a>
-                <button class="btn btn-sm btn-cyber view-project-modal-btn" data-project="1">
-                  <i data-lucide="external-link"></i> Live Details
-                </button>
               </div>
             </div>
           </div>
@@ -552,33 +522,12 @@
                 <span>REST Endpoints</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn btn-sm btn-outline-cyber">
+                <a href="https://github.com/tharundev-123/azure-doc-analyzer" target="_blank" rel="noopener" class="btn btn-sm btn-outline-cyber">
                   <i data-lucide="github"></i> Source Code
                 </a>
-                <button class="btn btn-sm btn-cyber view-project-modal-btn" data-project="2">
-                  <i data-lucide="external-link"></i> Live Details
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Placeholder 3 -->
-          <div class="project-card glass-card placeholder-card">
-            <div class="placeholder-icon">
-              <i data-lucide="brain-circuit"></i>
-            </div>
-            <div class="project-details">
-              <h3 class="project-title">Neural Vision & LLM RAG System</h3>
-              <p class="project-desc">
-                Upcoming AI project focusing on Retrieval-Augmented Generation (RAG) with local vector embeddings and automated document synthesis.
-              </p>
-              <div class="project-tech-pills">
-                <span>PyTorch</span>
-                <span>LangChain</span>
-                <span>Vector DB</span>
-              </div>
-              <div class="project-actions">
-                <span class="status-badge"><i data-lucide="clock"></i> In Active Development</span>
+                <a href="https://tharundev-123.github.io/azure-doc-analyzer/" target="_blank" rel="noopener" class="btn btn-sm btn-cyber view-project-modal-btn">
+                  <i data-lucide="external-link"></i> Live Demo App
+                </a>
               </div>
             </div>
           </div>
@@ -794,13 +743,14 @@
               <h4>Social Profiles</h4>
               <div class="social-grid-btns">
                 <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="social-btn">
-                  <i data-lucide="code-2"></i> GitHub Profile
+                  <i data-lucide="github"></i> GitHub Profile
                 </a>
-                <a href="https://www.linkedin.com/in/tharundevmc" target="_blank" rel="noopener" class="social-btn">
-                  <i data-lucide="share-2"></i> LinkedIn Network
+                <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="social-btn">
+                  <i data-lucide="linkedin"></i> LinkedIn Network
                 </a>
               </div>
             </div>
+          </div>
 
           <!-- Contact Form Direct Delivery -->
           <div class="contact-form-card glass-card">
@@ -942,6 +892,8 @@
         <a href="#projects">Projects</a>
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
+        <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" style="color:var(--cyber-cyan); font-weight:600;"><i data-lucide="github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" style="color:var(--cyber-cyan); font-weight:600;"><i data-lucide="linkedin"></i> LinkedIn</a>
       </div>
       <div class="footer-bottom">
         <p>© <span id="f-year">2026</span> THARUN DEV M C. Designed & Built with futuristic AI engineering.</p>
