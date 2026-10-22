@@ -1024,6 +1024,10 @@ img {
   gap: 0.15rem;
 }
 
+.id-meta-cell.cell-span-2 {
+  grid-column: span 2;
+}
+
 .id-meta-cell .id-k {
   font-family: var(--font-mono);
   font-size: 0.6rem;
