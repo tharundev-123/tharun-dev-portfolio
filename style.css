@@ -684,63 +684,411 @@ img {
   color: var(--text-primary);
 }
 
-/* Right Column: Architectural Frame with Crop Crosses (Flush Edge-to-Edge) */
-.hero-visual-frame {
+/* ==========================================================================
+   Right Column: Hanging Engineering ID Badge with Natural Sway Physics
+   ========================================================================== */
+
+/* Outer rig container providing 3D perspective */
+.hero-id-rig-wrapper {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 430px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1200px;
+  padding-top: 5px;
+}
+
+/* Ceiling Mount / Suspension Anchor */
+.id-ceiling-mount {
+  position: relative;
+  width: 80px;
+  height: 14px;
+  background: linear-gradient(180deg, #2c2c2c, #161616);
+  border: 1px solid var(--border-grid);
+  border-bottom: 2px solid var(--color-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.id-ceiling-mount .mount-bracket {
+  width: 28px;
+  height: 5px;
+  background-color: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.id-ceiling-mount .mount-pin {
+  position: absolute;
+  bottom: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-lime);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-lime);
+}
+
+/* Main Swaying Pendulum Rig */
+.id-swaying-assembly {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: naturalPendulumSway 5.6s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+/* Smoothly pause sway on hover so user can easily interact */
+.hero-id-rig-wrapper:hover .id-swaying-assembly {
+  animation-play-state: paused;
+}
+
+/* Woven Nylon Lanyard / Sling Strap */
+.id-lanyard-strap {
+  width: 34px;
+  height: 90px;
+  background: repeating-linear-gradient(
+    135deg,
+    #181818,
+    #181818 4px,
+    #101010 4px,
+    #101010 8px
+  );
+  border-left: 2px solid var(--color-lime);
+  border-right: 2px solid var(--color-lime);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.7);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Lanyard text ribbon */
+.strap-ribbon {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strap-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(215, 255, 53, 0.85);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Metal Clasp Hardware Unit */
+.id-clasp-hardware {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+  margin-top: -1px;
+}
+
+/* Metal Crimp Band */
+.clasp-crimp {
+  width: 38px;
+  height: 12px;
+  background: linear-gradient(90deg, #222222, #555555 35%, #888888 50%, #444444 65%, #222222);
+  border: 1px solid #111;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+/* Swivel D-Ring */
+.clasp-ring {
+  width: 20px;
+  height: 14px;
+  border: 3px solid #777777;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Lobster / Carabiner Hook */
+.clasp-hook {
+  position: relative;
+  width: 16px;
+  height: 22px;
+  margin-top: -2px;
+  z-index: 8;
+}
+
+.hook-claw {
+  width: 16px;
+  height: 22px;
+  border: 3px solid #888888;
+  border-bottom: 4px solid var(--color-lime);
+  border-radius: 4px 4px 8px 8px;
+  background: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* The Hanging ID Card Badge */
+.hero-id-card {
+  position: relative;
+  width: 100%;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-grid);
-  padding: 0;
-  overflow: hidden;
-  box-shadow: 12px 12px 0px #000;
-  transition: all var(--transition-snap);
-}
-
-.hero-visual-frame:hover {
-  border-color: var(--color-lime);
-  box-shadow: 14px 14px 0px var(--color-lime-glow);
-  transform: translate(-2px, -2px);
-}
-
-.frame-corner-mark {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-lime);
-  line-height: 1;
+  border-top: 2px solid var(--color-lime);
+  box-shadow: 12px 14px 0px #000;
+  margin-top: -6px;
   z-index: 5;
-  pointer-events: none;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 1px 1px 2px #000;
+  transform-origin: top center;
+  animation: naturalCardLag 5.6s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  transition: border-color var(--transition-snap), box-shadow var(--transition-snap);
+  overflow: hidden;
 }
-.frame-corner-mark.top-left { top: 12px; left: 14px; }
-.frame-corner-mark.top-right { top: 12px; right: 14px; }
-.frame-corner-mark.bottom-left { bottom: 60px; left: 14px; }
-.frame-corner-mark.bottom-right { bottom: 60px; right: 14px; }
 
-.portrait-photo-box {
+.hero-id-rig-wrapper:hover .hero-id-card {
+  animation-play-state: paused;
+  border-color: var(--color-lime);
+  box-shadow: 14px 16px 0px var(--color-lime-glow);
+}
+
+/* Slot punch hole where hook clips through */
+.id-card-punch {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  background-color: var(--bg-secondary);
+}
+
+.punch-hole {
+  width: 42px;
+  height: 8px;
+  background-color: #080808;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  display: block;
+}
+
+/* ID Card Header Bar */
+.id-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem 0.75rem;
+  background: linear-gradient(180deg, #181818, #141414);
+  border-top: 1px solid var(--border-grid);
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.id-badge-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.id-brand-prefix {
+  color: var(--color-lime);
+}
+
+.id-brand-core {
+  color: var(--text-primary);
+}
+
+.id-badge-security {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Smart Access Gold Chip Graphic */
+.security-chip {
+  width: 22px;
+  height: 16px;
+  background: linear-gradient(135deg, #d4af37, #9b7705 60%, #ffd700);
+  border: 1px solid #856404;
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.chip-line {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.45);
+  width: 100%;
+}
+
+.security-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-lime);
+  background-color: rgba(215, 255, 53, 0.08);
+  border: 1px solid rgba(215, 255, 53, 0.3);
+  padding: 0.15rem 0.45rem;
+}
+
+/* Portrait photo box within ID Card */
+.id-portrait-box {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   position: relative;
-  background-color: #121212;
+  background-color: #0d0d0d;
   display: block;
+  border-bottom: 1px solid var(--border-grid);
 }
 
-.portrait-photo-box img {
+.id-portrait-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  filter: contrast(1.05) brightness(1.02);
+  filter: contrast(1.06) brightness(1.02);
   transition: transform var(--transition-normal);
 }
 
-.hero-visual-frame:hover .portrait-photo-box img {
+.hero-id-rig-wrapper:hover .id-portrait-box img {
   transform: scale(1.03);
+}
+
+/* ID Card Metadata & Barcode Strip */
+.id-card-meta {
+  padding: 0.95rem 1.25rem;
+  background-color: #161616;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.id-holder-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.id-holder-name {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.id-holder-role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Realistic Barcode Graphic */
+.id-barcode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.45rem;
+  border-top: 1px dashed var(--border-grid);
+}
+
+.id-barcode-lines {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  height: 20px;
+}
+
+.id-barcode-lines span {
+  width: 2px;
+  background-color: #aaa9a2;
+}
+
+.id-barcode-lines span:nth-child(2n) {
+  width: 3px;
+  background-color: #f2f0e9;
+}
+
+.id-barcode-lines span:nth-child(3n) {
+  width: 1px;
+  background-color: #6e6d67;
+}
+
+.id-barcode-lines span:nth-child(5n) {
+  width: 4px;
+  background-color: #f2f0e9;
+}
+
+.id-serial-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--color-lime);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Natural Physics Pendulum Motion Keyframes
+   Harmonic Sinusoidal Left & Right Sway
+   ========================================================================== */
+@keyframes naturalPendulumSway {
+  0% {
+    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+  }
+  25% {
+    transform: rotate(3.4deg) translateX(11px) rotateY(-3deg);
+  }
+  50% {
+    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+  }
+  75% {
+    transform: rotate(-3.4deg) translateX(-11px) rotateY(3deg);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+  }
+}
+
+/* Compound secondary flex of the card on the swivel hook */
+@keyframes naturalCardLag {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(1.4deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(-1.4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .portrait-badge-overlay {
@@ -2307,8 +2655,8 @@ textarea.input-brutalist {
     gap: 3.5rem;
   }
 
-  .hero-visual-frame {
-    max-width: 480px;
+  .hero-id-rig-wrapper {
+    max-width: 440px;
     margin: 0 auto;
   }
 
