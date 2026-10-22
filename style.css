@@ -70,7 +70,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border-radius: var(--radius-sharp) !important; /* Strict Hard Edges */
 }
 
 html {
@@ -553,10 +552,10 @@ img {
    -------------------------------------------------------------------------- */
 .hero-brutalist {
   min-height: 96vh;
-  padding-top: calc(var(--header-height) + var(--space-xl));
+  padding-top: var(--header-height);
   padding-bottom: var(--space-2xl);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   border-bottom: 1px solid var(--border-grid);
 }
@@ -565,7 +564,7 @@ img {
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
   gap: var(--space-xl);
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -573,6 +572,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-top: calc(var(--space-lg) + 0.5rem);
 }
 
 .hero-kicker-strip {
@@ -718,7 +718,7 @@ img {
   animation-play-state: paused;
 }
 
-/* Dual V-Lanyard Neck Sling (Converging from Top Left & Top Right) */
+/* Dual V-Lanyard Neck Sling (Emerges directly from bottom line of upper bar) */
 .id-v-lanyard-wrap {
   position: relative;
   width: 340px;
@@ -727,6 +727,40 @@ img {
   flex-direction: column;
   align-items: center;
   z-index: 6;
+  margin-top: 0;
+}
+
+/* Upper Bar Mount Clamps (Directly touching the bottom line of the upper bar) */
+.lanyard-upper-clamps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.upper-clamp {
+  width: 36px;
+  height: 6px;
+  background: linear-gradient(180deg, #444444, #1a1a1a);
+  border: 1px solid var(--border-grid);
+  border-top: 2px solid var(--color-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.upper-clamp .clamp-bolt {
+  width: 6px;
+  height: 3px;
+  background-color: var(--color-lime);
+  border-radius: 1px;
 }
 
 .id-v-lanyard-svg {
