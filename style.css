@@ -495,16 +495,20 @@ img {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-grid);
   color: var(--text-secondary);
+  transition: all var(--transition-snap);
 }
 
 .btn-header-sharp:hover {
   color: var(--color-lime);
   border-color: var(--color-lime);
+  background-color: var(--color-lime-subtle);
+  transform: translateY(-1px);
 }
 
 .btn-header-sharp svg {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
 .cmd-trigger-sharp {
