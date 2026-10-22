@@ -3,79 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THARUN DEV — Personal Archive / 09</title>
+  <title>THARUN DEV — Brutalist Luxury × Obsidian / 09</title>
 
   <!-- SEO & Editorial Meta -->
-  <meta name="description" content="Personal engineering archive and editorial portfolio of THARUN DEV. Computer Science & Engineering (AI & ML) at Chandigarh University. Azure Certified, Python Developer.">
-  <meta name="keywords" content="THARUN DEV, AI Engineer, Machine Learning, Python Developer, Azure Certified, Chandigarh University, Editorial Portfolio, Obsidian 09">
+  <meta name="description" content="Personal engineering archive of THARUN DEV. Computer Science & Engineering (AI & ML) at Chandigarh University. Brutalist Luxury × Obsidian 09.">
+  <meta name="keywords" content="THARUN DEV, AI Engineer, Machine Learning, Python Developer, Azure Certified, Chandigarh University, Brutalist Portfolio, Obsidian 09">
   <meta name="author" content="THARUN DEV">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="THARUN DEV — Personal Archive / 09">
-  <meta property="og:description" content="Intelligence, engineered. Editorial portfolio and engineering archive of THARUN DEV.">
+  <meta property="og:title" content="THARUN DEV — Brutalist Luxury × Obsidian / 09">
+  <meta property="og:description" content="Intelligence is an engineering problem. Personal archive of THARUN DEV.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://github.com/tharundev-123">
   <meta property="og:image" content="./public/tharun_hero_portrait.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23A85F69'>TD</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23101010'/><text y='.72em' x='.1em' font-family='monospace' font-weight='900' font-size='65' fill='%23D7FF35'>TD</text></svg>">
 
-  <!-- Typography System: Cormorant Garamond, Manrope, IBM Plex Mono -->
+  <!-- Typography: Archivo, Space Grotesk, Manrope, IBM Plex Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- CDNs: Three.js for atmospheric ambient, Lucide Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Obsidian / 09 Stylesheet -->
+  <!-- Brutalist Luxury Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Subtle Atmospheric 3D Canvas -->
+  <!-- Atmospheric Background Canvas & Grid Lines -->
   <canvas id="bg-canvas"></canvas>
-  <div class="film-grain"></div>
+  <div class="architectural-grid-bg"></div>
 
   <!-- ========================================================================
-       SITE HEADER / EDITORIAL DOCK
+       SITE HEADER / ARCHITECTURAL DOCK
        ======================================================================== -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="#hero" class="brand-editorial" title="Return to Top">
-        <span class="brand-code">TD</span>
-        <span>/ PERSONAL ARCHIVE</span>
-        <span class="brand-archive-num">[09]</span>
+      <a href="#hero" class="brand-brutalist" title="Return to Top">
+        <span class="brand-tag">TD //</span>
+        <span>ARCHIVE_09</span>
+        <span class="brand-sub">[AI.ML]</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="nav-editorial" id="desktop-nav">
-        <a href="#hero" class="active" data-section="hero"><span class="nav-index">01.</span>Index</a>
-        <a href="#about" data-section="about"><span class="nav-index">02.</span>Dossier</a>
-        <a href="#chronology" data-section="chronology"><span class="nav-index">03.</span>Chronology</a>
-        <a href="#projects" data-section="projects"><span class="nav-index">04.</span>Case Studies</a>
-        <a href="#disciplines" data-section="disciplines"><span class="nav-index">05.</span>Disciplines</a>
-        <a href="#credentials" data-section="credentials"><span class="nav-index">06.</span>Credentials</a>
-        <a href="#dispatch" data-section="dispatch"><span class="nav-index">07.</span>Dispatch</a>
+      <nav class="nav-brutalist" id="desktop-nav">
+        <a href="#hero" class="active" data-section="hero"><span class="nav-num">01/</span>Index</a>
+        <a href="#about" data-section="about"><span class="nav-num">02/</span>Dossier</a>
+        <a href="#chronology" data-section="chronology"><span class="nav-num">03/</span>Chronology</a>
+        <a href="#projects" data-section="projects"><span class="nav-num">04/</span>Cases</a>
+        <a href="#disciplines" data-section="disciplines"><span class="nav-num">05/</span>Disciplines</a>
+        <a href="#credentials" data-section="credentials"><span class="nav-num">06/</span>Credentials</a>
+        <a href="#dispatch" data-section="dispatch"><span class="nav-num">07/</span>Dispatch</a>
       </nav>
 
-      <!-- Actions -->
-      <div class="header-actions">
-        <button class="cmd-trigger-btn" id="cmd-palette-trigger" title="Command Palette (Cmd+K or /)">
+      <!-- Controls -->
+      <div class="header-controls">
+        <button class="cmd-trigger-sharp" id="cmd-palette-trigger" title="Command Palette (Cmd+K or /)">
           <i data-lucide="command" style="width:14px; height:14px;"></i>
-          <span>Search</span>
-          <span class="cmd-kbd">⌘K</span>
+          <span>FIND</span>
+          <span class="cmd-kbd-sharp">⌘K</span>
         </button>
 
-        <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn-header-icon" title="GitHub Archive">
+        <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn-header-sharp" title="GitHub Archive">
           <i data-lucide="github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="btn-header-icon" title="LinkedIn Network">
+        <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="btn-header-sharp" title="LinkedIn Network">
           <i data-lucide="linkedin"></i>
         </a>
 
-        <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle Navigation">
+        <button class="mobile-toggle-sharp" id="mobile-toggle" aria-label="Toggle Navigation">
           <i data-lucide="menu" id="mobile-toggle-icon"></i>
         </button>
       </div>
@@ -84,111 +84,113 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-nav-drawer" id="mobile-drawer">
-    <a href="#hero" class="mobile-nav-link"><span class="nav-index">01</span> Index</a>
-    <a href="#about" class="mobile-nav-link"><span class="nav-index">02</span> Dossier</a>
-    <a href="#chronology" class="mobile-nav-link"><span class="nav-index">03</span> Chronology</a>
-    <a href="#projects" class="mobile-nav-link"><span class="nav-index">04</span> Case Studies</a>
-    <a href="#disciplines" class="mobile-nav-link"><span class="nav-index">05</span> Disciplines</a>
-    <a href="#credentials" class="mobile-nav-link"><span class="nav-index">06</span> Credentials</a>
-    <a href="#dispatch" class="mobile-nav-link"><span class="nav-index">07</span> Dispatch</a>
+    <a href="#hero" class="mobile-nav-link"><span class="nav-num">01/</span> Index</a>
+    <a href="#about" class="mobile-nav-link"><span class="nav-num">02/</span> Dossier</a>
+    <a href="#chronology" class="mobile-nav-link"><span class="nav-num">03/</span> Chronology</a>
+    <a href="#projects" class="mobile-nav-link"><span class="nav-num">04/</span> Cases</a>
+    <a href="#disciplines" class="mobile-nav-link"><span class="nav-num">05/</span> Disciplines</a>
+    <a href="#credentials" class="mobile-nav-link"><span class="nav-num">06/</span> Credentials</a>
+    <a href="#dispatch" class="mobile-nav-link"><span class="nav-num">07/</span> Dispatch</a>
   </div>
 
   <main>
     <!-- ======================================================================
-         01. HERO SECTION — EDITORIAL OPENING
+         01. HERO SECTION — GIANT TYPOGRAPHY & ARCHITECTURAL GRID
          ====================================================================== -->
-    <section class="hero-editorial" id="hero">
+    <section class="hero-brutalist" id="hero">
       <div class="container">
-        <div class="hero-grid">
+        <div class="hero-architectural-grid">
           
-          <!-- Left Column: Typography & Intentional Composition -->
-          <div class="hero-text-content">
-            <div class="hero-meta-kicker">
-              <span class="label-mono">ARCHIVE REF: TD-2026-09</span>
-              <span class="status-badge">
-                <span class="status-dot-active"></span>
-                <span>OPEN FOR INTERNSHIPS & COLLABORATION</span>
-              </span>
+          <!-- Left Column: Giant Brutalist Typography -->
+          <div class="hero-main-content">
+            <div class="hero-kicker-strip">
+              <span class="lime-tag">SYS_ARCHIVE // 2026</span>
+              <span>CSE (AI &amp; ML) &bull; CHANDIGARH UNIVERSITY</span>
+              <span class="status-live-lime"><span class="lime-sq"></span> OPEN FOR INTERNSHIPS</span>
             </div>
 
-            <h1 class="hero-name-editorial">
-              THARUN DEV<span class="suffix">M C</span>
+            <h1 class="hero-giant-headline">
+              INTELLIGENCE<br>
+              IS AN <span class="lime-word">ENGINEERING</span><br>
+              PROBLEM.
             </h1>
 
-            <div class="hero-statement-wrap">
-              <p class="hero-statement">
-                &ldquo;Intelligence, <em>engineered</em>.&rdquo;
-              </p>
+            <div class="hero-name-label">
+              THARUN DEV M C // CANDIDATE 09
             </div>
 
-            <p class="hero-bio-editorial">
-              Computer Science &amp; Engineering student specializing in <strong>Artificial Intelligence &amp; Machine Learning</strong> at Chandigarh University. Practical Python developer, Microsoft Azure Certified practitioner, and cloud systems builder constructing resilient, algorithmic software.
+            <p class="hero-bio-brutalist">
+              Computer Science &amp; Engineering student specializing in <strong>Artificial Intelligence &amp; Machine Learning</strong> at Chandigarh University. Building resilient Python pipelines, cloud-native cognitive systems on Microsoft Azure, and deterministic software architectures.
             </p>
 
-            <div class="hero-actions-row">
-              <a href="#projects" class="btn-obsidian btn-obsidian-primary">
-                <span>Explore Engineering Case Studies</span>
+            <div class="hero-actions-cluster">
+              <a href="#projects" class="btn-brutalist btn-brutalist-lime">
+                <span>Explore Cases [04]</span>
                 <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
               </a>
-              <a href="#dispatch" class="btn-obsidian btn-obsidian-ghost">
-                <span>Initiate Dispatch</span>
+              <a href="#dispatch" class="btn-brutalist btn-brutalist-ghost">
+                <span>Initiate Dispatch [07]</span>
                 <i data-lucide="mail" style="width:16px; height:16px;"></i>
               </a>
-              <button class="btn-obsidian btn-obsidian-ghost" id="resume-download-btn" title="Download Tharun Dev Curriculum Vitae">
+              <button class="btn-brutalist btn-brutalist-ghost" id="resume-download-btn" title="Download Tharun Dev Curriculum Vitae">
                 <i data-lucide="file-text" style="width:16px; height:16px;"></i>
                 <span>Curriculum Vitae</span>
               </button>
             </div>
 
-            <div class="hero-spec-strip">
-              <div class="spec-entry">
-                <span class="spec-label">Core Specialization</span>
-                <span class="spec-value">Machine Learning &amp; AI Systems</span>
+            <!-- Architectural Specs Grid -->
+            <div class="hero-specs-grid">
+              <div class="spec-cell-brutalist">
+                <span class="lbl">FOCUS</span>
+                <span class="val">AI &bull; Machine Learning</span>
               </div>
-              <div class="spec-entry">
-                <span class="spec-label">Primary Stack</span>
-                <span class="spec-value">Python &bull; Azure Cloud &bull; REST</span>
+              <div class="spec-cell-brutalist">
+                <span class="lbl">CORE STACK</span>
+                <span class="val">Python &bull; Azure Cloud &bull; REST</span>
               </div>
-              <div class="spec-entry">
-                <span class="spec-label">Geographic Base</span>
-                <span class="spec-value">Kozhikode, India &bull; IST (UTC+5:30)</span>
+              <div class="spec-cell-brutalist">
+                <span class="lbl">ORIGIN</span>
+                <span class="val">Kozhikode, India &bull; IST (UTC+5:30)</span>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Editorial Portrait & Technical Frame -->
-          <div class="hero-portrait-frame">
-            <div class="archival-card">
-              <div class="archival-card-header">
-                <span>ARCHIVAL RECORD [TD-PORTRAIT]</span>
-                <span class="stamp">VERIFIED IDENT</span>
-              </div>
+          <!-- Right Column: Sharp Archival Visual Frame with Crop Marks -->
+          <div class="hero-visual-frame">
+            <span class="frame-corner-mark top-left">+</span>
+            <span class="frame-corner-mark top-right">+</span>
+            <span class="frame-corner-mark bottom-left">+</span>
+            <span class="frame-corner-mark bottom-right">+</span>
 
-              <div class="portrait-photo-wrap">
-                <img src="./public/tharun_hero_portrait.jpg" alt="THARUN DEV M C - Professional Portrait" width="600" height="750">
-              </div>
-
-              <div class="archival-card-footer">
-                <div class="foot-row">
-                  <span class="k">IDENTITY</span>
-                  <span class="v">THARUN DEV M C</span>
-                </div>
-                <div class="foot-row">
-                  <span class="k">INSTITUTION</span>
-                  <span class="v">CHANDIGARH UNIVERSITY</span>
-                </div>
-                <div class="foot-row">
-                  <span class="k">CREDENTIALS</span>
-                  <span class="v">AZ-900 &bull; AI-900 &bull; DP-600 &bull; NUTANIX</span>
-                </div>
-              </div>
-
-              <!-- Archival Audio/Video Spoken Tape Link -->
-              <button class="btn-audio-tape" id="btn-open-tape" title="Listen to Spoken Introduction">
-                <i data-lucide="play-circle" style="width:16px; height:16px;"></i>
-                <span>Open Audio-Visual Intro Tape [22s]</span>
-              </button>
+            <div class="frame-header-bar">
+              <span>RECORD: IDENT_09</span>
+              <span class="spec-id">11.2588&deg; N, 75.7804&deg; E</span>
             </div>
+
+            <div class="portrait-photo-box">
+              <img src="./public/tharun_hero_portrait.jpg" alt="THARUN DEV M C - Professional Portrait" width="600" height="750">
+            </div>
+
+            <div class="frame-footer-readout">
+              <div class="readout-row">
+                <span class="k">NAME</span>
+                <span class="v">THARUN DEV M C</span>
+              </div>
+              <div class="readout-row">
+                <span class="k">AFFILIATION</span>
+                <span class="v">CHANDIGARH UNIVERSITY</span>
+              </div>
+              <div class="readout-row">
+                <span class="k">CREDENTIALS</span>
+                <span class="v">AZ-900 &bull; AI-900 &bull; DP-600 &bull; NUTANIX</span>
+              </div>
+            </div>
+
+            <!-- Archival Audio/Video Spoken Tape Trigger -->
+            <button class="btn-tape-trigger-sharp" id="btn-open-tape" title="Listen to Spoken Introduction">
+              <i data-lucide="play" style="width:15px; height:15px;"></i>
+              <span>Play Intro Tape [22s]</span>
+            </button>
           </div>
 
         </div>
@@ -196,80 +198,82 @@
     </section>
 
     <!-- ======================================================================
-         02. ABOUT SECTION — DOSSIER & PROFILE
+         02. ABOUT SECTION — DOSSIER & ENGINEERING STANCE
          ====================================================================== -->
-    <section class="section-editorial" id="about">
+    <section class="section-brutalist" id="about">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>02 / DOSSIER</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>02 // DOSSIER</span>
+            <span>ENGINEERING STANCE</span>
           </div>
-          <h2 class="heading-section">Profile &amp; Technical Stance</h2>
-          <p class="section-summary">
-            Synthesizing algorithmic problem solving, machine learning paradigms, and cloud engineering standards.
+          <h2 class="section-title-brutalist">Profile &amp; Principles</h2>
+          <p class="section-desc-brutalist">
+            Engineering software at the nexus of mathematical machine learning models and deterministic production infrastructure.
           </p>
         </div>
 
-        <div class="about-dossier-grid">
-          <!-- Left: Narrative -->
-          <div class="about-narrative">
-            <p class="lead-paragraph">
-              I develop software at the intersection of mathematical reasoning and production cloud architecture.
-            </p>
+        <div class="dossier-grid-brutalist">
+          <!-- Left: Stance Statement & Narrative -->
+          <div class="dossier-stance">
+            <h3 class="stance-punchline">
+              &ldquo;BUILDING <span class="lime-word">DETERMINISTIC</span> SOFTWARE ON TOP OF PROBABILISTIC SYSTEMS.&rdquo;
+            </h3>
 
-            <div class="about-body-text">
+            <div class="stance-body-copy">
               <p>
-                Native to Kozhikode, Kerala, India, I am pursuing my Bachelor of Technology in Computer Science &amp; Engineering at <strong>Chandigarh University</strong> with a dedicated specialization in <strong>Artificial Intelligence &amp; Machine Learning</strong>.
+                Native to Kozhikode, Kerala, India, I am pursuing my Bachelor of Technology in Computer Science &amp; Engineering at <strong>Chandigarh University</strong> with a rigorous specialization in <strong>Artificial Intelligence &amp; Machine Learning</strong>.
               </p>
               <p>
-                My technical discipline centers on building robust computational pipelines in Python, exploring cloud cognitive infrastructure with Microsoft Azure, and applying machine learning to real-world data constraints. I hold multi-cloud certifications spanning Microsoft Azure and Nutanix Enterprise Infrastructure, validating a disciplined adherence to enterprise reliability and systems design.
+                My methodology emphasizes disciplined software architecture over superficial demos. I build robust data pipelines in Python, explore cloud-native cognitive infrastructure with Microsoft Azure, and apply algorithmic heuristics to constrained problem domains. My multi-cloud accreditations from Microsoft and Nutanix reflect a strong commitment to enterprise-grade systems thinking.
               </p>
             </div>
 
-            <div class="career-vision-block">
+            <div class="stance-vision-box">
               <h4>Engineering Objective</h4>
               <p>
-                To engineer high-reliability AI systems and scalable software infrastructure that extract coherent signal from unstructured data, translating complex models into tangible engineering outcomes.
+                To design high-reliability AI platforms and scalable backend infrastructure that extract structured signal from ambiguous real-world data, translating complex models into tangible engineering outcomes.
               </p>
             </div>
           </div>
 
-          <!-- Right: Archival Spec Table -->
-          <div class="dossier-spec-card">
-            <h3 class="dossier-card-title">Key Parameters</h3>
-            <div class="dossier-table">
-              <div class="dossier-row">
-                <span class="dossier-key">Full Name</span>
-                <span class="dossier-val">THARUN DEV M C</span>
+          <!-- Right: Architectural Matrix Parameters Table -->
+          <div class="dossier-spec-matrix">
+            <div class="matrix-header">
+              <span>SYSTEM SPECIFICATION READOUT</span>
+            </div>
+            <div class="matrix-table">
+              <div class="matrix-row">
+                <span class="k">NAME</span>
+                <span class="v">THARUN DEV M C</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Degree</span>
-                <span class="dossier-val">B.Tech Computer Science (AI &amp; ML)</span>
+              <div class="matrix-row">
+                <span class="k">DISCIPLINE</span>
+                <span class="v">B.Tech Computer Science (AI &amp; ML)</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Institution</span>
-                <span class="dossier-val">Chandigarh University, India</span>
+              <div class="matrix-row">
+                <span class="k">INSTITUTION</span>
+                <span class="v">Chandigarh University, India</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Academic Tier</span>
-                <span class="dossier-val">Undergraduate (2025 &mdash; Present)</span>
+              <div class="matrix-row">
+                <span class="k">TIMELINE</span>
+                <span class="v">2025 &mdash; Present [Active Candidate]</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Origins</span>
-                <span class="dossier-val">Kozhikode, Kerala, India</span>
+              <div class="matrix-row">
+                <span class="k">LOCATION</span>
+                <span class="v">Kozhikode, Kerala, India</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Timezone</span>
-                <span class="dossier-val">IST (UTC+5:30)</span>
+              <div class="matrix-row">
+                <span class="k">TIMEZONE</span>
+                <span class="v">IST (UTC+5:30)</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Direct Email</span>
-                <span class="dossier-val">tharundevmc@gmail.com</span>
+              <div class="matrix-row">
+                <span class="k">DISPATCH</span>
+                <span class="v">tharundevmc@gmail.com</span>
               </div>
-              <div class="dossier-row">
-                <span class="dossier-key">Availability</span>
-                <span class="dossier-val" style="color:var(--color-garnet);">Engineering Internships</span>
+              <div class="matrix-row">
+                <span class="k">AVAILABILITY</span>
+                <span class="v" style="color:var(--color-lime);">AI/ML &bull; Software Internships</span>
               </div>
             </div>
           </div>
@@ -280,21 +284,21 @@
     <!-- ======================================================================
          03. TIMELINE — SIGNATURE FEATURE: ENGINEERING ARCHIVE CHRONOLOGY
          ====================================================================== -->
-    <section class="section-editorial timeline-section-wrap" id="chronology">
+    <section class="section-brutalist" id="chronology">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>03 / CHRONOLOGY</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>03 // CHRONOLOGY</span>
+            <span>ENGINEERING TRAJECTORY</span>
           </div>
-          <h2 class="heading-section">Engineering Archive</h2>
-          <p class="section-summary">
-            A chronological record of verified academic distinctions, multi-cloud milestones, and engineering iterations.
+          <h2 class="section-title-brutalist">Engineering Archive</h2>
+          <p class="section-desc-brutalist">
+            A verified chronological record of technical learning milestones, multi-cloud accreditations, and engineering iterations.
           </p>
         </div>
 
-        <div class="timeline-spine-container" id="timeline-spine-container">
-          <!-- Vertical Spine Line & Scroll Tracker -->
+        <div class="timeline-brutalist-wrap" id="timeline-spine-container">
+          <!-- Architectural Vertical Spine Line & Acid Lime Progress -->
           <div class="timeline-spine-line"></div>
           <div class="timeline-spine-progress" id="timeline-spine-progress"></div>
 
@@ -308,22 +312,22 @@
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Bachelor of Technology &mdash; CSE (AI &amp; ML)</h3>
-                  <span class="timeline-score-badge">Undergraduate</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Bachelor of Technology &bull; CSE (AI &amp; ML)</h3>
+                  <span class="timeline-badge-sharp">Undergraduate</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="building-2"></i> Chandigarh University, Punjab / UP
                 </div>
-                <p class="timeline-desc">
-                  Rigorous academic curriculum specializing in Data Structures, Machine Learning Algorithms, Python Architecture, Artificial Intelligence Systems, and Cloud-Native Distributed Computing.
+                <p class="timeline-desc-copy">
+                  Rigorous academic curriculum specializing in Data Structures, Machine Learning Algorithms, Python Software Architecture, Artificial Intelligence Systems, and Cloud Distributed Computing.
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">Machine Learning</span>
-                  <span class="timeline-spec-pill">Data Structures</span>
-                  <span class="timeline-spec-pill">Python</span>
-                  <span class="timeline-spec-pill">Cloud Infrastructure</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">Machine Learning</span>
+                  <span class="timeline-tag-box">Data Structures</span>
+                  <span class="timeline-tag-box">Python</span>
+                  <span class="timeline-tag-box">Cloud Systems</span>
                 </div>
               </div>
             </div>
@@ -333,30 +337,30 @@
           <div class="timeline-entry" data-index="2">
             <div class="timeline-date-col">
               <span class="timeline-date">2025</span>
-              <span class="timeline-status-tag">CERTIFIED</span>
+              <span class="timeline-status-tag">ACCREDITATION</span>
             </div>
             <div class="timeline-node-col">
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Enterprise Multi-Cloud &amp; Cognitive AI Milestone</h3>
-                  <span class="timeline-score-badge">7 Professional Accreditations</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Enterprise Multi-Cloud &amp; Cognitive AI Milestone</h3>
+                  <span class="timeline-badge-sharp">7 Certifications Earned</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="shield-check"></i> Microsoft &bull; Nutanix &bull; Univ of Pennsylvania
                 </div>
-                <p class="timeline-desc">
-                  Accomplished a comprehensive credential sprint earning Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), along with Nutanix Multicloud Infrastructure (MCI 6), End User Computing (EUC 6), and Multicloud Automation (MCA 6).
+                <p class="timeline-desc-copy">
+                  Earned Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), along with Nutanix Multicloud Infrastructure (MCI 6), End User Computing (EUC 6), and Multicloud Automation (MCA 6).
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">AZ-900</span>
-                  <span class="timeline-spec-pill">AI-900</span>
-                  <span class="timeline-spec-pill">DP-600</span>
-                  <span class="timeline-spec-pill">NCP-MCI</span>
-                  <span class="timeline-spec-pill">NCP-EUC</span>
-                  <span class="timeline-spec-pill">NCP-MCA</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">AZ-900</span>
+                  <span class="timeline-tag-box">AI-900</span>
+                  <span class="timeline-tag-box">DP-600</span>
+                  <span class="timeline-tag-box">NCP-MCI</span>
+                  <span class="timeline-tag-box">NCP-EUC</span>
+                  <span class="timeline-tag-box">NCP-MCA</span>
                 </div>
               </div>
             </div>
@@ -366,28 +370,27 @@
           <div class="timeline-entry" data-index="3">
             <div class="timeline-date-col">
               <span class="timeline-date">2024</span>
-              <span class="timeline-status-tag">SYSTEM ITERATION</span>
+              <span class="timeline-status-tag">LIVE SYSTEM</span>
             </div>
             <div class="timeline-node-col">
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Azure Document Intelligence UI System</h3>
-                  <span class="timeline-score-badge">Live Deployment</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Azure Document Intelligence UI System</h3>
+                  <span class="timeline-badge-sharp">Live Deployment</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="cloud"></i> Cognitive Cloud Architecture
                 </div>
-                <p class="timeline-desc">
-                  Designed and deployed an automated cloud document analysis pipeline communicating with Microsoft Azure Cognitive Services REST API, extracting tabular structures, key-value mappings, and document metadata with OCR confidence metrics.
+                <p class="timeline-desc-copy">
+                  Engineered and deployed an automated cloud document analysis pipeline communicating with Microsoft Azure Cognitive Services REST API, extracting tabular structures, key-value mappings, and document metadata with OCR confidence metrics.
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">Azure Document AI</span>
-                  <span class="timeline-spec-pill">Python API</span>
-                  <span class="timeline-spec-pill">REST</span>
-                  <span class="timeline-spec-pill">GitHub Pages</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">Azure Document AI</span>
+                  <span class="timeline-tag-box">Python REST</span>
+                  <span class="timeline-tag-box">GitHub Pages</span>
                 </div>
               </div>
             </div>
@@ -397,27 +400,27 @@
           <div class="timeline-entry" data-index="4">
             <div class="timeline-date-col">
               <span class="timeline-date">2024</span>
-              <span class="timeline-status-tag">COMPUTATIONAL PROJECT</span>
+              <span class="timeline-status-tag">HEURISTIC MODEL</span>
             </div>
             <div class="timeline-node-col">
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Digital Healthcare Biometrics Engine (Nimbus Project)</h3>
-                  <span class="timeline-score-badge">Heuristic Model</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Digital Healthcare Biometrics Engine (Nimbus Project)</h3>
+                  <span class="timeline-badge-sharp">Python Engine</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="activity"></i> Applied Healthcare Computing
                 </div>
-                <p class="timeline-desc">
+                <p class="timeline-desc-copy">
                   Implemented a biometrics metric computation and dynamic dietary prescription engine in Python. Synthesizes BMI tiers with targeted macronutrient meal plans tailored to distinct health parameters.
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">Python Core</span>
-                  <span class="timeline-spec-pill">Heuristic Algorithms</span>
-                  <span class="timeline-spec-pill">Data Analytics</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">Python Core</span>
+                  <span class="timeline-tag-box">Heuristic Algorithms</span>
+                  <span class="timeline-tag-box">Data Analytics</span>
                 </div>
               </div>
             </div>
@@ -433,21 +436,21 @@
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Higher Secondary Education (12th Grade)</h3>
-                  <span class="timeline-score-badge score-highlight">90% Distinction</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Higher Secondary Education (12th Grade)</h3>
+                  <span class="timeline-badge-sharp">90% Distinction</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="award"></i> Kerala Board of Higher Secondary Education
                 </div>
-                <p class="timeline-desc">
+                <p class="timeline-desc-copy">
                   Science Stream focused on Physics, Chemistry, Mathematics, and Computer Science fundamentals, graduating with a 90% distinction score with top performance across computational mathematics.
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">Mathematics</span>
-                  <span class="timeline-spec-pill">Computer Science</span>
-                  <span class="timeline-spec-pill">Physics</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">Mathematics</span>
+                  <span class="timeline-tag-box">Computer Science</span>
+                  <span class="timeline-tag-box">Physics</span>
                 </div>
               </div>
             </div>
@@ -457,26 +460,26 @@
           <div class="timeline-entry" data-index="6">
             <div class="timeline-date-col">
               <span class="timeline-date">2021 &mdash; 2022</span>
-              <span class="timeline-status-tag">FOUNDATIONAL</span>
+              <span class="timeline-status-tag">FOUNDATION</span>
             </div>
             <div class="timeline-node-col">
               <div class="timeline-node-marker"></div>
             </div>
             <div class="timeline-card-col">
-              <div class="timeline-editorial-card">
-                <div class="card-top-row">
-                  <h3 class="timeline-item-title">Secondary Education (10th Grade)</h3>
-                  <span class="timeline-score-badge score-highlight">&gt; 90% Distinction</span>
+              <div class="timeline-card-brutalist">
+                <div class="timeline-card-head">
+                  <h3>Secondary Education (10th Grade)</h3>
+                  <span class="timeline-badge-sharp">&gt; 90% Honors</span>
                 </div>
-                <div class="timeline-institution">
+                <div class="timeline-inst-row">
                   <i data-lucide="landmark"></i> Technical Education Department, Kerala
                 </div>
-                <p class="timeline-desc">
+                <p class="timeline-desc-copy">
                   Graduated with top honor distinction (Above 90%), establishing foundational analytical aptitude, technical drafting, and algorithmic principles.
                 </p>
-                <div class="timeline-tag-row">
-                  <span class="timeline-spec-pill">Technical Studies</span>
-                  <span class="timeline-spec-pill">Applied Mathematics</span>
+                <div class="timeline-tags-strip">
+                  <span class="timeline-tag-box">Technical Studies</span>
+                  <span class="timeline-tag-box">Applied Mathematics</span>
                 </div>
               </div>
             </div>
@@ -487,144 +490,144 @@
     </section>
 
     <!-- ======================================================================
-         04. PROJECTS — EDITORIAL CASE STUDIES
+         04. PROJECTS — BRUTALIST ARCHITECTURAL CASE STUDIES
          ====================================================================== -->
-    <section class="section-editorial" id="projects">
+    <section class="section-brutalist" id="projects">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>04 / CASE STUDIES</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>04 // CASES</span>
+            <span>ARCHITECTURAL STUDIES</span>
           </div>
-          <h2 class="heading-section">Engineering Case Studies</h2>
-          <p class="section-summary">
-            Architectural case studies dissecting problem framing, actual contributions, and verified implementations.
+          <h2 class="section-title-brutalist">Engineering Case Studies</h2>
+          <p class="section-desc-brutalist">
+            Detailed engineering breakdowns documenting problem formulation, actual contribution, architecture, and verified implementation.
           </p>
         </div>
 
-        <div class="case-studies-container">
+        <div class="cases-brutalist-container">
           
           <!-- Case Study 01: Healthcare BMI & Diet Planner -->
-          <article class="case-study-spread">
-            <div class="case-study-meta-col">
-              <span class="case-study-index">[CASE 01 &bull; APPLIED HEALTHCARE COMPUTING]</span>
-              <h3 class="case-study-title">Digital Healthcare BMI &amp; Diet Planner</h3>
-              <p class="case-study-lead">
-                An intelligent healthcare utility combining biometric index computation with dynamic, rule-based nutritional prescription synthesis.
+          <article class="case-study-split">
+            <div class="case-meta-panel">
+              <div class="case-number-big">01/</div>
+              <h3 class="case-header-title">Digital Healthcare BMI &amp; Diet Planner</h3>
+              <p class="case-summary-lead">
+                An intelligent healthcare computational tool combining biometric categorization algorithms with dynamic nutritional prescription synthesis.
               </p>
 
-              <div class="case-modules">
-                <div class="case-module-item">
-                  <span class="case-module-label">Problem Addressed</span>
-                  <p class="case-module-content">
-                    Standard health calculators provide static BMI figures without algorithmic guidance, failing to translate metrics into actionable dietary frameworks adapted to distinct biometric profiles.
+              <div class="case-structured-modules">
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[01 // PROBLEM FORMULATION]</span>
+                  <p class="case-mod-text">
+                    Standard health calculators provide static BMI numbers without actionable algorithmic dietary frameworks tailored to individual metabolic goals.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Actual Contribution</span>
-                  <p class="case-module-content">
-                    Architected the core computational model in Python, implementing custom categorization algorithms and conditional rulesets that generate targeted macronutrient breakdown schedules based on weight class and physiological goals.
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[02 // ACTUAL CONTRIBUTION]</span>
+                  <p class="case-mod-text">
+                    Engineered the core logic in Python, implementing custom categorization algorithms and rule-based nutritional matrices that dynamically compute macronutrient distributions.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Verified Results &amp; Scope</span>
-                  <p class="case-module-content">
-                    Delivered a reliable offline calculation engine with instant feedback loops; open-sourced under the Nimbus Project repository.
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[03 // VERIFIED RESULTS]</span>
+                  <p class="case-mod-text">
+                    Delivered a reliable offline calculation engine with immediate feedback loops; open-sourced under the Nimbus Project repository.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Technologies</span>
-                  <div class="case-tech-list">
-                    <span class="tech-mono-badge">Python</span>
-                    <span class="tech-mono-badge">Machine Learning Heuristics</span>
-                    <span class="tech-mono-badge">HTML5/CSS3</span>
-                    <span class="tech-mono-badge">Data Analytics</span>
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[04 // TECH STACK]</span>
+                  <div class="case-tech-badges-row">
+                    <span class="tech-badge-brutalist">Python</span>
+                    <span class="tech-badge-brutalist">ML Heuristics</span>
+                    <span class="tech-badge-brutalist">HTML5/CSS3</span>
+                    <span class="tech-badge-brutalist">Data Analytics</span>
                   </div>
                 </div>
               </div>
 
-              <div class="case-study-actions">
-                <a href="https://github.com/tharundev-123/Nimbus_Project_THARUNDEVMC_76" target="_blank" rel="noopener" class="btn-obsidian btn-obsidian-primary">
+              <div class="case-actions-row">
+                <a href="https://github.com/tharundev-123/Nimbus_Project_THARUNDEVMC_76" target="_blank" rel="noopener" class="btn-brutalist btn-brutalist-lime">
                   <i data-lucide="github" style="width:16px; height:16px;"></i>
                   <span>Inspect Source Code</span>
                 </a>
               </div>
             </div>
 
-            <div class="case-study-visual-col">
-              <div class="case-study-visual-frame">
-                <img src="./public/project1.jpg" alt="Digital Healthcare BMI & Diet Planner UI and Analytics" width="800" height="500">
-                <div class="visual-caption-bar">
-                  <span>FIG 1.0 &mdash; BIOMETRIC CALCULATION ENGINE</span>
-                  <span>STATUS: ARCHIVED REPO</span>
+            <div class="case-visual-panel">
+              <div class="case-image-frame">
+                <img src="./public/project1.jpg" alt="Digital Healthcare BMI & Diet Planner" width="800" height="500">
+                <div class="case-frame-caption">
+                  <span>FIG 1.0 &mdash; BIOMETRIC MODEL ENGINE</span>
+                  <span class="status-lime">GITHUB REPOSITORY</span>
                 </div>
               </div>
             </div>
           </article>
 
           <!-- Case Study 02: Azure Document Intelligence UI -->
-          <article class="case-study-spread reversed">
-            <div class="case-study-meta-col">
-              <span class="case-study-index">[CASE 02 &bull; CLOUD COGNITIVE SERVICES]</span>
-              <h3 class="case-study-title">Azure Document Intelligence UI</h3>
-              <p class="case-study-lead">
+          <article class="case-study-split reversed">
+            <div class="case-meta-panel">
+              <div class="case-number-big">02/</div>
+              <h3 class="case-header-title">Azure Document Intelligence UI</h3>
+              <p class="case-summary-lead">
                 An end-to-end cloud interface orchestrating Microsoft Azure Cognitive Services to extract structured tabular schemas and key-value records from unstructured document assets.
               </p>
 
-              <div class="case-modules">
-                <div class="case-module-item">
-                  <span class="case-module-label">Problem Addressed</span>
-                  <p class="case-module-content">
+              <div class="case-structured-modules">
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[01 // PROBLEM FORMULATION]</span>
+                  <p class="case-mod-text">
                     Manual document auditing for invoices, receipts, and forms is labor-intensive and error-prone. Raw OCR tools frequently lose cell relationships and semantic entity pairings.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Actual Contribution</span>
-                  <p class="case-module-content">
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[02 // ACTUAL CONTRIBUTION]</span>
+                  <p class="case-mod-text">
                     Designed the API integration layer interfacing with Microsoft Azure Cognitive Document Intelligence REST endpoints. Implemented parsing logic in Python to organize extracted text bounding boxes, table rows, and key-value confidence scores for web presentation.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Verified Results &amp; Scope</span>
-                  <p class="case-module-content">
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[03 // VERIFIED RESULTS]</span>
+                  <p class="case-mod-text">
                     Successfully extracts multi-page table structures with confidence scores. Deployed live on GitHub Pages with interactive client demo.
                   </p>
                 </div>
 
-                <div class="case-module-item">
-                  <span class="case-module-label">Technologies</span>
-                  <div class="case-tech-list">
-                    <span class="tech-mono-badge">Microsoft Azure</span>
-                    <span class="tech-mono-badge">Document AI API</span>
-                    <span class="tech-mono-badge">Python REST</span>
-                    <span class="tech-mono-badge">GitHub Pages</span>
+                <div class="case-mod-block">
+                  <span class="case-mod-label">[04 // TECH STACK]</span>
+                  <div class="case-tech-badges-row">
+                    <span class="tech-badge-brutalist">Microsoft Azure</span>
+                    <span class="tech-badge-brutalist">Document AI API</span>
+                    <span class="tech-badge-brutalist">Python REST</span>
+                    <span class="tech-badge-brutalist">GitHub Pages</span>
                   </div>
                 </div>
               </div>
 
-              <div class="case-study-actions">
-                <a href="https://tharundev-123.github.io/azure-doc-analyzer/" target="_blank" rel="noopener" class="btn-obsidian btn-obsidian-primary">
+              <div class="case-actions-row">
+                <a href="https://tharundev-123.github.io/azure-doc-analyzer/" target="_blank" rel="noopener" class="btn-brutalist btn-brutalist-lime">
                   <i data-lucide="external-link" style="width:16px; height:16px;"></i>
-                  <span>Launch Live Demo App</span>
+                  <span>Launch Live System</span>
                 </a>
-                <a href="https://github.com/tharundev-123/azure-doc-analyzer" target="_blank" rel="noopener" class="btn-obsidian btn-obsidian-ghost">
+                <a href="https://github.com/tharundev-123/azure-doc-analyzer" target="_blank" rel="noopener" class="btn-brutalist btn-brutalist-ghost">
                   <i data-lucide="github" style="width:16px; height:16px;"></i>
                   <span>View Repository</span>
                 </a>
               </div>
             </div>
 
-            <div class="case-study-visual-col">
-              <div class="case-study-visual-frame">
+            <div class="case-visual-panel">
+              <div class="case-image-frame">
                 <img src="./public/project2.jpg" alt="Azure Document Intelligence UI System" width="800" height="500">
-                <div class="visual-caption-bar">
+                <div class="case-frame-caption">
                   <span>FIG 2.0 &mdash; COGNITIVE OCR PIPELINE INTERFACE</span>
-                  <span class="status-live"><span class="status-dot-active"></span> LIVE APPLICATION</span>
+                  <span class="status-lime">&bull; LIVE DEPLOYED</span>
                 </div>
               </div>
             </div>
@@ -632,65 +635,63 @@
 
         </div>
 
-        <!-- Live GitHub Sync Dossier -->
-        <div class="github-archive-block" id="github">
-          <div class="github-archive-header">
-            <div class="gh-user-identity">
-              <div class="gh-avatar-frame">
+        <!-- Live GitHub Sync Brutalist Block -->
+        <div class="github-brutalist-block" id="github">
+          <div class="gh-block-header">
+            <div class="gh-id-wrap">
+              <div class="gh-avatar-sharp">
                 <img src="./public/avatar.jpg" alt="GitHub Profile Avatar">
               </div>
-              <div class="gh-user-meta">
+              <div class="gh-id-text">
                 <h4>Open Source Engineering Activity</h4>
-                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="gh-handle">
+                <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="gh-link">
                   github.com/tharundev-123 &nearr;
                 </a>
               </div>
             </div>
 
-            <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn-obsidian btn-obsidian-ghost">
+            <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="btn-brutalist btn-brutalist-ghost">
               <i data-lucide="github" style="width:16px; height:16px;"></i>
               <span>Open GitHub Organization</span>
             </a>
           </div>
 
-          <div class="gh-metrics-bar">
-            <div class="gh-metric-cell">
-              <span class="val" id="gh-repos-count">12</span>
-              <span class="lbl">Public Repositories</span>
+          <div class="gh-stat-metrics-row">
+            <div class="gh-stat-cell">
+              <span class="number" id="gh-repos-count">12</span>
+              <span class="label">Public Repos</span>
             </div>
-            <div class="gh-metric-cell">
-              <span class="val" id="gh-stars-count">24</span>
-              <span class="lbl">Stars Accrued</span>
+            <div class="gh-stat-cell">
+              <span class="number" id="gh-stars-count">24</span>
+              <span class="label">Stars Accrued</span>
             </div>
-            <div class="gh-metric-cell">
-              <span class="val" id="gh-followers-count">18</span>
-              <span class="lbl">Followers</span>
+            <div class="gh-stat-cell">
+              <span class="number" id="gh-followers-count">18</span>
+              <span class="label">Followers</span>
             </div>
-            <div class="gh-metric-cell">
-              <span class="val">Python</span>
-              <span class="lbl">Primary Language</span>
+            <div class="gh-stat-cell">
+              <span class="number">Python</span>
+              <span class="label">Primary Stack</span>
             </div>
           </div>
 
-          <h5 class="pinned-repos-headline">
-            <i data-lucide="pin" style="width:14px; height:14px;"></i>
-            <span>Curated Repositories &bull; Real-Time Synced</span>
+          <h5 class="pinned-headline-brutalist">
+            // CURATED REPOSITORIES &bull; LIVE SYNCED FROM GITHUB
           </h5>
 
-          <div class="pinned-repos-grid" id="github-pinned-repos">
-            <!-- Populated via API or fallback in app.js -->
-            <div class="repo-editorial-card">
-              <h5><i data-lucide="folder-git-2" style="width:16px; height:16px;"></i> Nimbus_Project_THARUNDEVMC_76</h5>
+          <div class="pinned-repos-matrix" id="github-pinned-repos">
+            <div class="repo-brutalist-card">
+              <h5>Nimbus_Project_THARUNDEVMC_76</h5>
               <p>Digital Healthcare BMI calculation engine and nutritional diet prescription generator in Python.</p>
-              <div class="repo-bottom-meta">
+              <div class="repo-card-foot">
                 <span>Python</span>
                 <span>⭐ Active Repo</span>
               </div>
             </div>
-            <div class="repo-editorial-card">
-              <h5><i data-lucide="folder-git-2" style="width:16px; height:16px;"></i> azure-doc-analyzer</h5>
+            <div class="repo-brutalist-card">
+              <h5>azure-doc-analyzer</h5>
               <p>Cognitive OCR &amp; structured schema extraction pipeline integrated with Azure Document Intelligence API.</p>
-              <div class="repo-bottom-meta">
+              <div class="repo-card-foot">
                 <span>Python / REST</span>
                 <span>⭐ Live Deployment</span>
               </div>
@@ -702,142 +703,142 @@
     </section>
 
     <!-- ======================================================================
-         05. DISCIPLINES — CAPABILITIES MATRIX
+         05. DISCIPLINES — ARCHITECTURAL CAPABILITIES MATRIX
          ====================================================================== -->
-    <section class="section-editorial" id="disciplines">
+    <section class="section-brutalist" id="disciplines">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>05 / DISCIPLINES</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>05 // DISCIPLINES</span>
+            <span>CAPABILITY MATRIX</span>
           </div>
-          <h2 class="heading-section">Technical Capabilities</h2>
-          <p class="section-summary">
-            A scannable index of computational proficiencies, cloud infrastructure standards, and developer tooling.
+          <h2 class="section-title-brutalist">Technical Disciplines</h2>
+          <p class="section-desc-brutalist">
+            A scannable architectural inventory of programming languages, enterprise cloud platforms, developer tooling, and engineering foundations.
           </p>
         </div>
 
-        <div class="capabilities-grid">
+        <div class="disciplines-matrix-grid">
           
-          <!-- Category 1 -->
-          <div class="capability-card">
-            <div class="capability-header">
+          <!-- Block 1 -->
+          <div class="discipline-block">
+            <div class="discipline-head">
               <h3>Programming Languages</h3>
-              <span class="cat-num">[01]</span>
+              <span class="idx">[01/]</span>
             </div>
-            <div class="discipline-items-list">
-              <div class="discipline-item">
-                <span class="disc-name">Python</span>
-                <span class="disc-tier certified">Primary &bull; Intermediate</span>
+            <div class="skills-rows-list">
+              <div class="skill-row-item">
+                <span class="skill-name">Python</span>
+                <span class="skill-level-tag lime-highlight">[PRIMARY &bull; INTERMEDIATE]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">C++</span>
-                <span class="disc-tier">Intermediate &bull; Algorithmic</span>
+              <div class="skill-row-item">
+                <span class="skill-name">C++</span>
+                <span class="skill-level-tag">[ALGORITHMIC]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">C Language</span>
-                <span class="disc-tier">Intermediate &bull; Systems</span>
+              <div class="skill-row-item">
+                <span class="skill-name">C Language</span>
+                <span class="skill-level-tag">[SYSTEMS]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">HTML5 / Web Basics</span>
-                <span class="disc-tier">Intermediate &bull; UI</span>
+              <div class="skill-row-item">
+                <span class="skill-name">HTML5 / Web Basics</span>
+                <span class="skill-level-tag">[INTERFACE]</span>
               </div>
             </div>
           </div>
 
-          <!-- Category 2 -->
-          <div class="capability-card">
-            <div class="capability-header">
+          <!-- Block 2 -->
+          <div class="discipline-block">
+            <div class="discipline-head">
               <h3>Cloud &amp; Cognitive Architecture</h3>
-              <span class="cat-num">[02]</span>
+              <span class="idx">[02/]</span>
             </div>
-            <div class="discipline-items-list">
-              <div class="discipline-item">
-                <span class="disc-name">Microsoft Azure Cloud</span>
-                <span class="disc-tier certified">AZ-900 Certified</span>
+            <div class="skills-rows-list">
+              <div class="skill-row-item">
+                <span class="skill-name">Microsoft Azure Cloud</span>
+                <span class="skill-level-tag lime-highlight">[AZ-900 CERTIFIED]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Azure AI &amp; Cognitive Services</span>
-                <span class="disc-tier certified">AI-900 Certified</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Azure AI &amp; Cognitive Services</span>
+                <span class="skill-level-tag lime-highlight">[AI-900 CERTIFIED]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Microsoft Fabric Analytics</span>
-                <span class="disc-tier certified">DP-600 / DP-700 Certified</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Microsoft Fabric Analytics</span>
+                <span class="skill-level-tag lime-highlight">[DP-600 CERTIFIED]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Nutanix Multicloud Infrastructure</span>
-                <span class="disc-tier certified">NCP-MCI 6 Certified</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Nutanix Multicloud Infrastructure</span>
+                <span class="skill-level-tag lime-highlight">[NCP-MCI 6]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Nutanix EUC &amp; Cloud Automation</span>
-                <span class="disc-tier certified">NCP-EUC / MCA 6</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Nutanix EUC &amp; Cloud Automation</span>
+                <span class="skill-level-tag lime-highlight">[NCP-EUC / MCA 6]</span>
               </div>
             </div>
           </div>
 
-          <!-- Category 3 -->
-          <div class="capability-card">
-            <div class="capability-header">
+          <!-- Block 3 -->
+          <div class="discipline-block">
+            <div class="discipline-head">
               <h3>Developer Tooling &amp; Workflows</h3>
-              <span class="cat-num">[03]</span>
+              <span class="idx">[03/]</span>
             </div>
-            <div class="discipline-items-list">
-              <div class="discipline-item">
-                <span class="disc-name">Git &amp; Version Control</span>
-                <span class="disc-tier">Intermediate</span>
+            <div class="skills-rows-list">
+              <div class="skill-row-item">
+                <span class="skill-name">Git &amp; Version Control</span>
+                <span class="skill-level-tag">[VERSIONING]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">GitHub CI/CD &amp; Workflows</span>
-                <span class="disc-tier">Intermediate</span>
+              <div class="skill-row-item">
+                <span class="skill-name">GitHub CI/CD &amp; Actions</span>
+                <span class="skill-level-tag">[WORKFLOWS]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">VS Code Development</span>
-                <span class="disc-tier">Intermediate</span>
+              <div class="skill-row-item">
+                <span class="skill-name">VS Code Development</span>
+                <span class="skill-level-tag">[ENVIRONMENT]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Jupyter Notebook Research</span>
-                <span class="disc-tier">Intermediate</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Jupyter Notebook Research</span>
+                <span class="skill-level-tag">[ANALYTICS]</span>
               </div>
             </div>
           </div>
 
-          <!-- Category 4 -->
-          <div class="capability-card">
-            <div class="capability-header">
-              <h3>Core Engineering Foundations</h3>
-              <span class="cat-num">[04]</span>
+          <!-- Block 4 -->
+          <div class="discipline-block">
+            <div class="discipline-head">
+              <h3>Engineering Foundations</h3>
+              <span class="idx">[04/]</span>
             </div>
-            <div class="discipline-items-list">
-              <div class="discipline-item">
-                <span class="disc-name">Data Structures &amp; Algorithms</span>
-                <span class="disc-tier">Academic Focus</span>
+            <div class="skills-rows-list">
+              <div class="skill-row-item">
+                <span class="skill-name">Data Structures &amp; Algorithms</span>
+                <span class="skill-level-tag">[ACADEMIC FOCUS]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Machine Learning Fundamentals</span>
-                <span class="disc-tier">Academic Focus</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Machine Learning Fundamentals</span>
+                <span class="skill-level-tag">[APPLIED]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">RESTful API Design</span>
-                <span class="disc-tier">Applied</span>
+              <div class="skill-row-item">
+                <span class="skill-name">RESTful API Design</span>
+                <span class="skill-level-tag">[INTEGRATION]</span>
               </div>
-              <div class="discipline-item">
-                <span class="disc-name">Software Development Lifecycle</span>
-                <span class="disc-tier">Applied</span>
+              <div class="skill-row-item">
+                <span class="skill-name">Software Engineering Lifecycle</span>
+                <span class="skill-level-tag">[STANDARDS]</span>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- Ongoing Research Strip -->
-        <div class="active-horizons-strip">
-          <span class="horizons-label">Active Research Horizons:</span>
-          <div class="horizons-pills">
-            <span class="horizon-pill">Large Language Models (LLMs)</span>
-            <span class="horizon-pill">Deep Learning Architectures</span>
-            <span class="horizon-pill">Hybrid Cloud Orchestration</span>
-            <span class="horizon-pill">Distributed Data Pipelines</span>
-            <span class="horizon-pill">Open Source Machine Learning</span>
+        <!-- Active Horizons Strip -->
+        <div class="horizons-brutalist-strip">
+          <span class="horizons-tag-lead">// ACTIVE RESEARCH HORIZONS:</span>
+          <div class="horizons-chips-row">
+            <span class="horizon-box">Large Language Models (LLMs)</span>
+            <span class="horizon-box">Deep Learning Architectures</span>
+            <span class="horizon-box">Hybrid Cloud Orchestration</span>
+            <span class="horizon-box">Distributed Data Pipelines</span>
+            <span class="horizon-box">Open Source Machine Learning</span>
           </div>
         </div>
 
@@ -847,172 +848,172 @@
     <!-- ======================================================================
          06. CREDENTIALS — VERIFIED CERTIFICATIONS GALLERY
          ====================================================================== -->
-    <section class="section-editorial" id="credentials">
+    <section class="section-brutalist" id="credentials">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>06 / CREDENTIALS</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>06 // CREDENTIALS</span>
+            <span>VERIFIED ACCREDITATIONS</span>
           </div>
-          <h2 class="heading-section">Verified Professional Certifications</h2>
-          <p class="section-summary">
-            External credentials issued by Microsoft, Nutanix, and University of Pennsylvania verifying cloud and AI acumen.
+          <h2 class="section-title-brutalist">Professional Certifications</h2>
+          <p class="section-desc-brutalist">
+            Authentic industry certifications issued by Microsoft, Nutanix, and University of Pennsylvania.
           </p>
         </div>
 
-        <div class="credentials-grid">
+        <div class="credentials-brutalist-grid">
 
           <!-- Cert 1 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="cloud"></i></div>
-                <span class="cred-issuer-tag">MICROSOFT &bull; AZ-900</span>
+                <span class="cred-code-badge">MS &bull; AZ-900</span>
               </div>
-              <h3 class="cred-title">Microsoft Azure Fundamentals</h3>
-              <span class="cred-sub">Cloud Concepts, Security, Architecture &amp; Governance</span>
-              <p class="cred-desc">
-                Foundational mastery of cloud computing principles, Azure core services, security compliance, network architecture, and cloud governance frameworks.
+              <h3 class="cred-heading-title">Microsoft Azure Fundamentals</h3>
+              <span class="cred-subtitle-copy">Cloud Concepts &bull; Architecture &bull; Security</span>
+              <p class="cred-detail-copy">
+                Foundational knowledge of cloud concepts, Azure core architecture, security compliance, governance policies, and cost management.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.credly.com/badges/fa072f2b-6cb1-410d-867f-b103b02a89f9/public_url" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Credly Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.credly.com/badges/fa072f2b-6cb1-410d-867f-b103b02a89f9/public_url" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Credly Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 2 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="brain"></i></div>
-                <span class="cred-issuer-tag">MICROSOFT &bull; AI-900</span>
+                <span class="cred-code-badge">MS &bull; AI-900</span>
               </div>
-              <h3 class="cred-title">Microsoft Azure AI Fundamentals</h3>
-              <span class="cred-sub">Artificial Intelligence &amp; Cognitive Workloads</span>
-              <p class="cred-desc">
-                Demonstrated understanding of machine learning principles, computer vision, natural language processing, and conversational AI workloads on Azure.
+              <h3 class="cred-heading-title">Microsoft Azure AI Fundamentals</h3>
+              <span class="cred-subtitle-copy">Machine Learning &bull; Vision &bull; NLP</span>
+              <p class="cred-detail-copy">
+                Demonstrated comprehension of artificial intelligence workloads, machine learning principles, computer vision, and natural language processing on Azure.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.credly.com/badges/28fee6de-582e-48ac-8ad6-ca57f009ef39/public_url" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Credly Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.credly.com/badges/28fee6de-582e-48ac-8ad6-ca57f009ef39/public_url" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Credly Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 3 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="database"></i></div>
-                <span class="cred-issuer-tag">MICROSOFT &bull; DP-600 / DP-700</span>
+                <span class="cred-code-badge">MS &bull; DP-600 / DP-700</span>
               </div>
-              <h3 class="cred-title">Microsoft Fabric Data Engineer Associate</h3>
-              <span class="cred-sub">Enterprise Analytics &amp; Lakehouse Pipelines</span>
-              <p class="cred-desc">
-                Architecting scalable enterprise data solutions, lakehouse environments, and real-time analytical transformation pipelines using Microsoft Fabric.
+              <h3 class="cred-heading-title">Microsoft Fabric Data Engineer Associate</h3>
+              <span class="cred-subtitle-copy">Lakehouse Architecture &bull; Analytics</span>
+              <p class="cred-detail-copy">
+                Architecting enterprise data pipelines, lakehouse solutions, and real-time analytical transformation systems using Microsoft Fabric.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://learn.microsoft.com/api/credentials/share/en-us/TharundevMC-1660/C260B7AABE3F829E?sharingId=9A9A67C29593A58D" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Microsoft Learn Record</span>
+            <div class="cred-slip-actions">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/TharundevMC-1660/C260B7AABE3F829E?sharingId=9A9A67C29593A58D" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Microsoft Learn</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 4 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="server"></i></div>
-                <span class="cred-issuer-tag">NUTANIX &bull; NCP-MCI 6</span>
+                <span class="cred-code-badge">NUTANIX &bull; NCP-MCI 6</span>
               </div>
-              <h3 class="cred-title">Nutanix Multicloud Infrastructure 6</h3>
-              <span class="cred-sub">Hyperconverged Infrastructure &amp; Virtualization</span>
-              <p class="cred-desc">
-                Managing, operating, and configuring Nutanix Enterprise Cloud clusters, hyperconverged compute fabrics, and enterprise storage virtualization.
+              <h3 class="cred-heading-title">Nutanix Multicloud Infrastructure 6</h3>
+              <span class="cred-subtitle-copy">Hyperconverged Fabric &bull; Storage</span>
+              <p class="cred-detail-copy">
+                Managing and configuring Nutanix Enterprise Cloud clusters, hyperconverged infrastructure nodes, and virtualization workloads.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.credly.com/badges/8c8c4eee-e4f5-4688-9663-e5dc3cf10b7b/public_url" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Credly Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.credly.com/badges/8c8c4eee-e4f5-4688-9663-e5dc3cf10b7b/public_url" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Credly Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 5 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="monitor"></i></div>
-                <span class="cred-issuer-tag">NUTANIX &bull; NCP-EUC 6</span>
+                <span class="cred-code-badge">NUTANIX &bull; NCP-EUC 6</span>
               </div>
-              <h3 class="cred-title">Nutanix End User Computing 6</h3>
-              <span class="cred-sub">Virtual Desktops &amp; Application Delivery</span>
-              <p class="cred-desc">
-                Virtual Desktop Infrastructure (VDI) deployment, Nutanix Frame administration, application virtualization streaming, and secure workspace configurations.
+              <h3 class="cred-heading-title">Nutanix End User Computing 6</h3>
+              <span class="cred-subtitle-copy">VDI &bull; Frame &bull; App Delivery</span>
+              <p class="cred-detail-copy">
+                Virtual Desktop Infrastructure (VDI) management, application streaming, Frame administration, and secure end-user delivery.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.credly.com/badges/cd68b23d-4513-4149-8208-b95ae4269376/public_url" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Credly Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.credly.com/badges/cd68b23d-4513-4149-8208-b95ae4269376/public_url" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Credly Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 6 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="cpu"></i></div>
-                <span class="cred-issuer-tag">NUTANIX &bull; NCP-MCA 6</span>
+                <span class="cred-code-badge">NUTANIX &bull; NCP-MCA 6</span>
               </div>
-              <h3 class="cred-title">Nutanix Multicloud Automation 6</h3>
-              <span class="cred-sub">Infrastructure as Code &amp; Cloud Self-Service</span>
-              <p class="cred-desc">
-                Automating hybrid infrastructure deployment, Nutanix Calm orchestration, blueprint engineering, and governance lifecycle automation.
+              <h3 class="cred-heading-title">Nutanix Multicloud Automation 6</h3>
+              <span class="cred-subtitle-copy">Infrastructure as Code &bull; Governance</span>
+              <p class="cred-detail-copy">
+                Automating hybrid infrastructure deployment, Nutanix Calm orchestration, blueprint engineering, and governance workflows.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.credly.com/badges/a2039131-1ed7-493b-aa1c-e0c35acf8ea6/public_url" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Credly Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.credly.com/badges/a2039131-1ed7-493b-aa1c-e0c35acf8ea6/public_url" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Credly Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL BADGE</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
           <!-- Cert 7 -->
-          <div class="credential-archival-card">
+          <div class="credential-slip-card">
             <div>
-              <div class="cred-card-top">
+              <div class="cred-top-meta">
                 <div class="cred-icon-box"><i data-lucide="code-2"></i></div>
-                <span class="cred-issuer-tag">UPENN &bull; COURSERA</span>
+                <span class="cred-code-badge">UPENN &bull; PYTHON</span>
               </div>
-              <h3 class="cred-title">Introduction to Python Programming</h3>
-              <span class="cred-sub">University of Pennsylvania</span>
-              <p class="cred-desc">
-                Comprehensive study of core Python syntax, algorithmic complexity, object-oriented software design, data structures, and file system I/O.
+              <h3 class="cred-heading-title">Introduction to Python Programming</h3>
+              <span class="cred-subtitle-copy">University of Pennsylvania</span>
+              <p class="cred-detail-copy">
+                Rigorous study of core Python syntax, algorithmic complexity, object-oriented software design, data structures, and file system I/O.
               </p>
             </div>
-            <div class="cred-actions-bar">
-              <a href="https://www.coursera.org/account/accomplishments/verify/YC9OSTN0A2IZ" target="_blank" rel="noopener" class="btn-cred-verify">
-                <span>Coursera Verification</span>
+            <div class="cred-slip-actions">
+              <a href="https://www.coursera.org/account/accomplishments/verify/YC9OSTN0A2IZ" target="_blank" rel="noopener" class="btn-verify-lime">
+                <span>Coursera Record</span>
                 <i data-lucide="external-link" style="width:13px; height:13px;"></i>
               </a>
-              <span class="cred-status-indicator">OFFICIAL RECORD</span>
+              <span class="cred-status-indicator">[VERIFIED]</span>
             </div>
           </div>
 
@@ -1021,104 +1022,104 @@
     </section>
 
     <!-- ======================================================================
-         07. DISPATCH — CONTACT & INITIATION
+         07. DISPATCH — HIGH-IMPACT CLOSING & TRANSMISSION
          ====================================================================== -->
-    <section class="section-editorial" id="dispatch">
+    <section class="section-brutalist" id="dispatch">
       <div class="container-editorial">
-        <div class="section-header-editorial">
-          <div class="section-kicker">
-            <span class="kicker-dot"></span>
-            <span>07 / DISPATCH</span>
+        <div class="section-header-brutalist">
+          <div class="section-index-bar">
+            <span>07 // DISPATCH</span>
+            <span>TRANSMISSION CHANNEL</span>
           </div>
-          <h2 class="heading-section">Initiate a Dialogue</h2>
-          <p class="section-summary">
-            Direct communication channel for engineering internships, technical collaborations, and academic inquiries.
+          <h2 class="section-title-brutalist">Initiate Transmission</h2>
+          <p class="section-desc-brutalist">
+            Direct communication channel for engineering internships, technical collaborations, and academic opportunities.
           </p>
         </div>
 
-        <div class="dispatch-grid">
+        <div class="dispatch-brutalist-grid">
           
           <!-- Editorial Contact Info -->
-          <div class="dispatch-editorial-info">
+          <div class="dispatch-left-panel">
             <div>
-              <h3 class="dispatch-headline">Let us build something coherent.</h3>
-              <p class="dispatch-subtext" style="margin-top: 1rem;">
-                I am currently open to software engineering internships, AI/ML research collaborations, and disciplined cloud development challenges.
+              <h3 class="dispatch-massive-heading">TRANSMIT A <span class="lime-word">MESSAGE.</span></h3>
+              <p class="dispatch-statement-lead" style="margin-top: 1rem;">
+                Open for high-impact software engineering internships, AI/ML research, and cloud architecture challenges.
               </p>
             </div>
 
-            <!-- Direct Channel Card -->
-            <div class="direct-channel-card">
-              <div class="channel-meta">
-                <span class="channel-lbl">Primary Electronic Mail</span>
-                <span class="channel-val">tharundevmc@gmail.com</span>
+            <!-- Direct Email Block -->
+            <div class="direct-email-matrix">
+              <div>
+                <span class="lbl">DIRECT ELECTRONIC MAIL</span>
+                <span class="val">tharundevmc@gmail.com</span>
               </div>
-              <button class="btn-copy-address" id="btn-copy-email" data-email="tharundevmc@gmail.com" title="Copy Email to Clipboard">
+              <button class="btn-copy-sharp" id="btn-copy-email" data-email="tharundevmc@gmail.com" title="Copy Email to Clipboard">
                 <i data-lucide="copy" style="width:16px; height:16px;"></i>
               </button>
             </div>
 
-            <div class="dispatch-spec-list">
-              <div class="dispatch-spec-item">
-                <span class="k">BASE LOCATION</span>
+            <div class="dispatch-readout-list">
+              <div class="dispatch-readout-item">
+                <span class="k">BASE COORDINATES</span>
                 <span class="v">Kozhikode, Kerala, India</span>
               </div>
-              <div class="dispatch-spec-item">
-                <span class="k">PRIMARY TIMEZONE</span>
+              <div class="dispatch-readout-item">
+                <span class="k">STANDARD TIMEZONE</span>
                 <span class="v">Indian Standard Time (IST / UTC+5:30)</span>
               </div>
-              <div class="dispatch-spec-item">
-                <span class="k">ESTIMATED RESPONSE</span>
+              <div class="dispatch-readout-item">
+                <span class="k">RESPONSE LATENCY</span>
                 <span class="v">Within 24 Hours</span>
               </div>
             </div>
 
-            <div class="dispatch-social-row">
-              <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="social-pill-link">
+            <div class="dispatch-links-row">
+              <a href="https://github.com/tharundev-123" target="_blank" rel="noopener" class="dispatch-social-btn">
                 <i data-lucide="github" style="width:15px; height:15px;"></i>
                 <span>github.com/tharundev-123</span>
               </a>
-              <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="social-pill-link">
+              <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener" class="dispatch-social-btn">
                 <i data-lucide="linkedin" style="width:15px; height:15px;"></i>
                 <span>linkedin.com/in/tharundevmc</span>
               </a>
             </div>
           </div>
 
-          <!-- Working FormSubmit Form Card -->
-          <div class="dispatch-form-card">
-            <h3 class="form-card-title">Direct Dispatch</h3>
-            <p class="form-card-desc">Messages delivered directly to tharundevmc@gmail.com.</p>
+          <!-- Working FormSubmit Form Matrix -->
+          <div class="dispatch-form-matrix">
+            <h3 class="form-matrix-title">Direct Dispatch</h3>
+            <p class="form-matrix-sub">Messages routed directly to tharundevmc@gmail.com.</p>
 
             <!-- Success Card -->
-            <div id="contact-success-msg" class="contact-feedback-card">
-              <h4>Message Delivered Successfully</h4>
-              <p>Thank you for reaching out. Tharun Dev has received your transmission and will reply within 24 hours.</p>
+            <div id="contact-success-msg" class="contact-feedback-box">
+              <h4>// TRANSMISSION CONFIRMED</h4>
+              <p>Tharun Dev has received your message and will respond within 24 hours.</p>
             </div>
 
-            <form id="contact-form" class="editorial-form" onsubmit="event.preventDefault(); return false;">
-              <div class="form-row-dual">
-                <div class="form-group-editorial">
-                  <label for="c-name">Full Name <span class="req">*</span></label>
-                  <input type="text" id="c-name" name="name" class="input-editorial" placeholder="Your Name" required>
+            <form id="contact-form" class="form-brutalist" onsubmit="event.preventDefault(); return false;">
+              <div class="form-dual-row">
+                <div class="field-group-brutalist">
+                  <label for="c-name">Sender Full Name <span class="req">*</span></label>
+                  <input type="text" id="c-name" name="name" class="input-brutalist" placeholder="Your Name" required>
                 </div>
-                <div class="form-group-editorial">
-                  <label for="c-email">Email Address <span class="req">*</span></label>
-                  <input type="email" id="c-email" name="email" class="input-editorial" placeholder="name@domain.com" required>
+                <div class="field-group-brutalist">
+                  <label for="c-email">Sender Email Address <span class="req">*</span></label>
+                  <input type="email" id="c-email" name="email" class="input-brutalist" placeholder="name@domain.com" required>
                 </div>
               </div>
 
-              <div class="form-group-editorial">
-                <label for="c-subject">Subject</label>
-                <input type="text" id="c-subject" name="subject" class="input-editorial" placeholder="Internship Opportunity / AI Collaboration">
+              <div class="field-group-brutalist">
+                <label for="c-subject">Subject Scope</label>
+                <input type="text" id="c-subject" name="subject" class="input-brutalist" placeholder="Internship Opportunity / AI Collaboration">
               </div>
 
-              <div class="form-group-editorial">
-                <label for="c-message">Message <span class="req">*</span></label>
-                <textarea id="c-message" name="message" class="input-editorial" rows="5" placeholder="Share project scope or opportunity details..." required></textarea>
+              <div class="field-group-brutalist">
+                <label for="c-message">Transmission Content <span class="req">*</span></label>
+                <textarea id="c-message" name="message" class="input-brutalist" rows="5" placeholder="Share opportunity or project details..." required></textarea>
               </div>
 
-              <button type="button" class="btn-obsidian btn-obsidian-primary" id="form-submit-btn">
+              <button type="button" class="btn-brutalist btn-brutalist-lime" id="form-submit-btn">
                 <span>Transmit Dispatch</span>
                 <i data-lucide="send" style="width:16px; height:16px;"></i>
               </button>
@@ -1132,60 +1133,60 @@
   </main>
 
   <!-- ========================================================================
-       SITE FOOTER
+       SITE FOOTER (Brutalist Architecture)
        ======================================================================== -->
-  <footer class="site-footer-editorial">
+  <footer class="site-footer-brutalist">
     <div class="container-editorial">
-      <div class="footer-top-row">
-        <div class="footer-brand-block">
-          <h3>THARUN DEV</h3>
-          <p>
+      <div class="footer-top-matrix">
+        <div>
+          <h3 class="footer-brand-title">THARUN DEV <span>// 09</span></h3>
+          <p class="footer-brand-sub">
             Computer Science &amp; Engineering (AI &amp; ML) &bull; Chandigarh University &bull; Azure Certified Practitioner.
           </p>
         </div>
 
-        <div class="footer-nav-columns">
+        <div class="footer-columns-group">
           <div class="footer-nav-col">
-            <span class="footer-nav-title">Navigation</span>
-            <a href="#hero">Index</a>
-            <a href="#about">Dossier</a>
-            <a href="#chronology">Chronology</a>
-            <a href="#projects">Case Studies</a>
+            <span class="footer-col-head">Navigation</span>
+            <a href="#hero">01/ Index</a>
+            <a href="#about">02/ Dossier</a>
+            <a href="#chronology">03/ Chronology</a>
+            <a href="#projects">04/ Cases</a>
           </div>
           <div class="footer-nav-col">
-            <span class="footer-nav-title">Credentials</span>
+            <span class="footer-col-head">Accreditation</span>
             <a href="#credentials">Azure AZ-900</a>
             <a href="#credentials">Azure AI-900</a>
             <a href="#credentials">Microsoft Fabric DP-600</a>
             <a href="#credentials">Nutanix Multicloud</a>
           </div>
           <div class="footer-nav-col">
-            <span class="footer-nav-title">Channels</span>
+            <span class="footer-col-head">Channels</span>
             <a href="https://github.com/tharundev-123" target="_blank" rel="noopener">GitHub</a>
             <a href="https://www.linkedin.com/in/tharundevmc/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#dispatch">Direct Email</a>
+            <a href="#dispatch">Direct Dispatch</a>
           </div>
         </div>
       </div>
 
-      <div class="footer-bottom-row">
+      <div class="footer-bottom-readout">
         <span>&copy; <span id="f-year">2026</span> THARUN DEV M C &bull; ALL RIGHTS RESERVED</span>
-        <span>VISUAL SPEC: OBSIDIAN / 09</span>
+        <span style="color:var(--color-lime);">BRUTALIST LUXURY &times; OBSIDIAN / 09</span>
       </div>
     </div>
   </footer>
 
   <!-- ========================================================================
-       MEDIA MODAL: AUDIO-VISUAL SPOKEN INTRO TAPE (Preserved & Intentional)
+       MEDIA MODAL: AUDIO-VISUAL SPOKEN INTRO TAPE
        ======================================================================== -->
   <div class="media-modal-backdrop" id="media-modal">
     <div class="media-modal-card">
       <div class="media-modal-head">
         <div class="media-title-group">
           <h3>Spoken Introduction Tape</h3>
-          <span class="sub">AUDIO-VISUAL ARCHIVE &bull; 22 SECONDS</span>
+          <span class="sub">// AUDIO-VISUAL ARCHIVE &bull; 22 SECONDS</span>
         </div>
-        <button class="modal-close-editorial" id="media-modal-close" aria-label="Close Media Tape">
+        <button class="media-modal-close-sharp" id="media-modal-close" aria-label="Close Media Tape">
           <i data-lucide="x" style="width:16px; height:16px;"></i>
         </button>
       </div>
@@ -1203,11 +1204,11 @@
       </div>
 
       <div class="media-controls-row">
-        <button class="btn-obsidian btn-obsidian-ghost" id="btn-toggle-sound">
+        <button class="btn-brutalist btn-brutalist-ghost" id="btn-toggle-sound">
           <i data-lucide="volume-2" id="sound-icon" style="width:15px; height:15px;"></i>
           <span id="sound-label">Mute Audio</span>
         </button>
-        <button class="btn-obsidian btn-obsidian-primary" id="btn-replay-tape">
+        <button class="btn-brutalist btn-brutalist-lime" id="btn-replay-tape">
           <i data-lucide="rotate-ccw" style="width:15px; height:15px;"></i>
           <span>Replay Tape</span>
         </button>
@@ -1219,67 +1220,67 @@
   <audio id="user-voice-audio" src="./public/voice.mp3" preload="auto"></audio>
 
   <!-- ========================================================================
-       COMMAND PALETTE OVERLAY (Cmd+K or /)
+       COMMAND PALETTE (Cmd+K or /)
        ======================================================================== -->
   <div class="cmd-palette-backdrop" id="cmd-palette">
     <div class="cmd-dialog-box">
       <div class="cmd-input-row">
         <i data-lucide="search"></i>
-        <input type="text" id="cmd-input" class="cmd-input-field" placeholder="Search archive, case studies, credentials..." autocomplete="off">
-        <span class="cmd-kbd">ESC</span>
+        <input type="text" id="cmd-input" class="cmd-input-field" placeholder="Search archive, cases, credentials..." autocomplete="off">
+        <span class="cmd-kbd-sharp">ESC</span>
       </div>
       <div class="cmd-results-list" id="cmd-results">
-        <div class="cmd-item-row" data-action="goto-hero"><i data-lucide="home"></i> Jump to Index (01)</div>
-        <div class="cmd-item-row" data-action="goto-about"><i data-lucide="user"></i> View Profile Dossier (02)</div>
-        <div class="cmd-item-row" data-action="goto-chronology"><i data-lucide="git-commit"></i> View Engineering Chronology (03)</div>
-        <div class="cmd-item-row" data-action="goto-projects"><i data-lucide="folder"></i> Explore Case Studies (04)</div>
-        <div class="cmd-item-row" data-action="goto-disciplines"><i data-lucide="cpu"></i> View Technical Disciplines (05)</div>
-        <div class="cmd-item-row" data-action="goto-credentials"><i data-lucide="award"></i> View Azure &amp; Nutanix Credentials (06)</div>
-        <div class="cmd-item-row" data-action="goto-dispatch"><i data-lucide="mail"></i> Initiate Dispatch / Contact (07)</div>
-        <div class="cmd-item-row" data-action="resume"><i data-lucide="file-text"></i> Curriculum Vitae / Resume</div>
+        <div class="cmd-item-row" data-action="goto-hero"><i data-lucide="home"></i> 01/ Jump to Index</div>
+        <div class="cmd-item-row" data-action="goto-about"><i data-lucide="user"></i> 02/ View Profile Dossier</div>
+        <div class="cmd-item-row" data-action="goto-chronology"><i data-lucide="git-commit"></i> 03/ View Engineering Chronology</div>
+        <div class="cmd-item-row" data-action="goto-projects"><i data-lucide="folder"></i> 04/ Explore Case Studies</div>
+        <div class="cmd-item-row" data-action="goto-disciplines"><i data-lucide="cpu"></i> 05/ View Technical Disciplines</div>
+        <div class="cmd-item-row" data-action="goto-credentials"><i data-lucide="award"></i> 06/ View Azure &amp; Nutanix Credentials</div>
+        <div class="cmd-item-row" data-action="goto-dispatch"><i data-lucide="mail"></i> 07/ Transmit Dispatch</div>
+        <div class="cmd-item-row" data-action="resume"><i data-lucide="file-text"></i> Curriculum Vitae</div>
         <div class="cmd-item-row" data-action="tape"><i data-lucide="play-circle"></i> Play Spoken Intro Tape</div>
       </div>
       <div class="cmd-footer-strip">
         <span>Use arrow keys or click to navigate</span>
-        <span>TD / ARCHIVE 09</span>
+        <span style="color:var(--color-lime);">TD // ARCHIVE 09</span>
       </div>
     </div>
   </div>
 
   <!-- ========================================================================
-       PERSISTENT ARCHIVAL ASSISTANT (THARUN.AI REFACTORED)
+       PERSISTENT ARCHIVAL ASSISTANT (TD.AI Sharp Badge)
        ======================================================================== -->
   <div class="archival-assistant-widget" id="ai-widget">
-    <div class="assistant-dialog-editorial" id="ai-dialog">
+    <div class="assistant-dialog-sharp" id="ai-dialog">
       <div class="assistant-dialog-head">
-        <span>THARUN.AI &bull; ARCHIVAL QUERY BOT</span>
+        <span>TD.AI // ARCHIVAL QUERY BOT</span>
         <button id="ai-dialog-close" aria-label="Close Assistant"><i data-lucide="x" style="width:14px; height:14px;"></i></button>
       </div>
       <div class="assistant-messages-area" id="ai-messages">
-        <div class="ai-msg-editorial">
-          Greetings. I am Tharun's digital archive assistant. Ask me about Tharun's projects, background, certifications, or credentials.
+        <div class="ai-msg-sharp">
+          Greetings. I am Tharun's digital archive bot. Query me on projects, background, certifications, or credentials.
         </div>
       </div>
       <div class="assistant-prompt-chips">
-        <button class="chip-editorial" data-query="about">Profile</button>
-        <button class="chip-editorial" data-query="projects">Case Studies</button>
-        <button class="chip-editorial" data-query="certs">Credentials</button>
-        <button class="chip-editorial" data-query="resume">Curriculum Vitae</button>
-        <button class="chip-editorial" data-query="github">GitHub</button>
-        <button class="chip-editorial" data-query="contact">Dispatch</button>
+        <button class="chip-sharp" data-query="about">Profile</button>
+        <button class="chip-sharp" data-query="projects">Case Studies</button>
+        <button class="chip-sharp" data-query="certs">Credentials</button>
+        <button class="chip-sharp" data-query="resume">CV</button>
+        <button class="chip-sharp" data-query="github">GitHub</button>
+        <button class="chip-sharp" data-query="contact">Dispatch</button>
       </div>
     </div>
 
-    <button class="assistant-trigger-badge" id="ai-trigger" title="Query Archival Assistant">
-      <span class="status-dot"></span>
-      <span>TD.AI ARCHIVE</span>
+    <button class="assistant-trigger-sharp" id="ai-trigger" title="Query Archival Assistant">
+      <span class="lime-dot"></span>
+      <span>[TD.AI]</span>
     </button>
   </div>
 
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Application Main JavaScript -->
+  <!-- Main JavaScript Controller -->
   <script src="app.js"></script>
 </body>
 </html>

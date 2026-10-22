@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
- * OBSIDIAN / 09 — APPLICATION CONTROLLER
- * Architecture: Dark-Luxury Editorial Portfolio System
+ * BRUTALIST LUXURY × OBSIDIAN / 09 — APPLICATION CONTROLLER
+ * Architecture: Dark-Luxury Editorial Brutalism & Architectural Grids
  * THARUN DEV M C — Computer Science & Engineering (AI & ML)
  * ==========================================================================
  */
@@ -19,16 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     3. Subtle Atmospheric Three.js Background Canvas (Obsidian Dust)
+     3. Subtle Architectural Three.js Background Canvas (Acid-Lime & Dust Grid)
      ========================================================================== */
   const bgCanvas = document.getElementById('bg-canvas');
   if (bgCanvas && window.THREE) {
     bgCanvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); }, false);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x100E0F, 0.02);
+    scene.fog = new THREE.FogExp2(0x101010, 0.022);
 
-    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 500);
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 500);
     camera.position.z = 24;
 
     const renderer = new THREE.WebGLRenderer({
@@ -40,20 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Warm Oxblood & Taupe Particulate Constellation
-    const particleCount = 180;
+    // Acid-Lime & Muted White Precise Particulate Matrix
+    const particleCount = 190;
     const particlePositions = new Float32Array(particleCount * 3);
     const particleVelocities = [];
 
     for (let i = 0; i < particleCount * 3; i += 3) {
       particlePositions[i] = (Math.random() - 0.5) * 55;
-      particlePositions[i + 1] = (Math.random() - 0.5) * 70 - 10;
+      particlePositions[i + 1] = (Math.random() - 0.5) * 75 - 10;
       particlePositions[i + 2] = (Math.random() - 0.5) * 35;
 
       particleVelocities.push({
-        x: (Math.random() - 0.5) * 0.006,
-        y: (Math.random() - 0.5) * 0.008,
-        z: (Math.random() - 0.5) * 0.006
+        x: (Math.random() - 0.5) * 0.007,
+        y: (Math.random() - 0.5) * 0.009,
+        z: (Math.random() - 0.5) * 0.007
       });
     }
 
@@ -61,17 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
     particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.1,
-      color: 0xA85F69, // Muted Garnet
+      size: 0.12,
+      color: 0xD7FF35, // Signature Acid Lime
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.28,
       blending: THREE.AdditiveBlending
     });
 
     const particleMesh = new THREE.Points(particleGeo, particleMat);
     scene.add(particleMesh);
 
-    // Scroll-Coupled Camera Progression
+    // Camera Progression Synchronized with Scroll
     let scrollProgress = 0;
     let targetScrollProgress = 0;
 
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(renderAtmosphericLoop);
       const elapsed = clock.getElapsedTime();
 
-      scrollProgress += (targetScrollProgress - scrollProgress) * 0.06;
-      camera.position.y = -scrollProgress * 35;
+      scrollProgress += (targetScrollProgress - scrollProgress) * 0.07;
+      camera.position.y = -scrollProgress * 36;
       camera.lookAt(0, camera.position.y, 0);
 
       const positions = particleGeo.attributes.position.array;
@@ -101,12 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
         positions[i3 + 2] += particleVelocities[i].z;
 
         if (Math.abs(positions[i3]) > 30) particleVelocities[i].x *= -1;
-        if (Math.abs(positions[i3 + 1] - (-10)) > 40) particleVelocities[i].y *= -1;
+        if (Math.abs(positions[i3 + 1] - (-10)) > 42) particleVelocities[i].y *= -1;
         if (Math.abs(positions[i3 + 2]) > 20) particleVelocities[i].z *= -1;
       }
       particleGeo.attributes.position.needsUpdate = true;
 
-      particleMesh.rotation.y = elapsed * 0.012;
+      particleMesh.rotation.y = elapsed * 0.01;
       renderer.render(scene, camera);
     }
     renderAtmosphericLoop();
@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     4. Navigation Highlighting & Header Scrolled State
+     4. Navigation State & Header Scrolled Highlight
      ========================================================================== */
   const siteHeader = document.getElementById('site-header');
-  const navLinks = document.querySelectorAll('.nav-editorial a');
+  const navLinks = document.querySelectorAll('.nav-brutalist a');
   const sections = document.querySelectorAll('section[id]');
 
   function updateNavigationState() {
@@ -199,11 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = mobileDrawer.classList.toggle('open');
-      const icon = mobileToggle.querySelector('svg');
-      if (icon) {
-        mobileToggle.innerHTML = isOpen ? `<i data-lucide="x"></i>` : `<i data-lucide="menu"></i>`;
-        if (window.lucide) lucide.createIcons();
-      }
+      mobileToggle.innerHTML = isOpen ? `<i data-lucide="x"></i>` : `<i data-lucide="menu"></i>`;
+      if (window.lucide) lucide.createIcons();
     });
 
     mobileLinks.forEach(link => {
@@ -241,12 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (pinnedContainer && repos.length > 0) {
           pinnedContainer.innerHTML = repos.slice(0, 4).map(r => `
-            <div class="repo-editorial-card">
+            <div class="repo-brutalist-card">
               <div>
-                <h5><i data-lucide="folder-git-2" style="width:15px; height:15px;"></i> ${escapeHtml(r.name)}</h5>
+                <h5>${escapeHtml(r.name)}</h5>
                 <p>${escapeHtml(r.description || 'Open source engineering repository by Tharun Dev.')}</p>
               </div>
-              <div class="repo-bottom-meta">
+              <div class="repo-card-foot">
                 <span>${escapeHtml(r.language || 'Python')}</span>
                 <span>⭐ ${r.stargazers_count} &bull; 🍴 ${r.forks_count}</span>
               </div>
@@ -281,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nameVal = document.getElementById('c-name')?.value.trim();
     const emailVal = document.getElementById('c-email')?.value.trim();
-    const subjectVal = document.getElementById('c-subject')?.value.trim() || 'Portfolio Contact Dispatch';
+    const subjectVal = document.getElementById('c-subject')?.value.trim() || 'Brutalist 09 Dispatch';
     const messageVal = document.getElementById('c-message')?.value.trim();
 
     if (!nameVal || !emailVal || !messageVal) {
@@ -291,14 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (submitBtn) {
       const origText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>Transmitting...</span> <i data-lucide="loader-2" class="spin"></i>`;
+      submitBtn.innerHTML = `<span>TRANSMITTING...</span> <i data-lucide="loader-2" class="spin"></i>`;
       submitBtn.disabled = true;
       if (window.lucide) lucide.createIcons();
 
       const payload = {
         name: nameVal,
         email: emailVal,
-        _subject: `[Obsidian 09 Dispatch] ${subjectVal}`,
+        _subject: `[Brutalist 09 Dispatch] ${subjectVal}`,
         message: messageVal,
         _template: 'table',
         _captcha: 'false'
@@ -353,11 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resumeBtn = document.getElementById('resume-download-btn');
   if (resumeBtn) {
     resumeBtn.addEventListener('click', () => {
-      showToast('Preparing THARUN DEV M C &mdash; Curriculum Vitae...');
-      // Fallback direct download simulation / link
-      const link = document.createElement('a');
-      link.href = '#dispatch';
-      link.textContent = 'Request CV';
+      showToast('Preparing THARUN DEV M C — Curriculum Vitae...');
+      document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
       showToast('To receive the official PDF CV, initiate a direct dispatch.');
     });
   }
@@ -395,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
       siteIntroVideo.muted = false;
       updateSoundUI(false);
       siteIntroVideo.play().catch(() => {
-        // Fallback to muted or dom voice mp3
         siteIntroVideo.muted = true;
         updateSoundUI(true);
         siteIntroVideo.play().catch(e => console.log('Video autoplay note:', e));
@@ -442,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     siteIntroVideo.addEventListener('ended', () => {
-      if (tapeSubtitles) tapeSubtitles.innerHTML = `&ldquo;Tape completed &bull; TD / ARCHIVE 09&rdquo;`;
+      if (tapeSubtitles) tapeSubtitles.innerHTML = `// TAPE COMPLETE &bull; TD // ARCHIVE_09`;
     });
   }
 
@@ -464,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     10. Command Palette Overlay (Cmd+K or /)
+     10. Command Palette (Cmd+K or /)
      ========================================================================== */
   const cmdPalette = document.getElementById('cmd-palette');
   const cmdTrigger = document.getElementById('cmd-palette-trigger');
@@ -540,13 +533,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     11. Persistent Archival Assistant (Tharun.AI)
+     11. Persistent Archival Assistant (TD.AI Sharp Badge)
      ========================================================================== */
   const aiTrigger = document.getElementById('ai-trigger');
   const aiDialog = document.getElementById('ai-dialog');
   const aiDialogClose = document.getElementById('ai-dialog-close');
   const aiMessages = document.getElementById('ai-messages');
-  const promptChips = document.querySelectorAll('.chip-editorial');
+  const promptChips = document.querySelectorAll('.chip-sharp');
 
   if (aiTrigger && aiDialog) {
     aiTrigger.addEventListener('click', () => {
@@ -560,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const aiKnowledge = {
     "about": "Tharun Dev M C is a B.Tech Computer Science student specializing in AI & ML at Chandigarh University, native to Kozhikode, Kerala, India. His focus is on Python development, cloud cognitive engineering, and machine learning systems.",
-    "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore full architectural case studies in the Case Studies section.",
+    "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore architectural case studies in the Cases section.",
     "certs": "Tharun holds Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), Nutanix Multicloud (MCI 6, EUC 6, MCA 6), and Univ of Pennsylvania Python accreditation.",
     "resume": "Tharun's verified Curriculum Vitae can be requested directly via the Dispatch section below.",
     "github": "Opening Tharun's GitHub organization at github.com/tharundev-123...",
@@ -575,14 +568,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (aiMessages && q && aiKnowledge[q]) {
         // User query
         const uMsg = document.createElement('div');
-        uMsg.className = 'user-msg-editorial';
+        uMsg.className = 'user-msg-sharp';
         uMsg.textContent = textPrompt;
         aiMessages.appendChild(uMsg);
 
         // Assistant reply
         setTimeout(() => {
           const aMsg = document.createElement('div');
-          aMsg.className = 'ai-msg-editorial';
+          aMsg.className = 'ai-msg-sharp';
           aMsg.textContent = aiKnowledge[q];
           aiMessages.appendChild(aMsg);
           aiMessages.scrollTop = aiMessages.scrollHeight;
@@ -597,29 +590,29 @@ document.addEventListener('DOMContentLoaded', () => {
           } else if (q === 'github') {
             window.open('https://github.com/tharundev-123', '_blank');
           }
-        }, 220);
+        }, 180);
       }
     });
   });
 
   /* ==========================================================================
-     12. Editorial Toast Notification Helper
+     12. Editorial Toast Notification Helper (Hard Edges)
      ========================================================================== */
   function showToast(msg) {
     const container = document.getElementById('toast-container');
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = 'toast-editorial';
-    toast.innerHTML = `<i data-lucide="info" style="width:14px; height:14px;"></i> <span>${msg}</span>`;
+    toast.className = 'toast-brutalist';
+    toast.innerHTML = `<i data-lucide="info" style="width:15px; height:15px;"></i> <span>${msg}</span>`;
     container.appendChild(toast);
     if (window.lucide) lucide.createIcons();
 
     setTimeout(() => {
       toast.style.opacity = '0';
-      toast.style.transform = 'translateY(8px)';
-      toast.style.transition = 'all 0.25s ease';
-      setTimeout(() => toast.remove(), 250);
-    }, 3800);
+      toast.style.transform = 'translateY(6px)';
+      toast.style.transition = 'all 0.2s ease';
+      setTimeout(() => toast.remove(), 200);
+    }, 3600);
   }
 });
