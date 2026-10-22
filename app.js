@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * BRUTALIST LUXURY × OBSIDIAN / 09 — APPLICATION CONTROLLER
+ * BRUTALIST LUXURY PORTFOLIO — APPLICATION CONTROLLER
  * Architecture: Dark-Luxury Editorial Brutalism & Architectural Grids
  * THARUN DEV M C — Computer Science & Engineering (AI & ML)
  * ==========================================================================
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nameVal = document.getElementById('c-name')?.value.trim();
     const emailVal = document.getElementById('c-email')?.value.trim();
-    const subjectVal = document.getElementById('c-subject')?.value.trim() || 'Brutalist 09 Dispatch';
+    const subjectVal = document.getElementById('c-subject')?.value.trim() || 'Portfolio Inquiry';
     const messageVal = document.getElementById('c-message')?.value.trim();
 
     if (!nameVal || !emailVal || !messageVal) {
@@ -288,14 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (submitBtn) {
       const origText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>TRANSMITTING...</span> <i data-lucide="loader-2" class="spin"></i>`;
+      submitBtn.innerHTML = `<span>SENDING...</span> <i data-lucide="loader-2" class="spin"></i>`;
       submitBtn.disabled = true;
       if (window.lucide) lucide.createIcons();
 
       const payload = {
         name: nameVal,
         email: emailVal,
-        _subject: `[Brutalist 09 Dispatch] ${subjectVal}`,
+        _subject: `[Portfolio Message] ${subjectVal}`,
         message: messageVal,
         _template: 'table',
         _captcha: 'false'
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
           contactSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        showToast('✓ Dispatch transmitted to tharundevmc@gmail.com');
+        showToast('✓ Message sent to tharundevmc@gmail.com');
         if (window.lucide) lucide.createIcons();
       });
     }
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resumeBtn.addEventListener('click', () => {
       showToast('Preparing THARUN DEV M C — Curriculum Vitae...');
       document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
-      showToast('To receive the official PDF CV, initiate a direct dispatch.');
+      showToast('To receive the official PDF CV, please send a message below.');
     });
   }
 
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     siteIntroVideo.addEventListener('ended', () => {
-      if (tapeSubtitles) tapeSubtitles.innerHTML = `// TAPE COMPLETE &bull; TD // ARCHIVE_09`;
+      if (tapeSubtitles) tapeSubtitles.innerHTML = `// INTRODUCTION COMPLETE &bull; THARUN DEV`;
     });
   }
 
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (action === 'goto-dispatch') document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
       else if (action === 'resume') {
         document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
-        showToast('Initiate a dispatch to request the official PDF CV.');
+        showToast('Send a message below to request the official PDF CV.');
       } else if (action === 'tape') {
         openMediaTapeModal();
       }
@@ -553,11 +553,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const aiKnowledge = {
     "about": "Tharun Dev M C is a B.Tech Computer Science student specializing in AI & ML at Chandigarh University, native to Kozhikode, Kerala, India. His focus is on Python development, cloud cognitive engineering, and machine learning systems.",
-    "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore architectural case studies in the Cases section.",
+    "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore the project details in the Featured Projects section.",
     "certs": "Tharun holds Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), Nutanix Multicloud (MCI 6, EUC 6, MCA 6), and Univ of Pennsylvania Python accreditation.",
-    "resume": "Tharun's verified Curriculum Vitae can be requested directly via the Dispatch section below.",
-    "github": "Opening Tharun's GitHub organization at github.com/tharundev-123...",
-    "contact": "You can reach Tharun directly at tharundevmc@gmail.com or scroll to the Dispatch section to submit a transmission."
+    "resume": "Tharun's verified Curriculum Vitae can be requested directly via the Contact section below.",
+    "github": "Opening Tharun's GitHub profile at github.com/tharundev-123...",
+    "contact": "You can reach Tharun directly at tharundevmc@gmail.com or scroll to the Contact section below to send a message."
   };
 
   promptChips.forEach(chip => {
