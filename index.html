@@ -171,82 +171,123 @@
             </div>
           </div>
 
-          <!-- Right Column: Hanging Engineering ID Badge with Natural Swaying Movement -->
+          <!-- Right Column: Authentic Rounded Engineering ID Card with V-Lanyard Sling & Natural Sway Movement -->
           <div class="hero-id-rig-wrapper">
-            <!-- Pivot / Ceiling Mount -->
-            <div class="id-ceiling-mount" aria-hidden="true">
-              <div class="mount-bracket"></div>
-              <div class="mount-pin"></div>
-            </div>
-
-            <!-- Main Swaying Pendulum Assembly -->
+            <!-- Main Swaying Pendulum Rig (Sways right & left from top center) -->
             <div class="id-swaying-assembly">
-              <!-- Fabric Lanyard / Sling Strap -->
-              <div class="id-lanyard-strap" aria-hidden="true">
-                <div class="strap-ribbon">
-                  <span class="strap-text">THARUN DEV &bull; AI.ML &bull; PASS 2026</span>
+              <!-- Dual V-Lanyard Neck Sling (Converging from Top Left & Top Right) -->
+              <div class="id-v-lanyard-wrap" aria-hidden="true">
+                <svg class="id-v-lanyard-svg" viewBox="0 0 340 145" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!-- Woven fabric texture pattern -->
+                    <pattern id="lanyard-woven-pattern" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                      <rect width="4" height="8" fill="#1b1b1b"/>
+                      <rect x="4" width="4" height="8" fill="#131313"/>
+                    </pattern>
+                    <!-- Metal gradient for buckle -->
+                    <linearGradient id="metal-buckle-grad" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#242424"/>
+                      <stop offset="30%" stop-color="#555555"/>
+                      <stop offset="50%" stop-color="#999999"/>
+                      <stop offset="70%" stop-color="#444444"/>
+                      <stop offset="100%" stop-color="#1f1f1f"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Left Lanyard Strap (From top-left to center clip) -->
+                  <polygon points="15,0 48,0 182,120 152,120" fill="url(#lanyard-woven-pattern)" />
+                  <line x1="15" y1="0" x2="152" y2="120" stroke="#D7FF35" stroke-width="2.5" />
+                  <line x1="48" y1="0" x2="182" y2="120" stroke="#D7FF35" stroke-width="2.5" />
+
+                  <!-- Right Lanyard Strap (From top-right to center clip) -->
+                  <polygon points="325,0 292,0 158,120 188,120" fill="url(#lanyard-woven-pattern)" />
+                  <line x1="325" y1="0" x2="188" y2="120" stroke="#D7FF35" stroke-width="2.5" />
+                  <line x1="292" y1="0" x2="158" y2="120" stroke="#D7FF35" stroke-width="2.5" />
+
+                  <!-- Metal Cinch / Buckle Ring at V junction -->
+                  <rect x="146" y="112" width="48" height="15" rx="3" fill="url(#metal-buckle-grad)" stroke="#0c0c0c" stroke-width="1.5"/>
+                  <!-- Swivel D-Ring -->
+                  <path d="M 158 127 C 158 141 182 141 182 127" stroke="#777" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Metal Carabiner / Lobster Clasp attaching to slot hole -->
+                <div class="id-metal-hook-element">
+                  <div class="hook-loop-metal"></div>
                 </div>
               </div>
 
-              <!-- Hardware: Clip & Metal Swivel Clasp -->
-              <div class="id-clasp-hardware" aria-hidden="true">
-                <div class="clasp-crimp"></div>
-                <div class="clasp-ring"></div>
-                <div class="clasp-hook">
-                  <div class="hook-claw"></div>
-                </div>
-              </div>
-
-              <!-- Hanging ID Card Credential -->
+              <!-- Rounded Original ID Card Badge -->
               <div class="hero-id-card">
-                <!-- Slot punch hole where hook clips through -->
+                <!-- Top Oval Slot Punch Hole -->
                 <div class="id-card-punch" aria-hidden="true">
                   <span class="punch-hole"></span>
                 </div>
 
-                <!-- ID Card Header Bar -->
-                <div class="id-card-header">
-                  <div class="id-badge-brand">
-                    <span class="id-brand-prefix">TD //</span>
-                    <span class="id-brand-core">AI.ML</span>
+                <!-- ID Card Top Institution Header -->
+                <div class="id-card-top-header">
+                  <div class="id-inst-brand">
+                    <span class="id-inst-name">CHANDIGARH UNIVERSITY</span>
+                    <span class="id-inst-dept">DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING</span>
                   </div>
-                  <div class="id-badge-security">
-                    <span class="security-chip" title="Smart Access Chip">
-                      <span class="chip-line"></span>
-                      <span class="chip-line"></span>
-                    </span>
-                    <span class="security-tag">DEV ACCESS</span>
+                  <div class="id-badge-chip-wrap">
+                    <div class="sim-chip-gold" title="Smart Card Access Chip">
+                      <span class="chip-trace"></span>
+                      <span class="chip-trace"></span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Portrait Photo Box with Crop Crosses -->
-                <div class="id-portrait-box">
+                <!-- Center Framed Portrait Photo (Not edge-to-edge, framed inside card) -->
+                <div class="id-photo-center-frame">
                   <span class="frame-corner-mark top-left">+</span>
                   <span class="frame-corner-mark top-right">+</span>
                   <span class="frame-corner-mark bottom-left">+</span>
                   <span class="frame-corner-mark bottom-right">+</span>
 
-                  <img src="./public/tharun_hero_portrait.jpg?v=2" alt="THARUN DEV M C - Professional Portrait" width="600"
-                    height="600">
+                  <img src="./public/tharun_hero_portrait.jpg?v=2" alt="THARUN DEV M C - Professional Portrait" width="600" height="600">
 
-                  <div class="portrait-badge-overlay">
+                  <div class="id-photo-badge-overlay">
                     <span class="badge-dot-lime"></span>
                     <span>AI &amp; ML SPECIALIST &bull; AZURE CERTIFIED</span>
                   </div>
                 </div>
 
-                <!-- ID Card Credentials & Barcode Strip -->
-                <div class="id-card-meta">
-                  <div class="id-holder-details">
-                    <span class="id-holder-name">THARUN DEV M C</span>
-                    <span class="id-holder-role">B.TECH CSE (AI/ML) &bull; CHANDIGARH UNIVERSITY</span>
+                <!-- ID Card Details Given Below Photo -->
+                <div class="id-card-bottom-details">
+                  <div class="id-holder-headline">
+                    <h3 class="id-holder-fullname">THARUN DEV M C</h3>
+                    <div class="id-holder-subtitle">
+                      <span>B.TECH COMPUTER SCIENCE</span>
+                      <span class="lime-pill-spec">AI &bull; ML</span>
+                    </div>
                   </div>
 
-                  <div class="id-barcode-row">
-                    <div class="id-barcode-lines" aria-hidden="true">
-                      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <!-- Two-Column Official Details Grid -->
+                  <div class="id-details-matrix">
+                    <div class="id-meta-cell">
+                      <span class="id-k">STUDENT UID</span>
+                      <span class="id-v">22BCS10076</span>
                     </div>
-                    <span class="id-serial-num">TD-2026-AIML</span>
+                    <div class="id-meta-cell">
+                      <span class="id-k">PROGRAM</span>
+                      <span class="id-v">B.Tech CSE</span>
+                    </div>
+                    <div class="id-meta-cell">
+                      <span class="id-k">SPECIALIZATION</span>
+                      <span class="id-v">AI &bull; Machine Learning</span>
+                    </div>
+                    <div class="id-meta-cell">
+                      <span class="id-k">STATUS</span>
+                      <span class="id-v" style="color:var(--color-lime);">ACTIVE [UNDERGRAD]</span>
+                    </div>
+                  </div>
+
+                  <!-- Security Barcode Stripe -->
+                  <div class="id-barcode-container">
+                    <div class="id-barcode-bars" aria-hidden="true">
+                      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="id-barcode-code">TD-2026-AIML-76</span>
                   </div>
                 </div>
 
