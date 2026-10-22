@@ -10,15 +10,15 @@
   --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'Fira Code', monospace;
 
-  /* Colors */
-  --bg-main: #060911;
-  --bg-surface: #0b1120;
-  --bg-surface-elevated: #131c33;
-  --bg-glass: rgba(11, 17, 32, 0.72);
-  --bg-glass-hover: rgba(19, 28, 51, 0.88);
+  /* Deep Black Environment Foundation */
+  --bg-main: #020409;
+  --bg-surface: #070c16;
+  --bg-surface-elevated: #0e1526;
+  --bg-glass: rgba(7, 12, 22, 0.85);
+  --bg-glass-hover: rgba(14, 21, 38, 0.92);
 
   --border-glass: rgba(255, 255, 255, 0.08);
-  --border-glass-bright: rgba(0, 242, 254, 0.3);
+  --border-glass-bright: rgba(0, 242, 254, 0.35);
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -1029,23 +1029,25 @@ img { max-width: 100%; height: auto; display: block; }
 .portrait-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 4.8;
-  border-radius: var(--radius-md);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  background: radial-gradient(circle at center, rgba(0, 242, 254, 0.08) 0%, rgba(7, 12, 22, 0.6) 70%);
+  border: 1px solid rgba(0, 242, 254, 0.2);
 }
 
 .hero-portrait-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center center;
   display: block;
-  filter: contrast(1.05) brightness(1.02);
+  filter: contrast(1.04) brightness(1.02);
   transition: transform var(--transition-normal);
 }
 
 .hero-portrait-card:hover .hero-portrait-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .portrait-badge {
@@ -1252,94 +1254,780 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--text-main);
 }
 
-/* Timeline */
-.timeline-wrapper {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.timeline-tree {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* --------------------------------------------------------------------------
+   8. AI Neural Pathway Journey Timeline
+   -------------------------------------------------------------------------- */
+.neural-journey-section {
   position: relative;
+  overflow: hidden;
 }
 
-.timeline-tree::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 20px;
-  width: 2px;
-  background: var(--border-glass-bright);
-}
-
-.timeline-node {
-  position: relative;
-  padding-left: 55px;
-}
-
-.timeline-connector {
-  position: absolute;
-  left: 13px;
-  top: 24px;
-}
-
-.connector-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--bg-main);
-  border: 3px solid var(--cyber-cyan);
-  box-shadow: 0 0 12px var(--cyber-cyan);
-}
-
-.timeline-card { padding: 1.75rem; }
-
-.node-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+.section-badge-pill {
+  display: inline-flex;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.node-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.node-sub { color: var(--cyber-cyan); font-size: 0.88rem; display: block; }
-.node-badge {
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid var(--border-glass-bright);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-glass);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-.node-badge.score-highlight {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: #10b981;
-  color: #10b981;
+  font-weight: 600;
+  color: var(--cyber-cyan);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
 }
 
-.node-institution {
-  font-size: 0.9rem;
-  color: var(--text-subtle);
-  margin-bottom: 0.75rem;
+.pulse-beacon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 10px var(--cyber-cyan);
+  animation: beaconPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes beaconPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 8px var(--cyber-cyan); }
+  50% { transform: scale(1.6); opacity: 0.4; box-shadow: 0 0 18px var(--cyber-cyan); }
+}
+
+/* Dynamic HUD Telemetry Bar */
+.neural-hud-bar {
+  position: sticky;
+  top: 85px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background: rgba(6, 9, 17, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass-bright);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1.4rem;
+  margin: 1.5rem auto 3.5rem auto;
+  max-width: 1080px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.12);
+  transition: all var(--transition-normal);
+}
+
+.hud-telemetry-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.hud-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: dotFlash 1.5s infinite;
+}
+
+@keyframes dotFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hud-phase-label {
+  color: var(--cyber-cyan);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hud-phase-name {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--border-glass);
+}
+
+/* Scrubber Navigation Pills */
+.hud-scrubber-pills {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.hud-scrubber-pills::-webkit-scrollbar { display: none; }
+
+.scrubber-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  color: var(--text-subtle);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
-.node-desc {
+.scrubber-pill .pill-num {
   color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.6;
+  font-size: 0.7rem;
+}
+
+.scrubber-pill:hover {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--cyber-cyan);
+  color: var(--text-main);
+  transform: translateY(-1px);
+}
+
+.scrubber-pill.active {
+  background: rgba(0, 242, 254, 0.16);
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.scrubber-pill.future-pill.active {
+  background: rgba(236, 72, 153, 0.16);
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.35);
+}
+
+.hud-telemetry-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.hud-depth-label { color: var(--text-subtle); }
+.hud-depth-val {
+  color: var(--cyber-cyan);
+  font-weight: 700;
+  min-width: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Neural Timeline Stage & Central Conduit
+   -------------------------------------------------------------------------- */
+.neural-timeline-stage {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 0;
+  perspective: 1200px;
+}
+
+.neural-conduit-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  z-index: 1;
+}
+
+.conduit-rail-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(0, 242, 254, 0.2) 0%, 
+    rgba(168, 85, 247, 0.2) 50%, 
+    rgba(236, 72, 153, 0.2) 100%
+  );
+  border-radius: 4px;
+  opacity: 0.4;
+}
+
+.conduit-beam-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16%;
+  background: linear-gradient(180deg, 
+    #00f2fe 0%, 
+    #38bdf8 35%, 
+    #a855f7 70%, 
+    #ec4899 100%
+  );
+  border-radius: 4px;
+  box-shadow: 0 0 16px var(--cyber-cyan), 0 0 30px rgba(168, 85, 247, 0.6);
+  transition: height 0.15s ease-out;
+}
+
+.conduit-traveling-packet {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 20px #00f2fe, 0 0 40px #a855f7;
+  z-index: 2;
+  transition: top 0.15s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   Milestone Node Layout & Cards
+   -------------------------------------------------------------------------- */
+.neural-milestones-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.neural-milestone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+/* Desktop Alternating Cards */
+.neural-milestone:nth-child(odd) {
+  justify-content: flex-start;
+  padding-right: calc(50% + 40px);
+}
+
+.neural-milestone:nth-child(even) {
+  justify-content: flex-end;
+  padding-left: calc(50% + 40px);
+}
+
+/* Central Anchor & Beacon */
+.milestone-anchor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.synapse-beacon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beacon-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass-bright);
+  transition: all 0.5s ease;
+}
+
+.ring-outer {
+  width: 100%;
+  height: 100%;
+  border-style: dashed;
+  animation: ringSpin 12s linear infinite;
+}
+
+.ring-mid {
+  width: 75%;
+  height: 75%;
+  border: 1px solid rgba(0, 242, 254, 0.4);
+}
+
+@keyframes ringSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.beacon-core {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--cyber-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyber-cyan);
+  box-shadow: 0 0 15px var(--primary-glow);
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.beacon-core svg {
+  width: 15px;
+  height: 15px;
+}
+
+.synapse-coord {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  background: rgba(6, 9, 17, 0.85);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-glass);
+}
+
+/* Milestone Cards */
+.milestone-card {
+  position: relative;
+  width: 100%;
+  padding: 2.2rem;
+  border-radius: var(--radius-lg);
+  background: rgba(11, 17, 32, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.card-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 242, 254, 0.03) 50%);
+  background-size: 100% 3px;
+  pointer-events: none;
+}
+
+.card-glow-halo {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Header & Badges */
+.milestone-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.node-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.node-state-badge svg { width: 12px; height: 12px; }
+
+.state-completed {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+
+.state-active {
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: var(--cyber-cyan);
+}
+
+.state-deployed {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--cyber-blue);
+}
+
+.state-certified {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: var(--neon-violet);
+}
+
+.state-innovation {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #f59e0b;
+}
+
+.state-singularity {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(0, 242, 254, 0.2));
+  border: 1px solid var(--neon-pink);
+  color: #f472b6;
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+}
+
+.node-year-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.milestone-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.milestone-subtitle {
+  font-size: 0.88rem;
+  color: var(--cyber-cyan);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.milestone-subtitle svg { width: 14px; height: 14px; }
+
+.milestone-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.3rem;
+}
+
+/* Tech Stack Chips */
+.milestone-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.tech-chip svg { width: 12px; height: 12px; color: var(--cyber-cyan); }
+
+.tech-chip:hover {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--border-glass-bright);
+  color: var(--text-main);
+}
+
+/* Key Metrics Stats Row */
+.milestone-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  background: rgba(6, 9, 17, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.milestone-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cyber-cyan);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  line-height: 1.2;
+}
+
+/* Footer Telemetry */
+.milestone-status-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-glass);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.telemetry-tag {
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.telemetry-tag svg { width: 12px; height: 12px; }
+.telemetry-coord { color: var(--text-subtle); }
+
+/* --------------------------------------------------------------------------
+   Milestone 4-State Transition Dynamics
+   -------------------------------------------------------------------------- */
+
+/* State 1: Inactive (Ahead on path) */
+.neural-milestone.milestone-inactive {
+  opacity: 0.32;
+  transform: scale(0.92) translateY(20px);
+  filter: blur(1px);
+}
+
+.neural-milestone.milestone-inactive .milestone-card {
+  border-color: var(--border-glass);
+  box-shadow: none;
+}
+
+.neural-milestone.milestone-inactive .beacon-core {
+  background: var(--bg-main);
+  border-color: var(--text-subtle);
+  color: var(--text-subtle);
+  box-shadow: none;
+}
+
+/* State 2: Approaching */
+.neural-milestone.milestone-approaching {
+  opacity: 0.75;
+  transform: scale(0.98) translateY(5px);
+  filter: blur(0px);
+}
+
+.neural-milestone.milestone-approaching .milestone-card {
+  border-color: rgba(0, 242, 254, 0.2);
+}
+
+.neural-milestone.milestone-approaching .beacon-core {
+  border-color: var(--cyber-blue);
+  color: var(--cyber-blue);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* State 3: Active (In Focus) */
+.neural-milestone.milestone-active {
+  opacity: 1;
+  transform: scale(1.02) translateY(0);
+  filter: blur(0px);
+}
+
+.neural-milestone.milestone-active .milestone-card {
+  border-color: var(--border-glass-bright);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 242, 254, 0.2);
+}
+
+.neural-milestone.milestone-active .card-glow-halo {
+  opacity: 1;
+}
+
+.neural-milestone.milestone-active .beacon-core {
+  background: var(--cyber-cyan);
+  color: #060911;
+  border-color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px var(--cyber-cyan), 0 0 50px var(--cyber-cyan);
+}
+
+.neural-milestone.milestone-active .ring-outer {
+  border-color: var(--cyber-cyan);
+  animation-duration: 6s;
+}
+
+/* State 4: Passed (Archived) */
+.neural-milestone.milestone-passed {
+  opacity: 0.55;
+  transform: scale(0.96) translateY(-10px);
+  filter: blur(0.5px);
+}
+
+.neural-milestone.milestone-passed .beacon-core {
+  background: var(--bg-surface-elevated);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 0 10px #10b981;
+}
+
+/* --------------------------------------------------------------------------
+   Milestone 6: Future Singularity Aesthetic
+   -------------------------------------------------------------------------- */
+.milestone-future .future-card {
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  background: linear-gradient(135deg, rgba(11, 17, 32, 0.9) 0%, rgba(20, 10, 35, 0.9) 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(236, 72, 153, 0.25);
+}
+
+.future-quantum-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.future-scanline {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(236, 72, 153, 0.05) 50%);
+  background-size: 100% 4px;
+}
+
+.future-halo {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+}
+
+.future-gradient-text {
+  background: linear-gradient(135deg, #00f2fe 0%, #ec4899 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.future-sub { color: #f472b6; }
+.future-year-badge {
+  border: 1px solid var(--neon-pink);
+  color: #f472b6;
+  background: rgba(236, 72, 153, 0.1);
+}
+
+.future-chip {
+  border-color: rgba(236, 72, 153, 0.3);
+}
+.future-chip:hover {
+  border-color: var(--neon-pink);
+  background: rgba(236, 72, 153, 0.15);
+}
+.future-chip svg { color: var(--neon-pink); }
+
+.future-stat .stat-num {
+  font-size: 1.35rem;
+}
+
+.future-telemetry { color: var(--neon-pink); }
+
+.pulse-magenta {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.future-core {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+}
+
+.neural-milestone.milestone-future.milestone-active .beacon-core {
+  background: var(--neon-pink);
+  color: #fff;
+  box-shadow: 0 0 35px var(--neon-pink), 0 0 70px var(--neon-pink);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout for Neural Timeline
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .neural-hud-bar {
+    top: 70px;
+    padding: 0.5rem 1rem;
+    gap: 0.75rem;
+  }
+  
+  .hud-phase-name { display: none; }
+  
+  .neural-conduit-track {
+    left: 28px;
+    transform: none;
+  }
+
+  .neural-milestone {
+    padding-left: 65px !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .milestone-anchor {
+    left: 28px;
+    transform: translate(-50%, -50%);
+  }
+
+  .synapse-coord {
+    display: none;
+  }
+
+  .milestone-card {
+    padding: 1.5rem;
+  }
+
+  .milestone-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .neural-hud-bar {
+    border-radius: var(--radius-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hud-scrubber-pills {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .scrubber-pill .pill-text {
+    display: none;
+  }
+
+  .milestone-header .milestone-title {
+    font-size: 1.15rem;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -2566,5 +3254,424 @@ img { max-width: 100%; height: auto; display: block; }
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-  background: #02040a;
+  background: #020409;
 }
+
+/* ==========================================================================
+   CONTINUOUS DIGITAL TIMELINE ARCHITECTURE (THE ENTIRE WEBSITE IS THE TIMELINE)
+   ========================================================================== */
+
+/* 1. Main Timeline Experience Wrapper */
+.timeline-experience-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+  overflow: hidden;
+}
+
+/* 2. Central Evolving Digital Timeline Conduit Beam */
+.central-timeline-conduit {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.conduit-line-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 242, 254, 0.05) 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.08) 80%,
+    rgba(0, 242, 254, 0.05) 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.conduit-line-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, #00f2fe 0%, #38bdf8 50%, #a855f7 100%);
+  box-shadow: 0 0 16px var(--cyber-cyan), 0 0 30px var(--cyber-cyan);
+  transition: height 0.1s ease-out;
+}
+
+.conduit-pulse-head {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00f2fe;
+  box-shadow: 0 0 20px #00f2fe, 0 0 40px #00f2fe;
+  z-index: 3;
+  transition: top 0.1s ease-out;
+}
+
+/* 3. Persistent Scroll Telemetry HUD Bar */
+.timeline-telemetry-hud {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 860px;
+  padding: 0.55rem 1.25rem;
+  background: rgba(2, 4, 9, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glass-bright);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.15);
+  transition: all var(--transition-fast);
+}
+
+.telemetry-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.telemetry-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 8px var(--cyber-cyan);
+  animation: pulseGlow 1.8s infinite alternate;
+}
+
+.telemetry-node-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.telemetry-center {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-grow: 1;
+  max-width: 320px;
+}
+
+.telemetry-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+.telemetry-progress-bg {
+  flex-grow: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.telemetry-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-accent);
+  border-radius: 3px;
+  box-shadow: 0 0 8px var(--cyber-cyan);
+  transition: width 0.1s ease-out;
+}
+
+.telemetry-percent {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-main);
+  font-weight: 700;
+  min-width: 36px;
+}
+
+.telemetry-right {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-subtle);
+}
+
+/* 4. Timeline Milestones & Spatial Node Flow */
+.timeline-spatial-stage {
+  position: relative;
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 9rem;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+.central-spatial-conduit {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.conduit-rail-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 242, 254, 0.05) 0%,
+    rgba(255, 255, 255, 0.08) 15%,
+    rgba(255, 255, 255, 0.08) 85%,
+    rgba(0, 242, 254, 0.05) 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.spatial-timeline-nodes-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+
+.spatial-node-block {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  opacity: 0.35;
+  transform: scale(0.95) translateY(40px);
+  filter: blur(1px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.spatial-node-block.milestone-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Branch Connector Beams */
+.spatial-node-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: opacity 0.5s ease, background 0.5s ease;
+}
+
+.node-align-left::before {
+  right: 50%;
+  width: calc(50% - 24px);
+  background: linear-gradient(270deg, rgba(0, 242, 254, 0.6) 0%, transparent 100%);
+}
+
+.node-align-right::before {
+  left: 50%;
+  width: calc(50% - 24px);
+  background: linear-gradient(90deg, rgba(0, 242, 254, 0.6) 0%, transparent 100%);
+}
+
+.spatial-node-block.milestone-active::before {
+  opacity: 1;
+  box-shadow: 0 0 10px var(--cyber-cyan);
+}
+
+/* Spatial Alignment & 3D Perspective Tilt */
+.spatial-node-block.node-align-center {
+  justify-content: center;
+}
+
+.spatial-node-block.node-align-center .spatial-node-card {
+  width: 100%;
+}
+
+.spatial-node-block.node-align-left {
+  justify-content: flex-start;
+  padding-right: 52%;
+  perspective: 1200px;
+}
+
+.spatial-node-block.node-align-left .spatial-node-card {
+  width: 100%;
+  transform-origin: right center;
+  transform: rotateY(-8deg) scale(0.96);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+}
+
+.spatial-node-block.node-align-left.milestone-active .spatial-node-card {
+  transform: rotateY(0deg) scale(1);
+}
+
+.spatial-node-block.node-align-right {
+  justify-content: flex-end;
+  padding-left: 52%;
+  perspective: 1200px;
+}
+
+.spatial-node-block.node-align-right .spatial-node-card {
+  width: 100%;
+  transform-origin: left center;
+  transform: rotateY(8deg) scale(0.96);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+}
+
+.spatial-node-block.node-align-right.milestone-active .spatial-node-card {
+  transform: rotateY(0deg) scale(1);
+}
+
+.spatial-node-card {
+  padding: 2.2rem;
+  width: 100%;
+  position: relative;
+}
+
+.node-header-inline {
+  margin-bottom: 1.5rem;
+}
+
+.node-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Spatial Pin Beacon Anchors */
+.spatial-pin-anchor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.pin-beacon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  transition: all 0.5s ease;
+}
+
+.pin-ring.outer-ring {
+  animation: pulseGlow 3s infinite alternate;
+}
+
+.pin-core {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--border-glass);
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  transition: all var(--transition-normal);
+  z-index: 2;
+}
+
+.spatial-node-block.milestone-active .pin-core {
+  background: #020409;
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan);
+  box-shadow: 0 0 25px var(--cyber-cyan), inset 0 0 10px var(--cyber-cyan);
+}
+
+.pin-tag {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  letter-spacing: 1px;
+  background: rgba(2, 4, 9, 0.95);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glass);
+  white-space: nowrap;
+  transition: all 0.4s ease;
+}
+
+.spatial-node-block.milestone-active .pin-tag {
+  color: var(--cyber-cyan);
+  border-color: var(--border-glass-bright);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+}
+
+/* Responsive adjustments for mobile timeline */
+@media (max-width: 992px) {
+  .timeline-telemetry-hud {
+    top: 72px;
+    width: 94%;
+    padding: 0.45rem 0.85rem;
+  }
+  .telemetry-right {
+    display: none;
+  }
+  .central-spatial-conduit {
+    left: 24px;
+    transform: none;
+  }
+  .spatial-pin-anchor {
+    left: 24px;
+    top: 40px;
+    transform: translateX(-50%);
+  }
+  .spatial-node-block.node-align-left,
+  .spatial-node-block.node-align-right {
+    padding-left: 3.5rem;
+    padding-right: 0;
+    perspective: none;
+  }
+  .spatial-node-block.node-align-left .spatial-node-card,
+  .spatial-node-block.node-align-right .spatial-node-card {
+    transform: none !important;
+  }
+  .spatial-node-block::before {
+    display: none;
+  }
+}
+
