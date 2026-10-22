@@ -701,23 +701,6 @@ img {
   padding-top: 0;
 }
 
-/* Main Swaying Pendulum Rig (Sways right & left from top center) */
-.id-swaying-assembly {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center;
-  animation: naturalPendulumSway 5.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
-  will-change: transform;
-}
-
-/* Smoothly pause sway on hover so user can easily interact */
-.hero-id-rig-wrapper:hover .id-swaying-assembly {
-  animation-play-state: paused;
-}
-
 /* Dual V-Lanyard Neck Sling (Emerges directly from bottom line of upper bar) */
 .id-v-lanyard-wrap {
   position: relative;
@@ -733,10 +716,10 @@ img {
 /* Upper Bar Mount Clamps (Directly touching the bottom line of the upper bar) */
 .lanyard-upper-clamps {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 100%;
-  height: 6px;
+  height: 7px;
   display: flex;
   justify-content: space-between;
   padding: 0 16px;
@@ -746,14 +729,15 @@ img {
 
 .upper-clamp {
   width: 36px;
-  height: 6px;
-  background: linear-gradient(180deg, #444444, #1a1a1a);
+  height: 7px;
+  background: linear-gradient(180deg, #383838, #181818);
   border: 1px solid var(--border-grid);
   border-top: 2px solid var(--color-lime);
+  border-radius: 0 0 3px 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .upper-clamp .clamp-bolt {
@@ -770,14 +754,32 @@ img {
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
 }
 
+/* Main Swaying Pendulum Rig (Sways right & left from swivel ring) */
+.id-swaying-assembly {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  margin-top: -15px;
+  animation: naturalPendulumSway 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+  z-index: 8;
+}
+
+/* Smoothly pause sway on hover so user can easily interact */
+.hero-id-rig-wrapper:hover .id-swaying-assembly,
+.hero-id-rig-wrapper:hover .hero-id-card {
+  animation-play-state: paused;
+}
+
 /* Metal Carabiner Hook passing into the ID card slot hole */
 .id-metal-hook-element {
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 16px;
   height: 22px;
+  margin-bottom: -10px;
   z-index: 9;
 }
 
@@ -800,16 +802,15 @@ img {
   border: 2px solid var(--border-grid);
   border-radius: 22px;
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.06);
-  margin-top: -10px;
+  margin-top: 0;
   z-index: 5;
   transform-origin: top center;
-  animation: naturalCardLag 5.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  animation: naturalCardLag 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   transition: border-color var(--transition-snap), box-shadow var(--transition-snap);
   overflow: hidden;
 }
 
 .hero-id-rig-wrapper:hover .hero-id-card {
-  animation-play-state: paused;
   border-color: var(--color-lime);
   box-shadow: 0 26px 55px rgba(0, 0, 0, 0.9), 0 0 22px var(--color-lime-glow);
 }
@@ -1095,19 +1096,19 @@ img {
    ========================================================================== */
 @keyframes naturalPendulumSway {
   0% {
-    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+    transform: rotate(0deg) rotateY(0deg);
   }
   25% {
-    transform: rotate(3.6deg) translateX(12px) rotateY(-3.5deg);
+    transform: rotate(4.2deg) rotateY(-3deg);
   }
   50% {
-    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+    transform: rotate(0deg) rotateY(0deg);
   }
   75% {
-    transform: rotate(-3.6deg) translateX(-12px) rotateY(3.5deg);
+    transform: rotate(-4.2deg) rotateY(3deg);
   }
   100% {
-    transform: rotate(0deg) translateX(0px) rotateY(0deg);
+    transform: rotate(0deg) rotateY(0deg);
   }
 }
 
@@ -1116,13 +1117,13 @@ img {
   0% {
     transform: rotate(0deg);
   }
-  20% {
+  25% {
     transform: rotate(1.2deg);
   }
   50% {
     transform: rotate(0deg);
   }
-  70% {
+  75% {
     transform: rotate(-1.2deg);
   }
   100% {
