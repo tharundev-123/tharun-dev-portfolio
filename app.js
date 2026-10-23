@@ -197,18 +197,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (mobileToggle && mobileDrawer) {
-    mobileToggle.addEventListener('click', () => {
-      const isOpen = mobileDrawer.classList.toggle('open');
-      mobileToggle.innerHTML = isOpen ? `<i data-lucide="x"></i>` : `<i data-lucide="menu"></i>`;
+    function setDrawerState(open) {
+      mobileDrawer.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mobileToggle.innerHTML = open ? `<i data-lucide="x"></i>` : `<i data-lucide="menu"></i>`;
       if (window.lucide) lucide.createIcons();
+    }
+
+    mobileToggle.addEventListener('click', () => {
+      const isCurrentlyOpen = mobileDrawer.classList.contains('open');
+      setDrawerState(!isCurrentlyOpen);
     });
 
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-        mobileToggle.innerHTML = `<i data-lucide="menu"></i>`;
-        if (window.lucide) lucide.createIcons();
+        setDrawerState(false);
       });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+        setDrawerState(false);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mobileDrawer.classList.contains('open')) {
+        setDrawerState(false);
+      }
     });
   }
 

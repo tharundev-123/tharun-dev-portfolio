@@ -101,6 +101,10 @@ body {
   letter-spacing: -0.01em;
 }
 
+body.nav-open {
+  overflow: hidden;
+}
+
 /* Three.js Atmospheric Background Canvas */
 #bg-canvas {
   position: fixed;
@@ -215,22 +219,26 @@ img {
 /* Massive Brutalist Headings */
 .title-brutalist-massive {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7.8vw, 7.6rem);
+  font-size: clamp(2.1rem, 7.8vw, 7.6rem);
   font-weight: 900;
-  line-height: 0.92;
+  line-height: 0.94;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .section-title-brutalist {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+  font-size: clamp(1.85rem, 5.2vw, 4.5rem);
   font-weight: 800;
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .card-title-brutalist {
@@ -321,6 +329,7 @@ img {
   justify-content: center;
   gap: 0.65rem;
   padding: 0.95rem 1.85rem;
+  min-height: 44px;
   font-family: var(--font-mono);
   font-size: 0.84rem;
   font-weight: 600;
@@ -494,8 +503,10 @@ img {
 }
 
 .btn-header-sharp {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -524,6 +535,7 @@ img {
   align-items: center;
   gap: 0.6rem;
   padding: 0.45rem 0.85rem;
+  min-height: 40px;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-grid);
   border-radius: var(--radius-sm);
@@ -549,8 +561,10 @@ img {
 
 .mobile-toggle-sharp {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   background-color: var(--bg-secondary);
@@ -623,13 +637,15 @@ img {
 /* Massive Headline */
 .hero-giant-headline {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7.2vw, 7.2rem);
+  font-size: clamp(2.1rem, 7vw, 7.2rem);
   font-weight: 900;
-  line-height: 0.92;
+  line-height: 0.94;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-primary);
   margin-top: 0.25rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-name-label {
@@ -718,7 +734,8 @@ img {
 /* Dual V-Lanyard Neck Sling (Emerges directly from bottom line of upper bar) */
 .id-v-lanyard-wrap {
   position: relative;
-  width: 340px;
+  width: 100%;
+  max-width: 340px;
   height: 135px;
   display: flex;
   flex-direction: column;
@@ -811,7 +828,7 @@ img {
 .hero-id-card {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: min(360px, 100%);
   background: linear-gradient(165deg, #171717 0%, #121212 50%, #0d0d0d 100%);
   border: 2px solid var(--border-grid);
   border-radius: 22px;
@@ -1056,7 +1073,8 @@ img {
   font-size: 0.69rem;
   font-weight: 700;
   color: var(--text-primary);
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* Security Barcode Stripe */
@@ -1766,7 +1784,7 @@ img {
 
 .pinned-repos-matrix {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.5rem;
 }
 
@@ -1819,7 +1837,7 @@ img {
    -------------------------------------------------------------------------- */
 .disciplines-matrix-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 2rem;
 }
 
@@ -1941,7 +1959,7 @@ img {
    -------------------------------------------------------------------------- */
 .credentials-brutalist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
   gap: 2rem;
 }
 
@@ -2071,12 +2089,14 @@ img {
 
 .dispatch-massive-heading {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-size: clamp(1.85rem, 4.5vw, 4.2rem);
   font-weight: 900;
-  line-height: 0.96;
+  line-height: 0.98;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .dispatch-statement-lead {
@@ -2745,19 +2765,35 @@ textarea.input-brutalist {
 /* --------------------------------------------------------------------------
    20. Responsive Media Queries
    -------------------------------------------------------------------------- */
+
+/* Large Tablets & Compact Laptops */
+@media (max-width: 1200px) {
+  .container,
+  .container-editorial {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .hero-architectural-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Tablets Landscape & Smaller Laptops */
 @media (max-width: 1024px) {
   .hero-architectural-grid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
   }
 
   .hero-id-rig-wrapper {
-    max-width: 440px;
+    max-width: 400px;
     margin: 0 auto;
   }
 
   .dossier-grid-brutalist {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .timeline-brutalist-wrap {
@@ -2787,9 +2823,15 @@ textarea.input-brutalist {
 
   .dispatch-brutalist-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-top-matrix {
+    gap: 2.5rem;
   }
 }
 
+/* Tablets Portrait & Large Phones */
 @media (max-width: 768px) {
   .nav-brutalist {
     display: none;
@@ -2797,6 +2839,30 @@ textarea.input-brutalist {
 
   .mobile-toggle-sharp {
     display: inline-flex;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .btn-header-sharp {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .cmd-trigger-sharp {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .cmd-trigger-sharp span {
+    display: none;
   }
 
   .mobile-nav-drawer {
@@ -2805,12 +2871,14 @@ textarea.input-brutalist {
     left: 0;
     width: 100%;
     height: calc(100vh - var(--header-height));
-    background-color: #101010;
+    background-color: rgba(16, 16, 16, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--border-grid);
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem;
     display: none;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     z-index: 999;
     overflow-y: auto;
   }
@@ -2821,26 +2889,91 @@ textarea.input-brutalist {
 
   .mobile-nav-drawer a {
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 5vw, 1.85rem);
     font-weight: 800;
     text-transform: uppercase;
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-grid);
     padding-bottom: 0.75rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-snap), border-color var(--transition-snap);
+  }
+
+  .mobile-nav-drawer a:hover {
+    color: var(--color-lime);
+    border-bottom-color: var(--color-lime);
   }
 
   .mobile-nav-drawer a .nav-num {
     color: var(--color-lime);
     margin-right: 0.75rem;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
-  .cmd-trigger-sharp span {
-    display: none;
+  /* Containers & Section Spacing */
+  .container,
+  .container-editorial {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .section-brutalist {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .section-header-brutalist {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-desc-brutalist {
+    font-size: 1.02rem;
+  }
+
+  /* Hero Section */
+  .hero-brutalist {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 1rem);
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-main-content {
+    padding-top: 0.5rem;
+    gap: 1.25rem;
+  }
+
+  .hero-kicker-strip {
+    font-size: 0.72rem;
+    gap: 0.65rem;
+  }
+
+  .hero-bio-brutalist {
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .hero-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero-id-rig-wrapper {
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   /* Single Column Mobile Timeline */
+  .timeline-brutalist-wrap {
+    padding: 1rem 0;
+  }
+
   .timeline-spine-line,
   .timeline-spine-progress {
     left: 16px;
@@ -2850,6 +2983,7 @@ textarea.input-brutalist {
     grid-template-columns: 1fr;
     gap: 0.65rem;
     padding-left: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .timeline-node-col {
@@ -2868,21 +3002,447 @@ textarea.input-brutalist {
     padding-left: 0;
   }
 
+  .timeline-card-brutalist {
+    padding: 1.5rem 1.25rem;
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  .timeline-card-head h3 {
+    font-size: 1.25rem;
+  }
+
+  /* GitHub Feed */
+  .github-brutalist-block {
+    padding: 2rem 1.5rem;
+    margin-top: 2.5rem;
+    box-shadow: 6px 6px 0px #000;
+  }
+
   .gh-stat-metrics-row {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .gh-stat-cell .number {
+    font-size: clamp(2.2rem, 7vw, 2.8rem);
+  }
+
+  .gh-block-header {
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Disciplines & Horizons */
+  .discipline-block {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .horizons-brutalist-strip {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Credentials */
+  .credential-slip-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .cred-heading-title {
+    font-size: 1.25rem;
+  }
+
+  /* Dispatch / Contact */
+  .dispatch-form-matrix {
+    padding: 2rem 1.5rem;
+    box-shadow: 6px 6px 0px #000;
+  }
+
+  .form-matrix-title {
+    font-size: 1.5rem;
   }
 
   .form-dual-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .hero-specs-grid {
-    grid-template-columns: 1fr;
+  .direct-email-matrix {
+    padding: 1.25rem 1.5rem;
   }
 
+  .dispatch-links-row {
+    gap: 0.65rem;
+  }
+
+  /* Footer */
+  .site-footer-brutalist {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .footer-top-matrix {
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-columns-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    width: 100%;
+  }
+
+  .footer-nav-col a {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-bottom-readout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding-top: 1.5rem;
+  }
+
+  /* Modals & Floating Widgets */
   .archival-assistant-widget {
     bottom: 1.25rem;
     right: 1.25rem;
+  }
+
+  .toast-container {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    width: auto;
+  }
+
+  .toast-brutalist {
+    width: 100%;
+  }
+
+  .cmd-palette-backdrop {
+    padding: 1rem;
+    padding-top: 8vh;
+  }
+
+  .media-modal-backdrop {
+    padding: 1rem;
+  }
+
+  .media-modal-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Mobile Phones (Common widths: 375px, 390px, 414px, 430px) */
+@media (max-width: 480px) {
+  .container,
+  .container-editorial {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-brutalist {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  /* Header Brand & Controls */
+  .brand-sub {
+    display: none;
+  }
+
+  .header-controls {
+    gap: 0.45rem;
+  }
+
+  .btn-header-sharp {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .cmd-trigger-sharp {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .mobile-toggle-sharp {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Hero Actions */
+  .hero-actions-cluster {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .hero-actions-cluster .btn-brutalist {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.85rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* ID Card Rig Responsive Sizing */
+  .hero-id-rig-wrapper {
+    max-width: 320px;
+  }
+
+  .id-photo-center-frame {
+    width: 195px;
+    height: 210px;
+  }
+
+  .id-card-top-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .id-card-bottom-details {
+    padding: 0.65rem 1rem 0.85rem;
+  }
+
+  .id-holder-fullname {
+    font-size: 1.18rem;
+  }
+
+  /* Dossier / About */
+  .stance-punchline {
+    font-size: 1.45rem;
+    padding-left: 0.85rem;
+    border-left-width: 3px;
+  }
+
+  .stance-vision-box {
+    padding: 1.25rem;
+  }
+
+  .matrix-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .matrix-row .k {
+    font-size: 0.68rem;
+  }
+
+  .matrix-row .v {
+    font-size: 0.88rem;
+  }
+
+  /* Timeline */
+  .timeline-entry {
+    padding-left: 1.85rem;
+  }
+
+  .timeline-spine-line,
+  .timeline-spine-progress {
+    left: 11px;
+  }
+
+  .timeline-node-col {
+    left: 6px;
+  }
+
+  .timeline-card-brutalist {
+    padding: 1.15rem 1rem;
+  }
+
+  .timeline-card-head h3 {
+    font-size: 1.15rem;
+  }
+
+  .timeline-desc-copy {
+    font-size: 0.92rem;
+  }
+
+  /* Case Studies */
+  .case-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .case-actions-row .btn-brutalist {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .case-image-frame {
+    box-shadow: 6px 6px 0px #000;
+  }
+
+  /* GitHub Block */
+  .github-brutalist-block {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .gh-stat-metrics-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .gh-stat-cell .number {
+    font-size: 2rem;
+  }
+
+  .gh-id-text h4 {
+    font-size: 1.15rem;
+  }
+
+  /* Direct Email Matrix */
+  .direct-email-matrix {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1.15rem 1rem;
+  }
+
+  .direct-email-matrix .val {
+    font-size: clamp(0.85rem, 4.2vw, 1rem);
+    word-break: break-all;
+  }
+
+  .btn-copy-sharp {
+    width: 100%;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  /* Contact Form */
+  .dispatch-form-matrix {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .form-matrix-title {
+    font-size: 1.35rem;
+  }
+
+  .input-brutalist {
+    padding: 0.8rem 1rem;
+    min-height: 46px;
+    font-size: 0.92rem;
+  }
+
+  #form-submit-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .dispatch-social-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* Footer */
+  .footer-columns-group {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-brand-title {
+    font-size: 1.75rem;
+  }
+
+  /* AI Assistant Dialog */
+  .assistant-dialog-sharp {
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 4.5rem;
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - 5.5rem);
+  }
+
+  .archival-assistant-widget {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .chip-sharp {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Compact Mobile Phones (320px - 350px) */
+@media (max-width: 360px) {
+  .container,
+  .container-editorial {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .brand-brutalist {
+    font-size: 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .cmd-trigger-sharp {
+    display: none;
+  }
+
+  .hero-giant-headline {
+    font-size: clamp(1.75rem, 8.5vw, 2.1rem);
+    line-height: 0.96;
+  }
+
+  .hero-id-rig-wrapper {
+    max-width: 275px;
+  }
+
+  .id-photo-center-frame {
+    width: 165px;
+    height: 180px;
+  }
+
+  .id-holder-fullname {
+    font-size: 1.05rem;
+  }
+
+  .timeline-card-brutalist {
+    padding: 1rem 0.75rem;
+  }
+
+  .pinned-repos-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .disciplines-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .credentials-brutalist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .horizons-chips-row .horizon-box {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.65rem;
   }
 }
 
