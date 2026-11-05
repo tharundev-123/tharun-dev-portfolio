@@ -417,6 +417,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return false;
     }
 
+    // Ensure subject has a clean fallback value if left empty
+    if (subjectInput && !subjectInput.value.trim()) {
+      subjectInput.value = 'Portfolio Inquiry';
+    }
+
     // Set duplicate prevention & loading animation on button
     isSubmitting = true;
     submissionDispatched = true;
@@ -428,28 +433,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
     }
 
-    // Background asynchronous fetch via FormData
-    try {
-      const formData = new FormData();
-      formData.append(GFORM_FIELDS.name, nameVal);
-      formData.append(GFORM_FIELDS.email, emailVal);
-      formData.append(GFORM_FIELDS.subject, subjectVal);
-      formData.append(GFORM_FIELDS.message, messageVal);
-
-      fetch(GFORM_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      }).catch(err => {
-        console.warn('Background fetch notice:', err);
-      });
-    } catch (err) {
-      console.warn('FormData preparation notice:', err);
-    }
-
-    // DO NOT call e.preventDefault()!
-    // The browser natively serializes all input fields and POSTs them into gform-hidden-iframe!
-    // A safety timer guarantees success state transition if the cross-origin iframe load event is suppressed
+    // Single-dispatch architecture:
+    // The browser natively serializes all input fields and POSTs them into gform-hidden-iframe.
+    // By omitting fetch(), we ensure EXACTLY ONE entry is submitted to Google Forms (no duplicate).
+    // A safety timer guarantees success state transition if the cross-origin iframe load event is suppressed.
     setTimeout(() => {
       if (submissionDispatched) {
         handleSubmissionSuccess();
