@@ -158,11 +158,13 @@
                 <span>Get In Touch</span>
                 <i data-lucide="mail" style="width:16px; height:16px;"></i>
               </a>
-              <button class="btn-brutalist btn-brutalist-ghost" id="resume-download-btn"
-                title="Download Tharun Dev Curriculum Vitae">
+              <a href="./public/Tharun_Dev_MC_Resume.pdf" download="Tharun_Dev_MC_Resume.pdf"
+                class="btn-brutalist btn-brutalist-ghost" id="resume-download-btn"
+                title="Download Tharun Dev Curriculum Vitae (PDF)" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="file-text" style="width:16px; height:16px;"></i>
                 <span>Curriculum Vitae</span>
-              </button>
+                <i data-lucide="download" style="width:14px; height:14px; opacity:0.85;"></i>
+              </a>
             </div>
 
             <!-- Architectural Specs Grid -->
@@ -1339,6 +1341,56 @@
 
   <!-- Audio element fallback for voice.mp3 -->
   <audio id="user-voice-audio" src="./public/voice.mp3" preload="auto"></audio>
+
+  <!-- ========================================================================
+       CONTACT SUBMISSION CONFIRMATION MODAL
+       ======================================================================== -->
+  <div class="media-modal-backdrop" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="media-modal-card contact-popup-card">
+      <div class="media-modal-head">
+        <div class="media-title-group">
+          <h3>Message Received</h3>
+          <span class="sub" style="color: var(--color-lime); font-weight:700;">// TRANSMISSION CONFIRMED</span>
+        </div>
+        <button class="media-modal-close-sharp" id="contact-modal-close" aria-label="Close Confirmation Dialog">
+          <i data-lucide="x" style="width:16px; height:16px;"></i>
+        </button>
+      </div>
+
+      <div class="contact-popup-body">
+        <div class="contact-popup-status-badge">
+          <div class="popup-badge-inner">
+            <i data-lucide="check" style="width:28px; height:28px;"></i>
+          </div>
+        </div>
+
+        <div class="contact-popup-text-block">
+          <h4 class="contact-popup-heading">Thank You for Your Message!</h4>
+          <p class="contact-popup-lead">
+            Your dispatch has been successfully transmitted and recorded in Tharun's inbox. Thank you for connecting!
+          </p>
+
+          <div class="contact-reply-timeline-card">
+            <div class="reply-timeline-head">
+              <span class="reply-pulsing-indicator"></span>
+              <span class="reply-timeline-title">EXPECTED RESPONSE TIMELINE</span>
+            </div>
+            <div class="reply-timeline-value">Within 24 Hours</div>
+            <p class="reply-timeline-desc">
+              Tharun reviews all technical dispatches, project opportunities, and inquiries daily. You will receive a direct reply at your email address shortly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-popup-footer">
+        <button class="btn-brutalist btn-brutalist-lime" id="contact-modal-dismiss-btn" style="width:100%; justify-content:center;">
+          <span>Acknowledged &bull; Dismiss</span>
+          <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ========================================================================
        COMMAND PALETTE (Cmd+K or /)

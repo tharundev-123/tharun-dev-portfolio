@@ -2673,6 +2673,134 @@ button[aria-busy="true"] {
 }
 
 /* --------------------------------------------------------------------------
+   17.1. Submission Confirmation Modal (.contact-popup-card)
+   -------------------------------------------------------------------------- */
+.contact-popup-card {
+  max-width: 520px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-grid);
+  box-shadow: 16px 16px 0px #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-popup-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-lime), #80c410, transparent);
+}
+
+.contact-popup-body {
+  padding: 0.5rem 0 1rem 0;
+}
+
+.contact-popup-status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.15rem;
+}
+
+.popup-badge-inner {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(215, 255, 53, 0.1);
+  border: 1px solid var(--color-lime);
+  color: var(--color-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(215, 255, 53, 0.25);
+}
+
+.contact-popup-heading {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.contact-popup-lead {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.contact-reply-timeline-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-grid);
+  border-left: 3px solid var(--color-lime);
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1.25rem;
+}
+
+.reply-timeline-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.reply-pulsing-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-lime);
+  box-shadow: 0 0 8px var(--color-lime);
+  animation: pulse-lime 2s infinite ease-in-out;
+}
+
+@keyframes pulse-lime {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
+.reply-timeline-title {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.reply-timeline-value {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-lime);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.45rem;
+}
+
+.reply-timeline-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.contact-popup-footer {
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
    18. Persistent Archival Assistant (TD.AI Sharp Badge)
    -------------------------------------------------------------------------- */
 .archival-assistant-widget {

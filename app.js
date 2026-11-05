@@ -291,6 +291,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactErrorText = document.getElementById('contact-error-text');
   const gformHiddenIframe = document.getElementById('gform-hidden-iframe');
 
+  // Confirmation Popup Modal Elements
+  const contactModal = document.getElementById('contact-modal');
+  const contactModalClose = document.getElementById('contact-modal-close');
+  const contactModalDismiss = document.getElementById('contact-modal-dismiss-btn');
+
+  function openContactModal() {
+    if (!contactModal) return;
+    contactModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function closeContactModal() {
+    if (!contactModal) return;
+    contactModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (contactModalClose) {
+    contactModalClose.addEventListener('click', closeContactModal);
+  }
+
+  if (contactModalDismiss) {
+    contactModalDismiss.addEventListener('click', closeContactModal);
+  }
+
+  if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        closeContactModal();
+      }
+    });
+  }
+
   const GFORM_ENDPOINT = 'https://docs.google.com/forms/d/e/1FAIpQLSdfiMWNINyjieEmvX01kJWdFZ_N6K3mbdGZdJ1b5oxxaVOnag/formResponse';
   const GFORM_FIELDS = {
     name: 'entry.60291032',
@@ -322,11 +356,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show attractive success feedback card
     if (contactSuccessMsg) {
       contactSuccessMsg.classList.add('show');
-      contactSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     resetSubmitButton();
     showToast('✓ Response submitted to Google Forms');
+
+    // Trigger confirmation popup modal with thank you message & reply timeline
+    openContactModal();
   }
 
   // Listen to the hidden iframe load event when Google Forms responds
@@ -441,12 +477,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* Curriculum Vitae Download Handler */
+  function triggerCvDownload() {
+    const cvUrl = './public/Tharun_Dev_MC_Resume.pdf';
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = 'Tharun_Dev_MC_Resume.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('✓ Downloading THARUN DEV M C — Curriculum Vitae (PDF)');
+  }
+
   const resumeBtn = document.getElementById('resume-download-btn');
   if (resumeBtn) {
-    resumeBtn.addEventListener('click', () => {
-      showToast('Preparing THARUN DEV M C — Curriculum Vitae...');
-      document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
-      showToast('To receive the official PDF CV, please send a message below.');
+    resumeBtn.addEventListener('click', (e) => {
+      // Anchor handles download directly; show confirmation toast
+      showToast('✓ Downloading THARUN DEV M C — Curriculum Vitae (PDF)');
     });
   }
 
@@ -588,6 +636,8 @@ document.addEventListener('DOMContentLoaded', () => {
       closeCmdPalette();
     } else if (e.key === 'Escape' && mediaModal?.classList.contains('open')) {
       closeMediaTapeModal();
+    } else if (e.key === 'Escape' && contactModal?.classList.contains('open')) {
+      closeContactModal();
     }
   });
 
@@ -618,8 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (action === 'goto-credentials') document.getElementById('credentials')?.scrollIntoView({ behavior: 'smooth' });
       else if (action === 'goto-dispatch') document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
       else if (action === 'resume') {
-        document.getElementById('dispatch')?.scrollIntoView({ behavior: 'smooth' });
-        showToast('Send a message below to request the official PDF CV.');
+        triggerCvDownload();
       } else if (action === 'tape') {
         openMediaTapeModal();
       }
@@ -649,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "about": "Tharun Dev M C is a B.Tech Computer Science student specializing in AI & ML at Chandigarh University, native to Kozhikode, Kerala, India. His focus is on Python development, cloud cognitive engineering, and machine learning systems.",
     "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore the project details in the Featured Projects section.",
     "certs": "Tharun holds Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), Nutanix Multicloud (MCI 6, EUC 6, MCA 6), and Univ of Pennsylvania Python accreditation.",
-    "resume": "Tharun's verified Curriculum Vitae can be requested directly via the Contact section below.",
+    "resume": "Downloading Tharun's official Curriculum Vitae (PDF). You can review his full academic record, engineering credentials, and machine learning skill set in the document.",
     "github": "Opening Tharun's GitHub profile at github.com/tharundev-123...",
     "contact": "You can reach Tharun directly at tharundevmc@gmail.com or scroll to the Contact section below to send a message."
   };
@@ -675,7 +724,9 @@ document.addEventListener('DOMContentLoaded', () => {
           aiMessages.scrollTop = aiMessages.scrollHeight;
 
           // Actions
-          if (q === 'projects') {
+          if (q === 'resume') {
+            triggerCvDownload();
+          } else if (q === 'projects') {
             document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
           } else if (q === 'certs') {
             document.getElementById('credentials')?.scrollIntoView({ behavior: 'smooth' });
