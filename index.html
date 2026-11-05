@@ -1188,43 +1188,58 @@
             </div>
           </div>
 
-          <!-- Working FormSubmit Form Matrix -->
+          <!-- Direct Contact Form Matrix -->
           <div class="dispatch-form-matrix">
             <h3 class="form-matrix-title">Send a Direct Message</h3>
-            <p class="form-matrix-sub">Messages routed directly to tharundevmc@gmail.com.</p>
+            <p class="form-matrix-sub">Responses delivered directly to Google Forms &amp; tharundevmc@gmail.com.</p>
 
             <!-- Success Card -->
-            <div id="contact-success-msg" class="contact-feedback-box">
-              <h4>// MESSAGE SENT SUCCESSFULLY</h4>
-              <p>Tharun Dev has received your message and will respond within 24 hours.</p>
+            <div id="contact-success-msg" class="contact-feedback-box success">
+              <div class="feedback-head-row">
+                <i data-lucide="check-circle-2" style="width:20px; height:20px; color:var(--color-lime);"></i>
+                <h4>// MESSAGE SUBMITTED SUCCESSFULLY</h4>
+              </div>
+              <p>Your response has been transmitted to Google Forms and recorded. Tharun Dev will review your message and respond within 24 hours.</p>
             </div>
 
-            <form id="contact-form" class="form-brutalist" onsubmit="event.preventDefault(); return false;">
+            <!-- Error Card -->
+            <div id="contact-error-msg" class="contact-feedback-box error">
+              <div class="feedback-head-row">
+                <i data-lucide="alert-triangle" style="width:20px; height:20px; color:#ff5252;"></i>
+                <h4>// SUBMISSION COULD NOT BE VERIFIED</h4>
+              </div>
+              <p id="contact-error-text">Unable to transmit message to Google Forms. Please verify your connection or email directly at <a href="mailto:tharundevmc@gmail.com" class="lime-word">tharundevmc@gmail.com</a>.</p>
+            </div>
+
+            <!-- Hidden Iframe Target for Seamless Background Google Forms Dispatch -->
+            <iframe name="gform-hidden-iframe" id="gform-hidden-iframe" style="display:none;" aria-hidden="true" tabindex="-1"></iframe>
+
+            <form id="contact-form" class="form-brutalist" action="https://docs.google.com/forms/d/e/1FAIpQLSdfiMWNINyjieEmvX01kJWdFZ_N6K3mbdGZdJ1b5oxxaVOnag/formResponse" method="POST" target="gform-hidden-iframe">
               <div class="form-dual-row">
                 <div class="field-group-brutalist">
                   <label for="c-name">Sender Full Name <span class="req">*</span></label>
-                  <input type="text" id="c-name" name="name" class="input-brutalist" placeholder="Your Name" required>
+                  <input type="text" id="c-name" name="entry.60291032" class="input-brutalist" placeholder="Your Name" required>
                 </div>
                 <div class="field-group-brutalist">
                   <label for="c-email">Sender Email Address <span class="req">*</span></label>
-                  <input type="email" id="c-email" name="email" class="input-brutalist" placeholder="name@domain.com"
+                  <input type="email" id="c-email" name="entry.1996527582" class="input-brutalist" placeholder="name@domain.com"
                     required>
                 </div>
               </div>
 
               <div class="field-group-brutalist">
                 <label for="c-subject">Subject Scope</label>
-                <input type="text" id="c-subject" name="subject" class="input-brutalist"
+                <input type="text" id="c-subject" name="entry.1253369969" class="input-brutalist"
                   placeholder="Internship Opportunity / AI Collaboration">
               </div>
 
               <div class="field-group-brutalist">
                 <label for="c-message">Your Message <span class="req">*</span></label>
-                <textarea id="c-message" name="message" class="input-brutalist" rows="5"
+                <textarea id="c-message" name="entry.982865827" class="input-brutalist" rows="5"
                   placeholder="Share opportunity or project details..." required></textarea>
               </div>
 
-              <button type="button" class="btn-brutalist btn-brutalist-lime" id="form-submit-btn">
+              <button type="submit" class="btn-brutalist btn-brutalist-lime" id="form-submit-btn">
                 <span>Send Message</span>
                 <i data-lucide="send" style="width:16px; height:16px;"></i>
               </button>

@@ -2285,32 +2285,94 @@ textarea.input-brutalist {
   min-height: 130px;
 }
 
-/* Feedback card */
+/* Feedback card & Animations */
 .contact-feedback-box {
   padding: 1.5rem;
   background-color: var(--bg-elevated);
-  border: 1px solid var(--color-lime);
+  border: 1px solid var(--border-grid);
   border-left: 5px solid var(--color-lime);
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
   display: none;
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 .contact-feedback-box.show {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: feedbackSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes feedbackSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.contact-feedback-box.success {
+  border-color: rgba(215, 255, 53, 0.35);
+  border-left: 5px solid var(--color-lime);
+  box-shadow: 0 4px 20px rgba(215, 255, 53, 0.08);
+}
+
+.contact-feedback-box.error {
+  border-color: rgba(255, 82, 82, 0.35);
+  border-left: 5px solid #ff5252;
+  box-shadow: 0 4px 20px rgba(255, 82, 82, 0.08);
+}
+
+.contact-feedback-box .feedback-head-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.45rem;
 }
 
 .contact-feedback-box h4 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.12rem;
   text-transform: uppercase;
   color: var(--color-lime);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
+  letter-spacing: 0.04em;
+}
+
+.contact-feedback-box.error h4 {
+  color: #ff5252;
 }
 
 .contact-feedback-box p {
   font-size: 0.94rem;
+  line-height: 1.6;
   color: var(--text-primary);
+}
+
+/* Smooth Spinner for Submit Button */
+@keyframes spinSmooth {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  display: inline-block;
+  animation: spinSmooth 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+button[aria-busy="true"] {
+  cursor: wait;
+  opacity: 0.85;
 }
 
 /* --------------------------------------------------------------------------

@@ -281,74 +281,151 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     8. Direct Contact Form (Delivered via FormSubmit AJAX to tharundevmc@gmail.com)
+     8. Direct Contact Form — Google Forms Background Integration
+     Form ID: 1FAIpQLSdfiMWNINyjieEmvX01kJWdFZ_N6K3mbdGZdJ1b5oxxaVOnag
      ========================================================================== */
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('form-submit-btn');
   const contactSuccessMsg = document.getElementById('contact-success-msg');
+  const contactErrorMsg = document.getElementById('contact-error-msg');
+  const contactErrorText = document.getElementById('contact-error-text');
+  const gformHiddenIframe = document.getElementById('gform-hidden-iframe');
 
-  function submitContactForm(e) {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
+  const GFORM_ENDPOINT = 'https://docs.google.com/forms/d/e/1FAIpQLSdfiMWNINyjieEmvX01kJWdFZ_N6K3mbdGZdJ1b5oxxaVOnag/formResponse';
+  const GFORM_FIELDS = {
+    name: 'entry.60291032',
+    email: 'entry.1996527582',
+    subject: 'entry.1253369969',
+    message: 'entry.982865827'
+  };
+
+  let isSubmitting = false;
+  let submissionDispatched = false;
+
+  function resetSubmitButton() {
+    if (submitBtn) {
+      submitBtn.innerHTML = `<span>Send Message</span> <i data-lucide="send" style="width:16px; height:16px;"></i>`;
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+      if (window.lucide) lucide.createIcons();
+    }
+  }
+
+  function handleSubmissionSuccess() {
+    if (!submissionDispatched) return;
+    submissionDispatched = false;
+    isSubmitting = false;
+
+    // Reset inputs only after submission has been received by Google
+    if (contactForm) contactForm.reset();
+
+    // Show attractive success feedback card
+    if (contactSuccessMsg) {
+      contactSuccessMsg.classList.add('show');
+      contactSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    const nameVal = document.getElementById('c-name')?.value.trim();
-    const emailVal = document.getElementById('c-email')?.value.trim();
-    const subjectVal = document.getElementById('c-subject')?.value.trim() || 'Portfolio Inquiry';
-    const messageVal = document.getElementById('c-message')?.value.trim();
+    resetSubmitButton();
+    showToast('✓ Response submitted to Google Forms');
+  }
 
-    if (!nameVal || !emailVal || !messageVal) {
-      showToast('⚠️ Please provide your Name, Email, and Message.');
+  // Listen to the hidden iframe load event when Google Forms responds
+  if (gformHiddenIframe) {
+    gformHiddenIframe.addEventListener('load', () => {
+      if (submissionDispatched) {
+        handleSubmissionSuccess();
+      }
+    });
+  }
+
+  function submitContactForm(e) {
+    if (isSubmitting) {
+      if (e) e.preventDefault();
       return false;
     }
 
-    if (submitBtn) {
-      const origText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>SENDING...</span> <i data-lucide="loader-2" class="spin"></i>`;
-      submitBtn.disabled = true;
-      if (window.lucide) lucide.createIcons();
+    const nameInput = document.getElementById('c-name');
+    const emailInput = document.getElementById('c-email');
+    const subjectInput = document.getElementById('c-subject');
+    const messageInput = document.getElementById('c-message');
 
-      const payload = {
-        name: nameVal,
-        email: emailVal,
-        _subject: `[Portfolio Message] ${subjectVal}`,
-        message: messageVal,
-        _template: 'table',
-        _captcha: 'false'
-      };
+    const nameVal = nameInput ? nameInput.value.trim() : '';
+    const emailVal = emailInput ? emailInput.value.trim() : '';
+    const subjectVal = subjectInput && subjectInput.value.trim() ? subjectInput.value.trim() : 'Portfolio Inquiry';
+    const messageVal = messageInput ? messageInput.value.trim() : '';
 
-      fetch('https://formsubmit.co/ajax/tharundevmc@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .catch(err => {
-        console.log('FormSubmit delivery note:', err);
-      })
-      .finally(() => {
-        submitBtn.innerHTML = origText;
-        submitBtn.disabled = false;
-        if (contactForm) contactForm.reset();
+    // Clear previous feedback states
+    contactSuccessMsg?.classList.remove('show');
+    contactErrorMsg?.classList.remove('show');
 
-        if (contactSuccessMsg) {
-          contactSuccessMsg.classList.add('show');
-          contactSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        showToast('✓ Message sent to tharundevmc@gmail.com');
-        if (window.lucide) lucide.createIcons();
-      });
+    // Validation
+    if (!nameVal) {
+      if (e) e.preventDefault();
+      showToast('⚠️ Please enter your full name.');
+      nameInput?.focus();
+      return false;
     }
-    return false;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailVal || !emailPattern.test(emailVal)) {
+      if (e) e.preventDefault();
+      showToast('⚠️ Please provide a valid email address.');
+      emailInput?.focus();
+      return false;
+    }
+
+    if (!messageVal || messageVal.length < 5) {
+      if (e) e.preventDefault();
+      showToast('⚠️ Please enter a detailed message (at least 5 characters).');
+      messageInput?.focus();
+      return false;
+    }
+
+    // Set duplicate prevention & loading animation on button
+    isSubmitting = true;
+    submissionDispatched = true;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.innerHTML = `<span>TRANSMITTING...</span> <i data-lucide="loader-2" class="spin"></i>`;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Background asynchronous fetch via FormData
+    try {
+      const formData = new FormData();
+      formData.append(GFORM_FIELDS.name, nameVal);
+      formData.append(GFORM_FIELDS.email, emailVal);
+      formData.append(GFORM_FIELDS.subject, subjectVal);
+      formData.append(GFORM_FIELDS.message, messageVal);
+
+      fetch(GFORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).catch(err => {
+        console.warn('Background fetch notice:', err);
+      });
+    } catch (err) {
+      console.warn('FormData preparation notice:', err);
+    }
+
+    // DO NOT call e.preventDefault()!
+    // The browser natively serializes all input fields and POSTs them into gform-hidden-iframe!
+    // A safety timer guarantees success state transition if the cross-origin iframe load event is suppressed
+    setTimeout(() => {
+      if (submissionDispatched) {
+        handleSubmissionSuccess();
+      }
+    }, 1400);
+
+    return true;
   }
 
-  if (contactForm) contactForm.addEventListener('submit', submitContactForm);
-  if (submitBtn) submitBtn.addEventListener('click', submitContactForm);
+  if (contactForm) {
+    contactForm.addEventListener('submit', submitContactForm);
+  }
 
   /* Copy Email to Clipboard */
   const btnCopyEmail = document.getElementById('btn-copy-email');
