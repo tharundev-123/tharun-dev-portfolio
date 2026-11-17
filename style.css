@@ -2415,6 +2415,28 @@ button[aria-busy="true"] {
   max-width: 440px;
 }
 
+.footer-launch-badge {
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.footer-launch-badge a {
+  display: inline-block;
+  line-height: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-launch-badge a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.footer-launch-badge img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .footer-columns-group {
   display: flex;
   gap: 4rem;
