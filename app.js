@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const aiKnowledge = {
-    "about": "Tharun Dev M C is a B.Tech Computer Science student specializing in AI & ML at Chandigarh University, native to Kozhikode, Kerala, India. His focus is on Python development, cloud cognitive engineering, and machine learning systems.",
+    "about": "Tharun Dev M C is a B.Tech Computer Science student specializing in AI & ML at Chandigarh University, Uttar Pradesh, native to Kozhikode, Kerala, India. His focus is on Python development, cloud cognitive engineering, and machine learning systems.",
     "projects": "Tharun's principal projects include the Digital Healthcare BMI & Diet Planner and the Azure Document Intelligence UI. You can explore the project details in the Featured Projects section.",
     "certs": "Tharun holds Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900), Microsoft Fabric Data Engineer (DP-600/DP-700), Nutanix Multicloud (MCI 6, EUC 6, MCA 6), and Univ of Pennsylvania Python accreditation.",
     "resume": "Downloading Tharun's official Curriculum Vitae (PDF). You can review his full academic record, engineering credentials, and machine learning skill set in the document.",
