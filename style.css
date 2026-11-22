@@ -793,7 +793,7 @@ img {
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
 }
 
-/* Main Swaying Pendulum Rig (Sways right & left from swivel ring) */
+/* Static Hanging ID Card Assembly */
 .id-swaying-assembly {
   position: relative;
   width: 100%;
@@ -802,15 +802,7 @@ img {
   align-items: center;
   transform-origin: top center;
   margin-top: -15px;
-  animation: naturalPendulumSway 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
-  will-change: transform;
   z-index: 8;
-}
-
-/* Smoothly pause sway on hover so user can easily interact */
-.hero-id-rig-wrapper:hover .id-swaying-assembly,
-.hero-id-rig-wrapper:hover .hero-id-card {
-  animation-play-state: paused;
 }
 
 /* Metal Carabiner Hook passing into the ID card slot hole */
@@ -843,8 +835,6 @@ img {
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.06);
   margin-top: 0;
   z-index: 5;
-  transform-origin: top center;
-  animation: naturalCardLag 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   transition: border-color var(--transition-snap), box-shadow var(--transition-snap);
   overflow: hidden;
 }
@@ -1133,47 +1123,6 @@ img {
 .hero-id-card .btn-tape-trigger-sharp {
   border-radius: 0 0 20px 20px;
   border-top: 1px solid var(--border-grid);
-}
-
-/* ==========================================================================
-   Natural Physics Pendulum Motion Keyframes
-   Harmonic Sinusoidal Left & Right Sway
-   ========================================================================== */
-@keyframes naturalPendulumSway {
-  0% {
-    transform: rotate(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: rotate(4.2deg) rotateY(-3deg);
-  }
-  50% {
-    transform: rotate(0deg) rotateY(0deg);
-  }
-  75% {
-    transform: rotate(-4.2deg) rotateY(3deg);
-  }
-  100% {
-    transform: rotate(0deg) rotateY(0deg);
-  }
-}
-
-/* Compound secondary flex of the card on the swivel hook */
-@keyframes naturalCardLag {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(1.2deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-1.2deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
 }
 
 .portrait-badge-overlay {
